@@ -1,0 +1,66 @@
+{{- $reviewBatch := 3 }}
+{{- $reviewCols := div 12 $reviewBatch }}
+{{- $reviewList := where .Site.RegularPages "Type" "review" }}
+<div class="row">
+    <div class="col text-center">
+        <h2>What our Users say</h2>
+    </div>
+</div>
+<div class="row pb-1">
+    <div class="col-6 text-start">
+        <button
+            type="button"
+            class="btn btn-warning"
+            data-bs-target="#reviewCarousel"
+            data-bs-slide="prev">
+            <i class="fa fa-arrow-left"></i
+            ><span class="small navigators">Prev</span>
+        </button>
+    </div>
+    <div class="col-6 text-end">
+        <button
+            type="button"
+            class="btn btn-warning"
+            data-bs-target="#reviewCarousel"
+            data-bs-slide="next">
+            <span class="small navigators">Next</span
+            ><i class="fa fa-arrow-right"></i>
+        </button>
+    </div>
+</div>
+<div class="reviews pt-3">
+    <div id="reviewCarousel" class="carousel slide">
+        <div class="carousel-inner">
+            {{- range seq 0 $reviewBatch (sub ($reviewList | len) 1) }}
+                {{- $outerIndex := . }}
+                {{ $class := "carousel-item" }}
+                {{- if eq $outerIndex 0 }}
+                    {{ $class = "carousel-item active" }}
+                {{- end }}
+                <div class="{{- $class }}">
+                    <div class="row">
+                        {{- range seq 0 (sub $reviewBatch 1) }}
+                            {{- $index := add $outerIndex . }}
+                            {{- $review := index $reviewList $index }}
+                            {{- $reviewImg := $review.Params.img }}
+                            <div class="col-lg-{{- $reviewCols -}}">
+                                <div class="px-3">
+                                    {{ with partial "scaledImage" (dict "file" (printf "%s/%s" site.Params.images.reviews $reviewImg)) }}
+                                        <img
+                                            src="{{ .RelPermalink }}"
+                                            class="img-responsive w-100 mb-3" />
+                                    {{ end }}
+                                    <div class="review pb-3">
+                                        <p class="quote">
+                                            {{- $review.Content }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        {{- end }}
+                    </div>
+                </div>
+            {{- end }}
+        </div>
+    </div>
+</div>

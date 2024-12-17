@@ -1,0 +1,113 @@
+[[main]]
+name    = 'Who We Are'
+pageRef = '/who-we-are'
+weight  = 20
+
+[[main]]
+name    = 'Our Story'
+pageRef = '/who-we-are/our-story'
+parent  = 'Who We Are'
+weight  = 200
+
+[[main]]
+name    = 'Trustees'
+pageRef = '/who-we-are/trustees'
+weight  = 210
+parent  = "Who We Are"
+
+[[main]]
+name    = 'Team'
+pageRef = '/who-we-are/team'
+weight  = 220
+parent  = "Who We Are"
+
+[[main]]
+name    = 'Annual Reports'
+pageRef = '/who-we-are/annual-reports'
+weight  = 230
+parent  = "Who We Are"
+
+[[main]]
+name    = 'What We Do'
+pageRef = '/what-we-do'
+weight  = 30
+
+[[main]]
+name    = 'Services'
+pageRef = '/what-we-do/services'
+weight  = 310
+parent  = "What We Do"
+
+[[main]]
+name    = 'Training and Outreach'
+pageRef = '/what-we-do/training-and-outreach'
+weight  = 320
+parent  = "What We Do"
+
+[[main]]
+name    = 'Advocacy'
+pageRef = '/what-we-do/advocacy'
+weight  = 330
+parent  = "What We Do"
+
+[[main]]
+name    = 'Research'
+pageRef = '/what-we-do/research'
+weight  = 340
+parent  = "What We Do"
+
+[[main]]
+name    = 'Theory of Change'
+pageRef = '/what-we-do/theory-of-change'
+weight  = 350
+parent  = "What We Do"
+
+[[main]]
+name    = 'Our Policies'
+pageRef = '/what-we-do/our-policies'
+weight  = 360
+parent  = "What We Do"
+
+[[main]]
+name    = 'Resources'
+pageRef = '/what-we-do/resources'
+weight  = 370
+parent  = "What We Do"
+
+[[main]]
+name    = 'Join Us'
+pageRef = '/join-us'
+weight  = 40
+
+[[main]]
+name    = 'Careers'
+pageRef = '/join-us/careers'
+weight  = 410
+parent  = "Join Us"
+
+[[main]]
+name    = 'Internships'
+pageRef = '/join-us/internships'
+weight  = 420
+parent  = "Join Us"
+
+[[main]]
+name    = 'Volunteers'
+pageRef = '/join-us/volunteers'
+weight  = 430
+parent  = "Join Us"
+
+[[main]]
+name    = 'Diary'
+pageRef = '/diary'
+weight  = 50
+
+[[main]]
+name    = 'Contact'
+pageRef = '/contact'
+weight  = 60
+
+[[main]]
+name    = 'Donate'
+pageRef = '/donate'
+weight  = 70

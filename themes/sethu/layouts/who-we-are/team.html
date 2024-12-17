@@ -1,0 +1,28 @@
+{{ define "main" }}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="row">
+                    <h1 class="mb-5">Team</h1>
+                    {{ range site.Data.team.members }}
+                        <div class="col-lg-4 mb-5">
+                            <div class="p-3 border">
+                                <h5 class="lead text-center pb-2">
+                                    {{ .name }}
+                                </h5>
+                                {{ with partial "scaledImage" (dict "file" (printf "%s/%s" site.Params.images.team .img) "w" 320 "h" 320) }}
+                                    <img
+                                        src="{{ .RelPermalink }}"
+                                        class="img-responsive w-100 mb-3" />
+                                {{ end }}
+                                <h6 class="text-center" style="height: 3rem;">
+                                    {{ .designation }}
+                                </h6>
+                            </div>
+                        </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+{{ end }}

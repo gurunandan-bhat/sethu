@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Annual Reports on Sethu</title>
+    <link>http://localhost:1313/who-we-are/annual-reports/</link>
+    <description>Recent content in Annual Reports on Sethu</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Dec 2024 11:09:27 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/who-we-are/annual-reports/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2023 2024</title>
+      <link>http://localhost:1313/who-we-are/annual-reports/2023-2024/</link>
+      <pubDate>Sun, 15 Dec 2024 11:09:27 +0530</pubDate>
+      <guid>http://localhost:1313/who-we-are/annual-reports/2023-2024/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>2022 2023</title>
+      <link>http://localhost:1313/who-we-are/annual-reports/2022-2023/</link>
+      <pubDate>Sun, 15 Dec 2024 11:09:18 +0530</pubDate>
+      <guid>http://localhost:1313/who-we-are/annual-reports/2022-2023/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>2021 2022</title>
+      <link>http://localhost:1313/who-we-are/annual-reports/2021-2022/</link>
+      <pubDate>Sun, 15 Dec 2024 11:09:07 +0530</pubDate>
+      <guid>http://localhost:1313/who-we-are/annual-reports/2021-2022/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

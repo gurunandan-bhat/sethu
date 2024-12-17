@@ -1,0 +1,10 @@
+{{ $file := .file }}
+{{ $width := 640 }}
+{{ with .w }}{{ $width = . }}{{ end }}
+{{ $height := 480 }}
+{{ with .h }}{{ $height = . }}{{ end }}
+{{ $img := resources.Get $file }}
+{{ with $img }}
+    {{ $img = $img.Fill (printf "%dx%d Center" $width $height) }}
+{{ end }}
+{{ return $img }}

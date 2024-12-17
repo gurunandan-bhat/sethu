@@ -1,0 +1,15 @@
+<div class="container mt-5">
+	<div class="row">
+		<hr />
+		<div class="row mt-5">
+		{{ range where .Site.RegularPages "Type" "footer" }}
+		<div class="col">
+			<h4>{{ .Title }}</h4>
+			{{ .Content }}
+			</div>
+		{{ end }}
+		</div>
+		</div>
+		<p>Copyright {{ now.Year }}. All rights reserved.</p>
+	</div>
+</div>

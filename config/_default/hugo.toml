@@ -1,0 +1,14 @@
+languageCode = 'en-us'
+title        = 'Sethu'
+theme        = 'sethu'
+
+[params]
+[params.images]
+reviews  = 'images/reviews'
+trustees = 'images/trustees'
+team     = 'images/team'
+
+[module]
+[module.hugoVersion]
+extended = false
+min      = "0.116.0"

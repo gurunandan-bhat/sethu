@@ -1,0 +1,15 @@
+{{ range slice "css/bootstrap.css" "css/main.css" }}
+    {{- with resources.Get . }}
+        {{- if eq hugo.Environment "development" }}
+            <link rel="stylesheet" href="{{ .RelPermalink }}" />
+        {{- else }}
+            {{- with . | minify | fingerprint }}
+                <link
+                    rel="stylesheet"
+                    href="{{ .RelPermalink }}"
+                    integrity="{{ .Data.Integrity }}"
+                    crossorigin="anonymous" />
+            {{- end }}
+        {{- end }}
+    {{- end }}
+{{ end }}

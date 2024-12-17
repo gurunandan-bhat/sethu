@@ -1,0 +1,28 @@
+{{ define "main" }}
+    {{ with .Params.hdrImage }}
+        <div class="container-fluid mb-5">
+            <img src="/images/{{ . }}" class="img-responsive w-100" />
+        </div>
+    {{ end }}
+    <div class="container mt-5">
+        <p>what-we-do/list.html</p>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="mb-5">{{ .Title }}</h1>
+                {{ range .Pages }}
+                    <div class="mb-5">
+                        <h2 class="mb-3">
+                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                        </h2>
+                        <p>{{ .Content }}</p>
+                        <p>
+                            <a href="{{ .RelPermalink }}"
+                                >Read on about {{ .Title }}</a
+                            >
+                        </p>
+                    </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+{{ end }}

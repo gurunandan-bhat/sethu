@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Assessments on Sethu</title>
+    <link>http://localhost:1313/what-we-do/services/assessments/</link>
+    <description>Recent content in Assessments on Sethu</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 Dec 2024 11:32:49 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/what-we-do/services/assessments/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Psycho-Educational Testing</title>
+      <link>http://localhost:1313/what-we-do/services/assessments/psycho-educational-testing/</link>
+      <pubDate>Mon, 16 Dec 2024 11:32:49 +0530</pubDate>
+      <guid>http://localhost:1313/what-we-do/services/assessments/psycho-educational-testing/</guid>
+      <description>&lt;p&gt;Children with academic difficulties, such as subject comprehension, learning retention and poor reading, spelling, written expression and math skills can benefit from psycho-educational testing. After establishing a rapport with the child to put them at ease, we test their abstract reasoning, problem solving skills, memory and attention span, critical thinking and other areas that influence academic achievement.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Neurodevelopmental Assessments</title>
+      <link>http://localhost:1313/what-we-do/services/assessments/neurodevelopmental-assessments/</link>
+      <pubDate>Mon, 16 Dec 2024 11:32:17 +0530</pubDate>
+      <guid>http://localhost:1313/what-we-do/services/assessments/neurodevelopmental-assessments/</guid>
+      <description>&lt;p&gt;We assess the child’s development in the areas of communication, gross and fine motor function, cognition and learning, play, socio-emotional and self-help skills. We also assess the functioning of the brain, spinal cord, nerves and muscles, and review their hearing and vision reports. For school-going children with behaviour and learning concerns, we go over their schoolwork, a report from their teachers, and may visit the school to observe the child at work and play.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
