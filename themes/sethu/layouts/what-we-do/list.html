@@ -5,15 +5,23 @@
         </div>
     {{ end }}
     <div class="container mt-5">
-        <p>what-we-do/list.html</p>
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
                 <h1 class="mb-5">{{ .Title }}</h1>
-                {{ range .Pages }}
+            </div>
+        </div>
+        {{ range .Pages }}
+            <div class="row py-5">
+                <div class="col-lg-5 offset-lg-1">
+                    <img
+                        src="/images/{{ .Params.hdrImage }}"
+                        class="img-responsive w-100" />
+                </div>
+                <div class="col-lg-5">
                     <div class="mb-5">
-                        <h2 class="mb-3">
+                        <h3 class="mb-3">
                             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                        </h2>
+                        </h3>
                         <p>{{ .Content }}</p>
                         <p>
                             <a href="{{ .RelPermalink }}"
@@ -21,8 +29,8 @@
                             >
                         </p>
                     </div>
-                {{ end }}
+                </div>
             </div>
-        </div>
+        {{ end }}
     </div>
 {{ end }}

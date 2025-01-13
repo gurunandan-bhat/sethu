@@ -2,9 +2,9 @@
 date = '2024-12-14T11:43:34+05:30'
 draft = false
 title = 'Training and Outreach'
+hdrImage = 'Image54.jpg'
 +++
 
-<image 54>
 Inculcating a culture of learning and evidence-based action by proactively engaging, collaborating with and building capacities through webinars, collaborative workshops and other training programmes, is a very important aspect of our work.
 
 ### Webinars and Workshops
@@ -22,5 +22,3 @@ A programme conducted by our family advisors to orient parents of children whose
 ### Gnyandeep
 
 A teacher training programme to strengthen the capacities of anganwadi workers (AWWs) to identify children with neurodevelopmental delays, intervene early and create neurodiversity-affirming classrooms.
-
-<image 55>

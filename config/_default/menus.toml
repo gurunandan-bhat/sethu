@@ -87,7 +87,7 @@ parent  = "Join Us"
 
 [[main]]
 name    = 'Internships'
-pageRef = '/join-us/internships'
+pageRef = '/join-us/interns'
 weight  = 420
 parent  = "Join Us"
 

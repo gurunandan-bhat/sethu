@@ -2,6 +2,7 @@
 date = '2024-12-14T11:44:40+05:30'
 draft = false
 title = 'Advocacy'
+hdrImage = 'Image56.png'
 +++
 
 We advocate for the effective implementation of neurodiversity-affirming policies by fostering close relationships with schools, community groups and government agencies.

@@ -1,0 +1,26 @@
+{{ define "main" }}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 mt-5">
+                <h1>{{ .Title }}</h1>
+                {{ .Content }}
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img
+                            src="/images/toc-1.png"
+                            class="img-responsive w-100" />
+                    </div>
+                    <div class="col-lg-6">
+                        <img
+                            src="/images/toc-2.png"
+                            class="img-responsive w-100" />
+                    </div>
+                </div>
+                <p>
+                    You can download a PDF of this document
+                    <a href="pdf/toc.pdf">here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{{ end }}
