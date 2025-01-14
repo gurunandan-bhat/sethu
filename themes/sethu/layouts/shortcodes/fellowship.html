@@ -1,0 +1,12 @@
+<div class="row mt-5">
+    <hr class="py-3" />
+    <div class="col-lg-5 offset-lg-1">
+        <img src="/images/{{- .Get "src" -}}" class="img-responsive w-100" />
+    </div>
+    <div class="col-lg-5">
+        <p>
+            {{ .Get "text" }}
+        </p>
+        <p>&mdash; {{ .Get "author" }}</p>
+    </div>
+</div>

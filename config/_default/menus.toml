@@ -98,6 +98,12 @@ weight  = 430
 parent  = "Join Us"
 
 [[main]]
+name    = 'IAP Fellowship'
+pageRef = '/join-us/iap-fellowship'
+weight  = 440
+parent  = "Join Us"
+
+[[main]]
 name    = 'Diary'
 pageRef = '/diary'
 weight  = 50
