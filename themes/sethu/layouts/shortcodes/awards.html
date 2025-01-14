@@ -1,0 +1,10 @@
+<table class="table">
+    <tbody>
+        {{ range site.Data.awards.awards }}
+            <tr>
+                <th scope="row">{{ .year }}</th>
+                <td>{{ .award }}</td>
+            </tr>
+        {{ end }}
+    </tbody>
+</table>
