@@ -6,6 +6,6 @@ weight = 30
 img = 'Image 4.jpg'
 +++
 
-“I would look forward to my weekly sessions at Sethu throughout the week. It was the BEST time EVER – very comforting and homely. It’s amazing to just be there. Sethu has done a lot for me, I can’t imagine my life without it.”
+“I would look forward to my weekly sessions at Sethu throughout the week. It was the BEST time EVER – very comforting and homely. It’s amazing to just be there. Sethu has done a lot for me. I can’t imagine my life without it.”
 
 &mdash; Rucha Prabhudessai, screenwriter, diagnosed with dyslexia as a teenager.
