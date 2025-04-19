@@ -2,7 +2,7 @@
 title = 'Home'
 date = 2023-01-01T08:00:00-07:00
 draft = false
-hdrImage = 'Image1.jpg'
+hdrImage = 'sethu-cover.png'
 +++
 
 Sethu is an award-winning non-profit that caters to the developmental, behavioural, emotional and educational needs of children and young people aged 0—19 years through interdisciplinary services.
