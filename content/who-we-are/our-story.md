@@ -5,7 +5,7 @@ title = 'Our Story'
 hdrImage = 'Image8.jpg'
 +++
 
-Founded in 2005 by Dr Nandita de Souza, a developmental paediatrician, and five other champions for inclusion, Sethu was born of the conviction that all children, particularly the most vulnerable, must receive a fair chance to realise their potential.
+Founded in 2005 by Dr Nandita de Souza, a developmental paediatrician, and five other women warriors for inclusion, Sethu was born of the conviction that all children, particularly the most vulnerable, must receive a fair chance to realise their potential.
 
 Our first professional team comprised Dr Nandita, Yogita Joshi, special educator, and Anjali Barretto, speech and language therapist. Our three founder trustees were Elvina Menezes, Ameeta Mascarenhas and Sneha Bhandare. The first time we opened doors, it was in a compact two-bedroom apartment generously offered by Eric Menezes.
 
