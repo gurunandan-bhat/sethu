@@ -1,9 +1,12 @@
-<table class="table">
+<table class="table mt-3 table-borderless">
     <tbody>
         {{ range site.Data.awards.awards }}
             <tr>
                 <th scope="row">{{ .year }}</th>
-                <td>{{ .award }}</td>
+                <td>
+                    <p><img src="/images/{{- .img }}" /></p>
+                    <h5>{{ .award }}</h5>
+                </td>
             </tr>
         {{ end }}
     </tbody>

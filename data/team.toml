@@ -1,19 +1,15 @@
 [[members]]
 img         = 'Image 14.jpg'
 name        = 'Aileen de Souza'
-designation = 'Sr Psychologist and Coordinator, Mental Health Programme'
+designation = 'Senior Psychologist and Coordinator, Mental Health Programme'
 [[members]]
 img         = 'Image 15.jpg'
 name        = 'Alisha Narvekar'
 designation = 'Child Development Trainer'
 [[members]]
-img         = 'Image 16.jpg'
-name        = 'Alphonsa George'
-designation = 'Coordinator, Activity Centre'
-[[members]]
 img         = 'Image 17.jpg'
 name        = 'Andre Velho'
-designation = 'Sr Autism Interventionist and Coordinator, Head - AATISH'
+designation = 'Senior Autism Interventionist and Coordinator, Head - AATISH'
 [[members]]
 img         = 'Image 18.jpg'
 name        = 'Anjali Barreto'
@@ -45,7 +41,7 @@ designation = 'Coordinator, Clinical Appointments'
 [[members]]
 img         = 'Image 25.jpg'
 name        = 'Mahera Kantawalla'
-designation = 'Sr Occupational Therapist'
+designation = 'Senior Occupational Therapist'
 [[members]]
 img         = 'Image 26.jpg'
 name        = 'Maryanne De Souza'
@@ -57,11 +53,7 @@ designation = 'Housekeeper'
 [[members]]
 img         = 'Image 28.jpg'
 name        = 'Dr Nandita de Souza'
-designation = 'Developmental and Behavioural Paediatrician'
-[[members]]
-img         = 'Image 29.jpg'
-name        = 'Nilesh Varak'
-designation = 'Psychologist'
+designation = 'Director and Developmental & Behavioural Paediatrician'
 [[members]]
 img         = 'Image 30.jpg'
 name        = 'Pooja Kambli'
@@ -75,33 +67,25 @@ img         = 'Image 32.jpg'
 name        = 'Purva Kamat'
 designation = 'Autism Intervention Specialist'
 [[members]]
-img         = 'Image 33.jpg'
-name        = 'Rebecca Manari'
-designation = 'Parent Advisor'
-[[members]]
 img         = 'Image 34.jpg'
 name        = 'Ruella Pires'
 designation = 'Psychologist'
 [[members]]
 img         = 'Image 46.jpg'
-name        = 'Dr. Samruddhi Vernekar'
+name        = 'Dr Samruddhi Vernekar'
 designation = 'Paediatrician'
 [[members]]
 img         = 'Image 35.jpg'
 name        = 'Sennely Costa'
 designation = 'Child Development Trainer'
 [[members]]
-img         = 'Image 36.jpg'
-name        = 'Shabda Virnodkar'
-designation = 'Occupational Therapist'
-[[members]]
 img         = 'Image 37.jpg'
 name        = 'Shaila Maria Faleiro'
-designation = 'Head, Branding and Communications'
+designation = 'Consultant, Communications and Branding'
 [[members]]
 img         = 'Image 38.jpg'
 name        = 'Shenessa Barreto'
-designation = 'Sr Psychologist, FCC Program Coordinator'
+designation = 'Senior Psychologist, FCC Program Coordinator'
 [[members]]
 img         = 'Image 39.jpg'
 name        = 'Shreya Raikar'
@@ -125,8 +109,12 @@ designation = 'Psychologist'
 [[members]]
 img         = 'Image 44.jpg'
 name        = 'Vivien Vaz'
-designation = 'Sr Autism Interventionist'
+designation = 'Senior Autism Interventionist'
 [[members]]
 img         = 'Image 45.jpg'
 name        = "Zamora Da'Silva"
 designation = 'Counsellor'
+[[members]]
+img         = 'Image 47.jpg'
+name        = "Zurica D'Souza"
+designation = 'Head, Marketing and Donor Relations'

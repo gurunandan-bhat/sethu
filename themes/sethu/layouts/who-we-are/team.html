@@ -5,29 +5,32 @@
                 <div class="row">
                     <h1 class="mb-5">Team</h1>
                     <p class="mb-5">
-                        Our highly qualified, committed, multi-disciplinary team
-                        provides award-winning services to neurodevelopmentally
-                        disabled children and their families, anganwadi workers
-                        at the government’s Integrated Child Development
-                        Services as well as teachers and students in private
-                        schools. The team has grown to 35 professionals from a
-                        variety of disciplines and continues to expand, as the
-                        demand for services increases.
+                        Sethu’s greatest asset is our highly qualified,
+                        committed, multi-disciplinary team that provides
+                        award-winning services to neurodevelopmentally disabled
+                        children and their families, offers training programs to
+                        educational institutions, partners with Government and
+                        Social purpose organizations in the disability space to
+                        build advocacy and works with the community to change
+                        the doom and gloom narrative of disabilities to one of
+                        strengths and hope.
                     </p>
                     {{ range site.Data.team.members }}
                         <div class="col-lg-4 mb-5">
                             <div class="p-3 border">
-                                <h5 class="lead text-center pb-2">
+                                <h4 class="lead text-center pb-2">
                                     {{ .name }}
-                                </h5>
+                                </h4>
                                 {{ with partial "scaledImage" (dict "file" (printf "%s/%s" site.Params.images.team .img) "w" 320 "h" 320) }}
                                     <img
                                         src="{{ .RelPermalink }}"
                                         class="img-responsive w-100 mb-3" />
                                 {{ end }}
-                                <h6 class="text-center" style="height: 3rem;">
+                                <p
+                                    class="poppins-400 small text-center"
+                                    style="height: 3rem;">
                                     {{ .designation }}
-                                </h6>
+                                </p>
                             </div>
                         </div>
                     {{ end }}

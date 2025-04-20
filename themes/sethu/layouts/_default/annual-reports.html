@@ -14,7 +14,7 @@
                                     class="img-responsive w-100 mb-3"
                             /></a>
                             <h5 class="mb-3 text-center">
-                                {{ .Title }}
+                                {{ replace .Title "-" "&ndash;" | safeHTML }}
                             </h5>
                         </div>
                     {{ end }}
