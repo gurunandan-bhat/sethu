@@ -1,3 +1,25 @@
+body {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    color: #9a191b;
+    border-bottom: 1px solid #fbdb31;
+}
+
 .dropdown-menu {
     --bs-dropdown-min-width: 13rem;
 }

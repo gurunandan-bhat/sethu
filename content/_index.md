@@ -5,7 +5,7 @@ draft = false
 hdrImage = 'sethu-cover.png'
 +++
 
-#### In India, over 2.2 million children live with developmental disabilities. More children are identified every year but many go undiagnosed.
+### In India, over 2.2 million children live with developmental disabilities. More children are identified every year but many go undiagnosed.
 
 - Most don’t get the support they need.
 - Families are overwhelmed. Schools are unprepared. And stigma keeps too many children hidden from view.
@@ -16,10 +16,10 @@ hdrImage = 'sethu-cover.png'
 - Because every child has potential.
 - And every family deserves support.
 
-##### Neurodiversity Affirming
+#### Neurodiversity Affirming
 
 We recognise, respect, and value neurological differences as natural variations of the human experience, while fostering an environment of acceptance and inclusion for all neurotypes.
 
-##### A Culture of Trust
+#### A Culture of Trust
 
 We’re committed to doing what is right, delivering what we promise and working with accountability, compassion, excellence and dedication to those we serve. Child protection, both internally and elsewhere is a non-negotiable aspect of our work.
