@@ -23,3 +23,16 @@ h6 {
 .dropdown-menu {
     --bs-dropdown-min-width: 13rem;
 }
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    padding-bottom: 0.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: #9a191b;
+}
