@@ -1,4 +1,9 @@
 {{ define "main" }}
+    {{ with .Params.hdrImage }}
+        <div class="container-fluid mb-5">
+            <img src="/images/{{ . }}" class="img-responsive w-100" />
+        </div>
+    {{ end }}
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
