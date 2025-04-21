@@ -9,7 +9,9 @@ hdrImage = 'sethu-cover.png'
 
 - Most don’t get the support they need.
 - Families are overwhelmed. Schools are unprepared. And stigma keeps too many children hidden from view.
-- At Sethu, we’re changing that.
+
+#### At Sethu, We are Changing That
+
 - We work with children and the families that love them – helping them grow, connect, and belong.
 - We focus on what’s possible, not just what’s missing.
 - From early intervention to mental health and inclusive education, we’re building a world that nurtures and celebrates every child.
