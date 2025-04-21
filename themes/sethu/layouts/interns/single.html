@@ -1,0 +1,22 @@
+{{ define "main" }}
+    {{ with .Params.hdrImage }}
+        <div class="container-fluid mb-5">
+            <img src="/images/{{ . }}" class="img-responsive w-100" />
+        </div>
+    {{ end }}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <h1>{{ .Title }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5 offset-lg-1 mt-5">
+                {{ partial "video.html" (dict "src" "https://sethu-video.s3.ap-south-1.amazonaws.com/Rochelle.mp4" "width" "100%") }}
+            </div>
+            <div class="col-lg-5 mt-5">
+                {{ .Content }}
+            </div>
+        </div>
+    </div>
+{{ end }}

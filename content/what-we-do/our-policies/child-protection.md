@@ -6,6 +6,6 @@ hdrImage = 'child-protection.png'
 pdf = 'child-protection.pdf'
 +++
 
-This policy consists of preventive strategies and proactive procedures to ensure the safety of all children under Sethu’s care. It gives clear guidelines to both our staff and professionals working at Sethu in how we can best create a safe space for all the children who visit our premises and also when we interact with children out in the field.
+With preventive strategies and proactive procedures, this policy guides staff and other professionals working at Sethu on how to create a safe space for all the children who visit our premises, as well as those we interact with in the field.
 
 [Download the Policy Document](/pdf/child-protection.pdf).
