@@ -5,7 +5,7 @@ draft = false
 hdrImage = 'sethu-cover.png'
 +++
 
-### In India, over 2.2 million children live with developmental disabilities. More children are identified every year but many go undiagnosed.
+### In India, over 2.2 million children live with developmental disabilities. More children are identified every year but many go undiagnosed
 
 - Most don’t get the support they need.
 - Families are overwhelmed. Schools are unprepared. And stigma keeps too many children hidden from view.
