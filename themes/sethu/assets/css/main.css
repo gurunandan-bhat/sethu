@@ -36,3 +36,12 @@ a {
     text-decoration: none;
     color: #9a191b;
 }
+
+.menu-entry {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #9a191b;
+    font-size: 1.1rem;
+}
