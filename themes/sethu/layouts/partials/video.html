@@ -12,7 +12,9 @@
 {{ $static := false -}}
 {{ $type := false -}}
 
-{{ if and $src (fileExists (path.Join "/static" $src)) -}}
+{{ if or (strings.HasPrefix $src "http://") (strings.HasPrefix $src "https://") }}
+    {{ $resource = resources.GetRemote $src }}
+{{ else if and $src (fileExists (path.Join "/static" $src)) -}}
     {{ $static = true -}}
     {{ $src = relURL $src -}}
 {{ else if $src -}}
@@ -23,6 +25,8 @@
     {{ with .Page.Resources.Get $src -}}
         {{ $resource = . -}}
     {{ end -}}
+{{ else }}
+    {{ warnf "%s shortcode number %d in \"content/%s\" is missing the \"src\" attribute." .Name .Ordinal .Page.File.Path -}}
 {{ end -}}
 
 {{ if $resource -}}
@@ -51,10 +55,6 @@
     {{ end -}}
 {{ end -}}
 
-{{ if not $src -}}
-    {{ warnf "%s shortcode number %d in \"content/%s\" is missing the \"src\" attribute." .Name .Ordinal .Page.File.Path -}}
-{{ end -}}
-
 
 <figure class="video{{ with $class }}{{ . }}{{ end }}">
     <video
@@ -62,7 +62,7 @@
         preload="{{ $preload }}"
         {{ with $width }}width="{{ . }}"{{ end }}
         {{ with $poster }}poster="{{ . }}"{{ end }}
-        {{ with $autoplay }}autoplay="{{ . }}"{{ end }}
+        {{ with $autoplay }}{{ . }}{{ end }}
         {{ with $loop }}loop="{{ . }}"{{ end }}>
         <source src="{{ $src }}" {{ with $type }}type="{{ . }}"{{ end }} />
     </video>
