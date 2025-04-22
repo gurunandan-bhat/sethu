@@ -2,6 +2,8 @@ body {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
+    background-color: rgb(249, 249, 251);
+    color: #3e3e3e;
 }
 
 h1,
@@ -44,4 +46,9 @@ a {
     font-style: normal;
     color: #9a191b;
     font-size: 1.1rem;
+}
+
+.feature p:first-of-type {
+    font-size: 1.2rem;
+    color: #9a191b;
 }
