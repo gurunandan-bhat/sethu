@@ -1,0 +1,67 @@
+<form class="fira-sans-regular border-start ps-5" id="donate">
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <label for="full-name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="full-name" />
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="email" />
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-lg-6">
+            <label for="city" class="form-label">Currency</label>
+            {{ partial "currencies" . }}
+        </div>
+        <div class="col-lg-6">
+            <label for="currency" class="form-label"
+                >Amount <span class="small">(numerals only)</span></label
+            >
+            <input type="number" class="form-control" id="currency" />
+        </div>
+    </div>
+    <!--
+    <div class="row mb-4">
+        <div class="col">
+            <label for="address-line-1" class="form-label"
+                >Address Line 1</label
+            >
+            <input type="text" class="form-control" id="address-line-1" />
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col">
+            <label for="address-line-2" class="form-label"
+                >Address Line 2</label
+            >
+            <input type="text" class="form-control" id="address-line-2" />
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-lg-6">
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" />
+        </div>
+        <div class="col-lg-6">
+            <label for="zip" class="form-label">Zip/PIN</label>
+            <input type="text" class="form-control" id="zip" />
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-lg-6">
+            <label for="state" class="form-label">State</label>
+            <input type="text" class="form-control" id="state" />
+        </div>
+        <div class="col-lg-6">
+            <label for="country" class="form-label">Country</label>
+            <input type="text" class="form-control" id="country" />
+        </div>
+    </div>
+    -->
+    <button type="submit" class="btn btn-primary mt-5">
+        {{ .Title }} Now!
+    </button>
+</form>

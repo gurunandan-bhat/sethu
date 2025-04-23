@@ -1,0 +1,97 @@
+{{ define "main" }}
+    <div class="container">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-lg-6">
+                <img
+                    src="{{ .Params.hdrImage }}"
+                    class="img-responsive w-100 mb-5" />
+            </div>
+            <div class="col-lg-6 mx-auto py-5">
+                <div class="fs-4">
+                    {{ .Content }}
+                </div>
+                <p class="small">
+                    "Sethu" is registered under Section 12A of the Income Tax
+                    Act (1961) and a donation from India passport holders is
+                    approved by the Director of Income Tax (Exemptions) under
+                    Section 80G(5). We are also registered under the Foreign
+                    Contribution Regulation Act (FCRA-2010) for donations from
+                    outside India.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="display-4 fw-bold lh-1 mb-5">Donate Today</h1>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-lg-5 offset-lg-1 text-center">
+                <h3>For Indian Passport Holders</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a href="/donate/top-needs/build-our-bridge/"
+                            >Build Our Bridge</a
+                        >
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/donate/top-needs/cheer-for-children/"
+                            >Cheer for Children</a
+                        >
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/donate/top-needs/sethu-corpus/"
+                            >Sethu Corpus</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-5 text-center">
+                <h3>Passport Holders of Other Countries</h3>
+                <p>
+                    Need to add links here (need some changes to the payment
+                    code from myside). Will update this evening
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            {{ range where .Site.RegularPages "Path" "like" `^/donate/top-needs` }}
+                <div class="col-lg-4 px-3">
+                    <div class="donate-schemes rounded-4 h-100">
+                        <h5 class="text-center mb-3">{{ .Title }}</h5>
+                        <img
+                            src="{{ .Params.hdrImage }}"
+                            class="img-responsive w-100 mb-3 rounded" />
+                        <div class="small">{{ .Summary }}</div>
+                        <p>
+                            <a href="{{ .RelPermalink }}"
+                                >Join our
+                                <span class="fw-semibold">{{ .Title }}</span>
+                                campaign</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            {{ end }}
+        </div>
+    </div>
+    <div class="container">
+        <div class="row my-5">
+            <h2 class="text-center mb-5">
+                Sponsorships Make a Huge Difference
+            </h2>
+            {{ range where .RegularPagesRecursive "Path" "like" `/donate/stories` }}
+                <div class="col-lg-4 px-3">
+                    <div class="donate-schemes h-100">
+                        <img
+                            src="{{ .Params.hdrImage }}"
+                            class="img-responsive w-100 mb-2 rounded-3" />
+                        <div class="small">
+                            {{ .Content }}
+                        </div>
+                    </div>
+                </div>
+            {{ end }}
+        </div>
+    </div>
+{{ end }}

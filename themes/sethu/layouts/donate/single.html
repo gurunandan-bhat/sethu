@@ -1,0 +1,18 @@
+{{ define "main" }}
+    <div class="container-fluid">
+        <img src="{{ .Params.hdrImage }}" class="img-responsive w-100 mb-5" />
+    </div>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 class="my-5">{{ .Title }}</h1>
+                {{ .Content }}
+                {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+            </div>
+            <div class="col-lg-6">
+                <h1 class="my-5">Donate</h1>
+                {{ partial "donation-form" . }}
+            </div>
+        </div>
+    </div>
+{{ end }}

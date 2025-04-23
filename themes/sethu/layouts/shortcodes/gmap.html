@@ -1,0 +1,7 @@
+{{ with .Get "link" }}
+    <a href="{{ . }}" target="_blank">
+        {{ with $.Get "map" }}
+            <img src="{{ . }}" class="img-responsive w-100" />
+        {{ end }}
+    </a>
+{{ end }}

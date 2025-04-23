@@ -2,7 +2,7 @@ body {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
-    background-color: rgb(249, 249, 251);
+    background-color: rgb(249, 249, 251) !important;
     color: #3e3e3e;
 }
 
@@ -51,4 +51,8 @@ a {
 .feature p:first-of-type {
     font-size: 1.2rem;
     color: #9a191b;
+}
+
+.list-group {
+    --bs-list-group-bg: var(--bs-body-bg): rgb(249, 249, 251) !important;
 }
