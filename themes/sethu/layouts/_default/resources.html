@@ -1,0 +1,33 @@
+{{ define "main" }}
+    {{ with .Params.hdrImage }}
+        <div class="container-fluid mb-5">
+            <img src="/images/{{ . }}" class="img-responsive w-100" />
+        </div>
+    {{ end }}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="mb-5">{{ .Title }}</h1>
+            </div>
+        </div>
+        <div class="row py-5">
+            <pre>{{ .Params.myparam }}</pre>
+            <div class="col-lg-5 offset-lg-1">
+                <img
+                    src="/images/{{ .Params.hdrImage }}"
+                    class="img-responsive w-100" />
+            </div>
+            <div class="col-lg-5">
+                <div class="mb-5">
+                    <h3 class="mb-3">
+                        {{ .Title }}
+                    </h3>
+                    <p>{{ .Content }}</p>
+                    <p>
+                        <a href="{{ .RelPermalink }}">More</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ end }}
