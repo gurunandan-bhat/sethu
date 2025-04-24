@@ -22,6 +22,10 @@ h6 {
     border-bottom: 1px solid #fbdb31;
 }
 
+.colored {
+    color: #9a191b;
+}
+
 .dropdown-menu {
     --bs-dropdown-min-width: 13rem;
 }
