@@ -1,7 +1,20 @@
-mentions = [
-    '1f41603b_52442_5.png',
-    '2023-04-25.png',
-    '509164.png',
-    'Double Empathy Problem by Andre- The Navhind Times-291223.png',
-    'Family Relations-Neeraja-The Navhind Times-051023.png',
-]
+[[mentions]]
+image = '509164.jpg'
+title = 'The Unstoppable Spirit of Individuals with Down Syndrome'
+ref   = 'Navhind Times. Mar 19, 2025'
+[[mentions]]
+image = '1f41603b_52442_5.jpg'
+title = 'Why Modern Parenting can be Exhausting'
+ref   = 'oHeraldo Oct 10, 2024'
+[[mentions]]
+image = '2023-04-25.png'
+title = 'Creating Better Ties'
+ref   = 'Kuriocity, Navhind Times. Apr 25, 2023'
+[[mentions]]
+image = 'Family Relations-Neeraja-The Navhind Times-051023.jpeg'
+title = "How Family Relations Shape a Child's Wellbeing"
+ref   = "The Navhind Times. Oct 05, 2023"
+[[mentions]]
+image = 'Double Empathy Problem by Andre- The Navhind Times-291223.jpeg'
+title = 'The Double Empathy Problem'
+ref   = 'The Navhind Times. Dec 29, 2023'
