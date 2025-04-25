@@ -34,11 +34,15 @@
                 <div class="row">
                     {{ range sort site.Data.media.mentions }}
                         <div class="col-lg-4 pb-5 pt-5">
-                            <a href="/images/media/{{- . }}" target="_blank">
+                            <a href="/images/media/{{- .image }}" target="_blank">
+                                <h6 style="display: block; height: 4rem;">{{ .title }}
+                                    <br />
+                                    <span class="small">{{ .ref }}</span>
+                                </h6>
                                 <img
-                                    src="/images/media/thumbs/{{- . }}"
+                                    src="/images/media/thumbs/{{- .image }}"
                                     class="img-fluid w-100 border p-2"
-                                    alt="{{- . }}" />
+                                    alt="{{- .title }}" />
                             </a>
                         </div>
                     {{ end }}
