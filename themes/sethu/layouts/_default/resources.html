@@ -11,21 +11,37 @@
             </div>
         </div>
         <div class="row py-5">
-            <pre>{{ .Params.myparam }}</pre>
-            <div class="col-lg-5 offset-lg-1">
-                <img
-                    src="/images/{{ .Params.hdrImage }}"
-                    class="img-responsive w-100" />
+            <div class="col-lg-8 offset-lg-2">
+                <h3>Our Handouts</h3>
+                <div class="row">
+                    {{ range sort site.Data.handouts.handouts ".title" }}
+                        <div class="col-lg-4 pb-5 pt-5">
+                            <a href="/pdf/handouts/{{ .pdf }}" target="_blank">
+                                <h6>{{ .title }}</h6>
+                                <img
+                                    src="/images/handouts/{{- .thumb }}"
+                                    class="img-fluid w-100 border p-2"
+                                    alt="{{- .title }}" />
+                            </a>
+                        </div>
+                    {{ end }}
+                </div>
             </div>
-            <div class="col-lg-5">
-                <div class="mb-5">
-                    <h3 class="mb-3">
-                        {{ .Title }}
-                    </h3>
-                    <p>{{ .Content }}</p>
-                    <p>
-                        <a href="{{ .RelPermalink }}">More</a>
-                    </p>
+        </div>
+        <div class="row py-5">
+            <div class="col-lg-8 offset-lg-2">
+                <h3>Media Mentions</h3>
+                <div class="row">
+                    {{ range sort site.Data.media.mentions }}
+                        <div class="col-lg-4 pb-5 pt-5">
+                            <a href="/images/media/{{- . }}" target="_blank">
+                                <img
+                                    src="/images/media/thumbs/{{- . }}"
+                                    class="img-fluid w-100 border p-2"
+                                    alt="{{- . }}" />
+                            </a>
+                        </div>
+                    {{ end }}
                 </div>
             </div>
         </div>
