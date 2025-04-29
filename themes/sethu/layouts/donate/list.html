@@ -26,24 +26,15 @@
             </div>
         </div>
         <div class="row mb-5">
+            {{ $projects := where .RegularPages "Path" "like" `^/donate/projects` }}
             <div class="col-lg-5 offset-lg-1 text-center">
                 <h3>For Indian Passport Holders</h3>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <a href="/donate/top-needs/build-our-bridge/"
-                            >Build Our Bridge</a
-                        >
-                    </li>
-                    <li class="list-group-item">
-                        <a href="/donate/top-needs/cheer-for-children/"
-                            >Cheer for Children</a
-                        >
-                    </li>
-                    <li class="list-group-item">
-                        <a href="/donate/top-needs/sethu-corpus/"
-                            >Sethu Corpus</a
-                        >
-                    </li>
+                    {{ range $projects }}
+                        <li class="list-group-item">
+                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                        </li>
+                    {{ end }}
                 </ul>
             </div>
             <div class="col-lg-5 text-center">
@@ -78,7 +69,7 @@
             </div>
         </div>
         <div class="row">
-            {{ range where .Site.RegularPages "Path" "like" `^/donate/top-needs` }}
+            {{ range $projects }}
                 <div class="col-lg-4 px-3">
                     <div class="donate-schemes rounded-4 h-100">
                         <h5 class="text-center mb-3">{{ .Title }}</h5>
