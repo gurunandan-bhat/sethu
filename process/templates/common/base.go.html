@@ -1,0 +1,14 @@
+{{ define "base" }}
+    <!doctype html>
+    <html>
+        <head>
+            {{ template "head" . }}
+        </head>
+        <body>
+            {{ template "top-menu" . }}
+            {{ template "main" . }}
+            {{ template "footer" . }}
+            {{ template "js-includes" . }}
+        </body>
+    </html>
+{{ end }}
