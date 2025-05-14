@@ -68,9 +68,9 @@ func NewService(cfg *config.Config) (*Service, error) {
 	}
 
 	// Static file handler
-	filesDir := http.Dir(filepath.Join(cfg.AppRoot, "assets"))
-	fs := http.FileServer(filesDir)
-	mux.Handle("/assets/*", http.StripPrefix("/assets", fs))
+	// filesDir := http.Dir(filepath.Join(cfg.AppRoot, "assets"))
+	// fs := http.FileServer(filesDir)
+	// mux.Handle("/assets/*", http.StripPrefix("/assets", fs))
 
 	template, err := newTemplateCache(filepath.Join(cfg.AppRoot, "templates"))
 	if err != nil {
@@ -92,10 +92,17 @@ func NewService(cfg *config.Config) (*Service, error) {
 
 func (s *Service) setRoutes() {
 
-	s.Muxer.Method(http.MethodGet, "/", ServiceHandler(s.index))
-	s.Muxer.Method(http.MethodGet, "/about", ServiceHandler(s.about))
-	s.Muxer.Method(http.MethodGet, "/action", ServiceHandler(s.action))
-	s.Muxer.Method(http.MethodGet, "/another-action", ServiceHandler(s.anotherAction))
+	// s.Muxer.Method(http.MethodGet, "/", ServiceHandler(s.index))
+	// s.Muxer.Method(http.MethodGet, "/about", ServiceHandler(s.about))
+	// s.Muxer.Method(http.MethodGet, "/action", ServiceHandler(s.action))
+	// s.Muxer.Method(http.MethodGet, "/another-action", ServiceHandler(s.anotherAction))
+
+	s.Muxer.Route("/process", func(r chi.Router) {
+		r.Method(http.MethodGet, "/", ServiceHandler(s.index))
+		r.Method(http.MethodGet, "/about", ServiceHandler(s.about))
+		r.Method(http.MethodGet, "/action", ServiceHandler(s.action))
+		r.Method(http.MethodGet, "/another-action", ServiceHandler(s.anotherAction))
+	})
 }
 
 func (s *Service) getSessionVar(r *http.Request, name string) (any, error) {

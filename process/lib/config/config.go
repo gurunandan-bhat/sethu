@@ -8,12 +8,13 @@ import (
 )
 
 const (
-	defaultConfigFileName = ".webplate.json"
+	defaultConfigFileName = ".sethu.json"
 )
 
 type Config struct {
 	InProduction bool   `json:"inProduction,omitempty"`
 	AppRoot      string `json:"appRoot,omitempty"`
+	AppPort      int    `json:"appPort,omitempty"`
 	Db           struct {
 		User                 string `json:"user,omitempty"`
 		Passwd               string `json:"passwd,omitempty"`

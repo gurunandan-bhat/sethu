@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"process/lib/config"
@@ -20,7 +21,7 @@ func main() {
 	}
 
 	httpServer := &http.Server{
-		Addr:    "localhost:3000",
+		Addr:    fmt.Sprintf("localhost:%d", cfg.AppPort),
 		Handler: service.Muxer,
 	}
 
