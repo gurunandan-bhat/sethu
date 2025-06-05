@@ -65,3 +65,19 @@
         {{ .Title }} Now!
     </button>
 </form>
+{{ $title := .Title }}
+{{ with resources.Get "js/order.js" }}
+    {{ $opts := dict "minify" (not hugo.IsDevelopment) "sourceMap" (cond hugo.IsDevelopment "external" "") "params" (dict "title" $title) }}
+    {{ with . | js.Build $opts }}
+        {{ if hugo.IsDevelopment }}
+            <script src="{{ .RelPermalink }}"></script>
+        {{ else }}
+            {{ with . | fingerprint }}
+                <script
+                    src="{{ .RelPermalink }}"
+                    integrity="{{ .Data.Integrity }}"
+                    crossorigin="anonymous"></script>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}

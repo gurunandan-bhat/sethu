@@ -15,7 +15,11 @@ type Config struct {
 	InProduction bool   `json:"inProduction,omitempty"`
 	AppRoot      string `json:"appRoot,omitempty"`
 	AppPort      int    `json:"appPort,omitempty"`
-	Db           struct {
+	RazorPay     struct {
+		KeyID     string `json:"keyID,omitempty"`
+		KeySecret string `json:"keySecret,omitEmpty"`
+	} `json:"razorPay,omitempty"`
+	Db struct {
 		User                 string `json:"user,omitempty"`
 		Passwd               string `json:"passwd,omitempty"`
 		Net                  string `json:"net,omitempty"`

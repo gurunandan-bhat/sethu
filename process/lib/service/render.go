@@ -57,3 +57,13 @@ func (s *Service) render(w http.ResponseWriter, template string, data any, statu
 
 	return nil
 }
+
+func (s *Service) renderJSON(w http.ResponseWriter, data []byte, status int) error {
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(status)
+
+	w.Write(data)
+
+	return nil
+}
