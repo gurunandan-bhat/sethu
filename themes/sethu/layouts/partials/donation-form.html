@@ -2,7 +2,7 @@
     <div class="row mb-4">
         <div class="col-lg-12">
             <label for="full-name" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="full-name" />
+            <input type="text" class="form-control" id="fullName" />
         </div>
     </div>
     <div class="row mb-4">
@@ -13,13 +13,7 @@
     </div>
     <div class="row mb-4">
         <div class="col-lg-6">
-            <label for="city" class="form-label">Currency</label>
-            {{ partial "currencies" . }}
-        </div>
-        <div class="col-lg-6">
-            <label for="currency" class="form-label"
-                >Amount <span class="small">(numerals only)</span></label
-            >
+            <label for="currency" class="form-label">Amount (in INR)</label>
             <input type="number" class="form-control" id="currency" />
         </div>
     </div>
@@ -61,23 +55,11 @@
         </div>
     </div>
     -->
-    <button type="submit" class="btn btn-primary mt-5">
+    <button
+        type="submit"
+        class="btn btn-primary mt-5"
+        data-project="{{ .Title }}"
+        id="pay-now">
         {{ .Title }} Now!
     </button>
 </form>
-{{ $title := .Title }}
-{{ with resources.Get "js/order.js" }}
-    {{ $opts := dict "minify" (not hugo.IsDevelopment) "sourceMap" (cond hugo.IsDevelopment "external" "") "params" (dict "title" $title) }}
-    {{ with . | js.Build $opts }}
-        {{ if hugo.IsDevelopment }}
-            <script src="{{ .RelPermalink }}"></script>
-        {{ else }}
-            {{ with . | fingerprint }}
-                <script
-                    src="{{ .RelPermalink }}"
-                    integrity="{{ .Data.Integrity }}"
-                    crossorigin="anonymous"></script>
-            {{ end }}
-        {{ end }}
-    {{ end }}
-{{ end }}
