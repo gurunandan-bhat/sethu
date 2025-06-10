@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"process/lib/config"
-	"process/lib/model"
+	"sethupay/lib/config"
+	"sethupay/lib/model"
 
 	"github.com/google/uuid"
 	"github.com/gorilla/schema"

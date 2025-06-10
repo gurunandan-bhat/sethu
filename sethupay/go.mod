@@ -1,4 +1,4 @@
-module process
+module sethupay
 
 go 1.24.4
 

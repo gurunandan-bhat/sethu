@@ -2,7 +2,7 @@ package cstore
 
 import (
 	"net/http"
-	"process/lib/config"
+	"sethupay/lib/config"
 
 	"github.com/gorilla/securecookie"
 	"github.com/gorilla/sessions"

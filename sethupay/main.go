@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"process/lib/config"
-	"process/lib/service"
+	"sethupay/lib/config"
+	"sethupay/lib/service"
 )
 
 func main() {

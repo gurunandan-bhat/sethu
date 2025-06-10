@@ -6,8 +6,8 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
-	"process/lib/config"
-	"process/lib/model"
+	"sethupay/lib/config"
+	"sethupay/lib/model"
 
 	mysqlstore "github.com/danielepintore/gorilla-sessions-mysql"
 
@@ -87,9 +87,7 @@ func NewService(cfg *config.Config) (*Service, error) {
 
 func (s *Service) setRoutes() {
 
-	s.Muxer.Route("/process", func(r chi.Router) {
-		r.Method(http.MethodGet, "/", ServiceHandler(s.index))
-		r.Method(http.MethodGet, "/about", ServiceHandler(s.about))
+	s.Muxer.Route("/sethupay", func(r chi.Router) {
 		r.Method(http.MethodPost, "/order", ServiceHandler(s.order))
 	})
 }

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"process/lib/config"
+	"sethupay/lib/config"
 	"time"
 
 	mysqlstore "github.com/danielepintore/gorilla-sessions-mysql"
