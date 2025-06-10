@@ -20,6 +20,7 @@ type Model struct {
 type DBOrder struct {
 	IDonateID     int       `db:"iDonateID"`
 	VRzpOrderID   string    `db:"vRzpOrderID"`
+	VRzpKeyID     string    `db:"-"`
 	VRcptID       string    `db:"vRcptID"`
 	VName         string    `db:"vName"`
 	VEmail        string    `db:"vEmail"`

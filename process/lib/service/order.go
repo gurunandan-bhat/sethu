@@ -79,12 +79,13 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 		VEmail:      donate.EMail,
 		IAmount:     amountINR,
 		VProject:    donate.Project,
-		VStatus:     "Started",
+		VStatus:     "Created",
 	}
 	if err := s.Model.NewOrder(&order); err != nil {
 		fmt.Println(err)
 		return err
 	}
+	order.VRzpKeyID = keyID
 
 	jsonBytes, err := json.Marshal(order)
 	if err != nil {

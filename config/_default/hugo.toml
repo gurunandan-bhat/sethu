@@ -2,7 +2,6 @@ languageCode = 'en-us'
 title        = 'Sethu'
 theme        = 'sethu'
 
-[params]
 [params.images]
 reviews  = 'images/reviews'
 trustees = 'images/trustees'

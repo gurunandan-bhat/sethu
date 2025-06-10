@@ -1,3 +1,4 @@
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <form
     class="fira-sans-regular border-start ps-5"
     id="donate"
@@ -39,6 +40,7 @@
         type="submit"
         class="btn btn-primary mt-5"
         data-project="{{ .Title }}"
+        data-pay-key="{{ site.Params.rkey }}"
         id="pay-now">
         {{ .Title }} Now!
     </button>

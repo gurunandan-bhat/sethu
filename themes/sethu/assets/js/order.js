@@ -23,6 +23,45 @@
 			}
 			const jsonResp = await response.json();
 			console.log(jsonResp);
+
+			const options = {
+				key: jsonResp.VRzpKeyID,
+				amount: jsonResp.IAmount,
+				currency: 'INR',
+				name: 'Sethu', //your business name
+				description: jsonResp.VProject,
+				image: '',
+				order_id: jsonResp.VRzpOrderID, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+				handler: function (response) {
+					alert(response.razorpay_payment_id);
+					alert(response.razorpay_order_id);
+					alert(response.razorpay_signature);
+				},
+				prefill: {
+					name: jsonResp.VName, //your customer's name
+					email: jsonResp.VEmail,
+				},
+				notes: {
+					project: jsonResp.VProject,
+				},
+				theme: {
+					color: '#3399cc',
+				},
+			};
+			console.log(options);
+
+			var rzp = new Razorpay(options);
+			rzp.on('payment.failed', function (response) {
+				alert(response.error.code);
+				alert(response.error.description);
+				alert(response.error.source);
+				alert(response.error.step);
+				alert(response.error.reason);
+				alert(response.error.metadata.order_id);
+				alert(response.error.metadata.payment_id);
+			});
+			rzp.open();
+			console.log('Response: ', response);
 		} catch (e) {
 			console.error(e);
 		}
