@@ -1,7 +1,30 @@
-import * as params from '@params';
+(function () {
+	const form = document.querySelector('#donate');
+	form.addEventListener('submit', (event) => {
+		event.preventDefault();
+		console.log(event);
+		getOrderID();
+	});
 
-let button = document.getElementById('pay-now');
-let title = button.dataset.project;
+	async function getOrderID() {
+		const project = event.submitter.dataset['project'];
+		const orderURL = event.target.dataset['orderUrl'];
 
-console.log('Generated with order.js', title);
-console.log('Order URL: ', params.orderURL);
+		const formData = new FormData(event.target);
+		formData.append('project', project);
+
+		try {
+			const response = await fetch(orderURL, {
+				method: 'POST',
+				body: formData,
+			});
+			if (!response.ok) {
+				throw new Error(`Resonse.status: ${response.status}`);
+			}
+			const jsonResp = await response.json();
+			console.log(jsonResp);
+		} catch (e) {
+			console.error(e);
+		}
+	}
+})();

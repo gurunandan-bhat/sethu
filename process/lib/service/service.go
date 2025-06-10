@@ -10,10 +10,10 @@ import (
 	"process/lib/model"
 
 	mysqlstore "github.com/danielepintore/gorilla-sessions-mysql"
+
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
-	"github.com/gorilla/csrf"
 )
 
 type Service struct {
@@ -50,12 +50,12 @@ func NewService(cfg *config.Config) (*Service, error) {
 		MaxAge:           300, // Maximum value not ignored by any of major browsers
 	}))
 
-	csrfMiddleware := csrf.Protect(
-		[]byte(cfg.Security.CSRFKey),
-		csrf.Secure(cfg.InProduction),
-		csrf.SameSite(csrf.SameSiteStrictMode),
-	)
-	mux.Use(csrfMiddleware)
+	// csrfMiddleware := csrf.Protect(
+	// 	[]byte(cfg.Security.CSRFKey),
+	// 	csrf.Secure(cfg.InProduction),
+	// 	csrf.SameSite(csrf.SameSiteStrictMode),
+	// )
+	// mux.Use(csrfMiddleware)
 
 	model, err := model.NewModel(cfg)
 	if err != nil {
@@ -90,8 +90,7 @@ func (s *Service) setRoutes() {
 	s.Muxer.Route("/process", func(r chi.Router) {
 		r.Method(http.MethodGet, "/", ServiceHandler(s.index))
 		r.Method(http.MethodGet, "/about", ServiceHandler(s.about))
-		r.Method(http.MethodGet, "/action", ServiceHandler(s.action))
-		r.Method(http.MethodGet, "/another-action", ServiceHandler(s.anotherAction))
+		r.Method(http.MethodPost, "/order", ServiceHandler(s.order))
 	})
 }
 

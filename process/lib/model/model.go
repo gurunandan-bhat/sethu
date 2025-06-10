@@ -1,6 +1,7 @@
 package model
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"process/lib/config"
@@ -14,6 +15,20 @@ import (
 
 type Model struct {
 	DbHandle *sqlx.DB
+}
+
+type DBOrder struct {
+	IDonateID     int       `db:"iDonateID"`
+	VRzpOrderID   string    `db:"vRzpOrderID"`
+	VRcptID       string    `db:"vRcptID"`
+	VName         string    `db:"vName"`
+	VEmail        string    `db:"vEmail"`
+	IAmount       int       `db:"iAmount"`
+	VProject      string    `db:"vProject"`
+	VStatus       string    `db:"vStatus"`
+	VReturnStatus string    `db:"vReturnStatus"`
+	DtCreatedAt   time.Time `db:"dtCreatedAt"`
+	DtUpdatedAt   time.Time `db:"dtUpdatedAt"`
 }
 
 func NewModel(cfg *config.Config) (*Model, error) {
@@ -67,4 +82,35 @@ func (m *Model) NewDbSessionStore(cfg *config.Config) (*mysqlstore.MysqlStore, e
 		mysqlstore.WithMaxAge(cfg.Session.MaxAgeHours*3600),
 		mysqlstore.WithSecure(cfg.InProduction),
 	)
+}
+
+func (m *Model) NewOrder(o *DBOrder) error {
+
+	qry := `INSERT INTO orders (
+				vName,
+				vEmail,
+				iAmount,
+				vRcptID,
+				vProject,
+				vStatus)
+			VALUES (?, ?, ?, ?, ?, ?)`
+
+	result, err := m.DbHandle.Exec(qry,
+		o.VName,
+		o.VEmail,
+		o.IAmount,
+		o.VRcptID,
+		o.VProject,
+		o.VStatus,
+	)
+	if err != nil {
+		return fmt.Errorf("order create error: %w", err)
+	}
+
+	id, err := result.LastInsertId()
+	if err != nil {
+		return fmt.Errorf("error fetch latest id: %w", err)
+	}
+	o.IDonateID = int(id)
+	return nil
 }

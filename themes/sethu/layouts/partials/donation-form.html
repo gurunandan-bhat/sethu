@@ -1,60 +1,40 @@
-<form class="fira-sans-regular border-start ps-5" id="donate">
-    <div class="row mb-4">
+<form
+    class="fira-sans-regular border-start ps-5"
+    id="donate"
+    data-order-url="{{ site.Params.orderURL }}">
+    <div class="row mb-3">
         <div class="col-lg-12">
-            <label for="full-name" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="fullName" />
+            <label for="name" class="form-label">Full Name</label>
+            <input
+                required
+                type="text"
+                name="name"
+                class="form-control"
+                id="name" />
         </div>
     </div>
-    <div class="row mb-4">
+    <div class="row mb-3">
         <div class="col-lg-12">
             <label for="email" class="form-label">Email</label>
-            <input type="text" class="form-control" id="email" />
+            <input
+                required
+                type="email"
+                name="email"
+                class="form-control"
+                id="email" />
         </div>
     </div>
-    <div class="row mb-4">
-        <div class="col-lg-6">
-            <label for="currency" class="form-label">Amount (in INR)</label>
-            <input type="number" class="form-control" id="currency" />
+    <div class="row mb-3">
+        <div class="col-lg-12">
+            <label for="amount" class="form-label">Amount in INR</label>
+            <input
+                required
+                type="number"
+                name="amount"
+                class="form-control"
+                id="amount" />
         </div>
     </div>
-    <!--
-    <div class="row mb-4">
-        <div class="col">
-            <label for="address-line-1" class="form-label"
-                >Address Line 1</label
-            >
-            <input type="text" class="form-control" id="address-line-1" />
-        </div>
-    </div>
-    <div class="row mb-4">
-        <div class="col">
-            <label for="address-line-2" class="form-label"
-                >Address Line 2</label
-            >
-            <input type="text" class="form-control" id="address-line-2" />
-        </div>
-    </div>
-    <div class="row mb-4">
-        <div class="col-lg-6">
-            <label for="city" class="form-label">City</label>
-            <input type="text" class="form-control" id="city" />
-        </div>
-        <div class="col-lg-6">
-            <label for="zip" class="form-label">Zip/PIN</label>
-            <input type="text" class="form-control" id="zip" />
-        </div>
-    </div>
-    <div class="row mb-5">
-        <div class="col-lg-6">
-            <label for="state" class="form-label">State</label>
-            <input type="text" class="form-control" id="state" />
-        </div>
-        <div class="col-lg-6">
-            <label for="country" class="form-label">Country</label>
-            <input type="text" class="form-control" id="country" />
-        </div>
-    </div>
-    -->
     <button
         type="submit"
         class="btn btn-primary mt-5"

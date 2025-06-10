@@ -8,10 +8,11 @@ reviews  = 'images/reviews'
 trustees = 'images/trustees'
 team     = 'images/team'
 
+
 [module]
 [module.hugoVersion]
 extended = false
-min      = "0.116.0"
+min      = "0.147.8"
 
 [markup]
 [markup.goldmark]
