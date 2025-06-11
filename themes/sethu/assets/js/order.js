@@ -33,6 +33,7 @@
 				image: '',
 				order_id: jsonResp.VRzpOrderID,
 				callback_url: 'https://sethu.in/sethupay/paid',
+				redirect: true,
 				handler: function (response) {
 					console.log(response);
 				},
