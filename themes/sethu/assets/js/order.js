@@ -28,10 +28,10 @@
 				key: jsonResp.VRzpKeyID,
 				amount: jsonResp.IAmount,
 				currency: 'INR',
-				name: 'Sethu', //your business name
-				description: jsonResp.VProject,
+				name: 'Sethu Child Development and Family Guidance', //your business name
+				description: `Donation towards ${jsonResp.VProject}`,
 				image: '',
-				order_id: jsonResp.VRzpOrderID, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+				order_id: jsonResp.VRzpOrderID,
 				handler: function (response) {
 					alert(response.razorpay_payment_id);
 					alert(response.razorpay_order_id);
@@ -62,6 +62,15 @@
 			});
 			rzp.open();
 			console.log('Response: ', response);
+
+			const reader = response.body.getReader();
+			while (true) {
+				const { done, value } = await reader.read();
+				if (done) {
+					break;
+				}
+				console.log('Chunk: ', value);
+			}
 		} catch (e) {
 			console.error(e);
 		}
