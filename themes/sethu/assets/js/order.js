@@ -61,16 +61,6 @@
 				alert(response.error.metadata.payment_id);
 			});
 			rzp.open();
-			console.log('Response: ', response);
-
-			const reader = response.body.getReader();
-			while (true) {
-				const { done, value } = await reader.read();
-				if (done) {
-					break;
-				}
-				console.log('Chunk: ', value);
-			}
 		} catch (e) {
 			console.error(e);
 		}
