@@ -39,8 +39,12 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("error decoding form data: %w", err)
 	}
 
-	keyID := cfg.RazorPay.KeyID
-	keySecret := cfg.RazorPay.KeySecret
+	key := cfg.RazorPay.Test
+	if cfg.InProduction {
+		key = cfg.RazorPay.Live
+	}
+	keyID := key.KeyID
+	keySecret := key.KeySecret
 	client := razorpay.NewClient(keyID, keySecret)
 	id := uuid.New()
 	reciept := id.String()
@@ -96,8 +100,6 @@ func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 		return err
 	}
 
-	fmt.Println(ctype)
-	fmt.Println(string(body))
-
+	fmt.Println(ctype[0], string(body))
 	return nil
 }

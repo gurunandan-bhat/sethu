@@ -1,7 +1,6 @@
 package service
 
 import (
-	"bytes"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -37,25 +36,25 @@ func newTemplateCache(templateRoot string) (map[string]*template.Template, error
 	return cache, nil
 }
 
-func (s *Service) render(w http.ResponseWriter, template string, data any, status int) error {
+// func (s *Service) render(w http.ResponseWriter, template string, data any, status int) error {
 
-	// Check whether that template exists in the cache
-	tmpl, ok := s.Template[template]
-	if !ok {
-		return fmt.Errorf("template %s is not available in the cache", template)
-	}
+// 	// Check whether that template exists in the cache
+// 	tmpl, ok := s.Template[template]
+// 	if !ok {
+// 		return fmt.Errorf("template %s is not available in the cache", template)
+// 	}
 
-	var b bytes.Buffer
-	if err := tmpl.ExecuteTemplate(&b, "base", data); err != nil {
-		return fmt.Errorf("error executing template %s: %w", template, err)
-	}
+// 	var b bytes.Buffer
+// 	if err := tmpl.ExecuteTemplate(&b, "base", data); err != nil {
+// 		return fmt.Errorf("error executing template %s: %w", template, err)
+// 	}
 
-	w.WriteHeader(status)
-	w.Header().Add("Content-Type", "text/html")
-	w.Write(b.Bytes())
+// 	w.WriteHeader(status)
+// 	w.Header().Add("Content-Type", "text/html")
+// 	w.Write(b.Bytes())
 
-	return nil
-}
+// 	return nil
+// }
 
 func (s *Service) renderJSON(w http.ResponseWriter, data []byte, status int) error {
 

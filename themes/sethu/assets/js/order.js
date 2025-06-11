@@ -19,7 +19,7 @@
 				body: formData,
 			});
 			if (!response.ok) {
-				throw new Error(`Resonse.status: ${response.status}`);
+				throw new Error(response);
 			}
 			const jsonResp = await response.json();
 			console.log(jsonResp);
@@ -51,17 +51,11 @@
 
 			var rzp = new Razorpay(options);
 			rzp.on('payment.failed', function (response) {
-				alert(response.error.code);
-				alert(response.error.description);
-				alert(response.error.source);
-				alert(response.error.step);
-				alert(response.error.reason);
-				alert(response.error.metadata.order_id);
-				alert(response.error.metadata.payment_id);
+				const err = response.json().then((json) => console.log(json));
 			});
 			rzp.open();
 		} catch (e) {
-			console.error(e);
+			const err = e.json().then((json) => console.log(json));
 		}
 	}
 })();

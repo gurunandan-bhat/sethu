@@ -11,13 +11,17 @@ const (
 	defaultConfigFileName = ".sethu.json"
 )
 
+type Secret struct {
+	KeyID     string `json:"keyID,omitempty"`
+	KeySecret string `json:"keySecret,omitEmpty"`
+}
 type Config struct {
 	InProduction bool   `json:"inProduction,omitempty"`
 	AppRoot      string `json:"appRoot,omitempty"`
 	AppPort      int    `json:"appPort,omitempty"`
 	RazorPay     struct {
-		KeyID     string `json:"keyID,omitempty"`
-		KeySecret string `json:"keySecret,omitEmpty"`
+		Test Secret `json:"test,omitempty"`
+		Live Secret `json:"live,omitempty"`
 	} `json:"razorPay,omitempty"`
 	Db struct {
 		User                 string `json:"user,omitempty"`
