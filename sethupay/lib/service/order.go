@@ -3,7 +3,6 @@ package service
 import (
 	"encoding/json"
 	"fmt"
-	"io"
 	"net/http"
 	"sethupay/lib/config"
 	"sethupay/lib/model"
@@ -18,6 +17,12 @@ type Donate struct {
 	EMail     string  `schema:"email,required"`
 	AmountINR float64 `schema:"amount,required"`
 	Project   string  `schema:"project,required"`
+}
+
+type Payment struct {
+	PaymentID string `schema:"razorpay_payment_id"`
+	OrderID   string `schema:"razorpay_order_id"`
+	Signature string `schema:"razorpay_signature"`
 }
 
 var decoder = schema.NewDecoder()
@@ -94,12 +99,18 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 
 func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 
-	ctype := r.Header.Values("Content-Type")
-	body, err := io.ReadAll(r.Body)
-	if err != nil {
-		return err
+	defer r.Body.Close()
+
+	status := Payment{}
+	if err := r.ParseForm(); err != nil {
+		return fmt.Errorf("error parsing form: %w", err)
 	}
 
-	fmt.Println(ctype[0], string(body))
+	if err := decoder.Decode(&status, r.PostForm); err != nil {
+		return fmt.Errorf("error decoding form values: %w", err)
+	}
+
+	fmt.Printf("%+v\n", status)
+
 	return nil
 }

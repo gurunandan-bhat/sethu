@@ -34,6 +34,7 @@
 				order_id: jsonResp.VRzpOrderID,
 				callback_url: 'https://sethu.in/sethupay/paid',
 				redirect: true,
+				remember_customer: false,
 				handler: function (response) {
 					console.log(response);
 				},
