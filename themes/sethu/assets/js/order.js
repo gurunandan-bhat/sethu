@@ -32,10 +32,9 @@
 				description: `Donation towards ${jsonResp.VProject}`,
 				image: '',
 				order_id: jsonResp.VRzpOrderID,
+				callback_url: 'https://sethu.in/sethupay/paid',
 				handler: function (response) {
-					alert(response.razorpay_payment_id);
-					alert(response.razorpay_order_id);
-					alert(response.razorpay_signature);
+					console.log(response);
 				},
 				prefill: {
 					name: jsonResp.VName, //your customer's name

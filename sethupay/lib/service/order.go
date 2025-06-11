@@ -3,6 +3,7 @@ package service
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"sethupay/lib/config"
 	"sethupay/lib/model"
@@ -31,6 +32,7 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 	if err := r.ParseMultipartForm(10 * 1024); err != nil {
 		return fmt.Errorf("error parsing form: %w", err)
 	}
+	defer r.Body.Close()
 
 	var donate Donate
 	if err := decoder.Decode(&donate, r.Form); err != nil {
@@ -84,4 +86,18 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 	}
 
 	return s.renderJSON(w, jsonBytes, http.StatusOK)
+}
+
+func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
+
+	ctype := r.Header.Values("Content-Type")
+	body, err := io.ReadAll(r.Body)
+	if err != nil {
+		return err
+	}
+
+	fmt.Println(ctype)
+	fmt.Println(string(body))
+
+	return nil
 }

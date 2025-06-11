@@ -88,5 +88,6 @@ func (s *Service) setRoutes() {
 
 	s.Muxer.Route("/sethupay", func(r chi.Router) {
 		r.Method(http.MethodPost, "/order", ServiceHandler(s.order))
+		r.Method(http.MethodPost, "/paid", ServiceHandler(s.paid))
 	})
 }
