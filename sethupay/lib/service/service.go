@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -90,4 +91,26 @@ func (s *Service) setRoutes() {
 		r.Method(http.MethodPost, "/order", ServiceHandler(s.order))
 		r.Method(http.MethodPost, "/paid", ServiceHandler(s.paid))
 	})
+}
+
+func (s *Service) getSessionVar(r *http.Request, name string) (any, error) {
+
+	sessionName := s.Config.Session.Name
+	session, err := s.SessionStore.Get(r, sessionName)
+	if err != nil {
+		return nil, fmt.Errorf("error fetching session %s: %w", sessionName, err)
+	}
+	return session.Values[name], nil
+}
+
+func (s *Service) setSessionVar(r *http.Request, w http.ResponseWriter, name string, value any) error {
+
+	sessionName := s.Config.Session.Name
+	session, err := s.SessionStore.Get(r, sessionName)
+	if err != nil {
+		return fmt.Errorf("error fetching session %s: %w", sessionName, err)
+	}
+
+	session.Values[name] = value
+	return session.Save(r, w)
 }

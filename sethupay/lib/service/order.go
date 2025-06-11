@@ -10,6 +10,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/gorilla/schema"
 	razorpay "github.com/razorpay/razorpay-go"
+	"github.com/razorpay/razorpay-go/utils"
 )
 
 type Donate struct {
@@ -89,6 +90,8 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 	}
 	order.VRzpKeyID = keyID
 
+	s.setSessionVar(r, w, "orderID", vRzpOrderID)
+
 	jsonBytes, err := json.Marshal(order)
 	if err != nil {
 		return fmt.Errorf("error marshaling response: %w", err)
@@ -110,7 +113,30 @@ func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("error decoding form values: %w", err)
 	}
 
-	fmt.Printf("%+v\n", status)
+	// Check signature
+	cfg, err := config.Configuration()
+	if err != nil {
+		return fmt.Errorf("error fetching configuration: %w", err)
+	}
+
+	// Generate the expected signature
+	key := cfg.RazorPay.Test
+	if cfg.InProduction {
+		key = cfg.RazorPay.Live
+	}
+	// orderID, err := s.getSessionVar(r, "orderID")
+	// if err != nil {
+	// 	return fmt.Errorf("error fetching orderID: %w", err)
+	// }
+
+	// client := razorpay.NewClient(key.KeyID, key.KeySecret)
+	params := map[string]any{
+		"razorpay_order_id":   status.OrderID,
+		"razorpay_payment_id": status.PaymentID,
+	}
+
+	matched := utils.VerifyPaymentSignature(params, status.Signature, key.KeySecret)
+	fmt.Println(matched)
 
 	return nil
 }
