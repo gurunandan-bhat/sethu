@@ -32,7 +32,6 @@ func newTemplateCache(templateRoot string) (map[string]*template.Template, error
 			return nil, fmt.Errorf("error creating template set for %s: %w", page, err)
 		}
 		cache[name] = tSet
-		fmt.Println(name)
 	}
 
 	return cache, nil

@@ -1,1 +1,5 @@
 baseURL = 'https://sethu.in/'
+
+[params]
+orderURL = 'sethupay/order'
+callbackURL = 'sethupay/paid'

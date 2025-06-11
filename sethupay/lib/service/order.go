@@ -23,22 +23,17 @@ var decoder = schema.NewDecoder()
 
 func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 
-	fmt.Println("Entered Order Handler")
-
 	cfg, err := config.Configuration()
 	if err != nil {
-		fmt.Println("Config: ", err)
 		return fmt.Errorf("unable to read configuration: %w", err)
 	}
 
 	if err := r.ParseMultipartForm(10 * 1024); err != nil {
-		fmt.Println("Parse Form:", err)
 		return fmt.Errorf("error parsing form: %w", err)
 	}
 
 	var donate Donate
 	if err := decoder.Decode(&donate, r.Form); err != nil {
-		fmt.Println("Decoder error: ", err)
 		return fmt.Errorf("error decoding form data: %w", err)
 	}
 
@@ -61,14 +56,11 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 
 	body, err := client.Order.Create(data, nil)
 	if err != nil {
-		fmt.Println(err)
 		return fmt.Errorf("error creating order: %w", err)
 	}
-	fmt.Printf("%+v\n", body)
 
 	vRzpOrderID, ok := body["id"].(string)
 	if !ok {
-		fmt.Println("order_id is not a string")
 		return fmt.Errorf("cannot read order_id as string: %w", err)
 	}
 
@@ -82,7 +74,6 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 		VStatus:     "Created",
 	}
 	if err := s.Model.NewOrder(&order); err != nil {
-		fmt.Println(err)
 		return err
 	}
 	order.VRzpKeyID = keyID
@@ -92,6 +83,5 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("error marshaling response: %w", err)
 	}
 
-	fmt.Printf("%+v\n", string(jsonBytes))
 	return s.renderJSON(w, jsonBytes, http.StatusOK)
 }
