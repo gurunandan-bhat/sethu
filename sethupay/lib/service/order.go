@@ -2,6 +2,7 @@ package service
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 	"sethupay/lib/config"
@@ -88,10 +89,8 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 	if err := s.Model.NewOrder(&order); err != nil {
 		return err
 	}
+
 	order.VRzpKeyID = keyID
-
-	s.setSessionVar(r, w, "orderID", vRzpOrderID)
-
 	jsonBytes, err := json.Marshal(order)
 	if err != nil {
 		return fmt.Errorf("error marshaling response: %w", err)
@@ -124,19 +123,23 @@ func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 	if cfg.InProduction {
 		key = cfg.RazorPay.Live
 	}
-	// orderID, err := s.getSessionVar(r, "orderID")
-	// if err != nil {
-	// 	return fmt.Errorf("error fetching orderID: %w", err)
-	// }
-
-	// client := razorpay.NewClient(key.KeyID, key.KeySecret)
 	params := map[string]any{
 		"razorpay_order_id":   status.OrderID,
 		"razorpay_payment_id": status.PaymentID,
 	}
-
 	matched := utils.VerifyPaymentSignature(params, status.Signature, key.KeySecret)
-	fmt.Println(matched)
+	if !matched {
+		return errors.New("signature mismatch, aborting payment")
+	}
 
-	return nil
+	client := razorpay.NewClient(key.KeyID, key.KeySecret)
+	details, err := client.Payment.Fetch(status.PaymentID, nil, nil)
+	fmt.Printf("Details: %+v\n", details)
+
+	jsonBytes, err := json.Marshal(details)
+	if err != nil {
+		return fmt.Errorf("error marshaling order from session: %w", err)
+	}
+
+	return s.renderJSON(w, jsonBytes, http.StatusOK)
 }
