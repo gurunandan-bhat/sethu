@@ -1,74 +1,62 @@
-.poppins-black {
-    font-family: "Poppins", serif;
-    font-weight: 900;
-    font-style: normal;
-}
-
-.poppins-thin-italic {
-    font-family: "Poppins", serif;
-    font-weight: 100;
-    font-style: italic;
-}
-
-.poppins-extralight-italic {
-    font-family: "Poppins", serif;
-    font-weight: 200;
-    font-style: italic;
-}
-
-.poppins-light-italic {
-    font-family: "Poppins", serif;
-    font-weight: 300;
-    font-style: italic;
-}
-
-.poppins-regular-italic {
-    font-family: "Poppins", serif;
-    font-weight: 400;
-    font-style: italic;
-}
-
-.poppins-medium-italic {
-    font-family: "Poppins", serif;
-    font-weight: 500;
-    font-style: italic;
-}
-
-.poppins-semibold-italic {
-    font-family: "Poppins", serif;
-    font-weight: 600;
-    font-style: italic;
-}
-
-.poppins-bold-italic {
-    font-family: "Poppins", serif;
-    font-weight: 700;
-    font-style: italic;
-}
-
-.poppins-extrabold-italic {
-    font-family: "Poppins", serif;
-    font-weight: 800;
-    font-style: italic;
-}
-
-.poppins-black-italic {
-    font-family: "Poppins", serif;
-    font-weight: 900;
-    font-style: italic;
-}
-
-.inter-regular {
-    font-family: "Inter", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
-
 body {
-    font-family: "Inter", serif;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: rgb(249, 249, 251) !important;
+    color: #3e3e3e;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Oswald", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 14px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    color: #9a191b;
+    border-bottom: 1px solid #fbdb31;
+}
+
+.colored {
+    color: #9a191b;
+}
+
+.dropdown-menu {
+    --bs-dropdown-min-width: 13rem;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    padding-bottom: 0.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: #9a191b;
+}
+
+.menu-entry {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #9a191b;
+    font-size: 1.1rem;
+}
+
+.feature p:first-of-type {
+    font-size: 1.2rem;
+    color: #9a191b;
+}
+
+.list-group {
+    --bs-list-group-bg: var(--bs-body-bg): rgb(249, 249, 251) !important;
 }

@@ -19,6 +19,7 @@ type Config struct {
 	InProduction bool   `json:"inProduction,omitempty"`
 	AppRoot      string `json:"appRoot,omitempty"`
 	AppPort      int    `json:"appPort,omitempty"`
+	HugoRoot     string `json:"hugoRoot,omitempty"`
 	RazorPay     struct {
 		Test Secret `json:"test,omitempty"`
 		Live Secret `json:"live,omitempty"`

@@ -1,42 +1,203 @@
 {{ define "top-menu" }}
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/"
-                            >Home</a
-                        >
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sethupay/about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sethupay/order">Order</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input
-                        class="form-control me-2"
-                        type="search"
-                        placeholder="Search"
-                        aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">
-                        Search
-                    </button>
-                </form>
-            </div>
+    <header>
+        <div class="container my-3">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="/"
+                    ><img src="/assets/images/sethu-logo.png"
+                /></a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div
+                    class="collapse navbar-collapse justify-content-end"
+                    id="navbarSupportedContent">
+                    <ul class="nav navbar-nav mb-2 mb-lg-0">
+                        <li class="dropdown">
+                            <a
+                                aria-expanded="false"
+                                class="nav-link dropdown-toggle"
+                                data-bs-toggle="dropdown"
+                                role="button"
+                                ><span class="menu-entry">Who We Are</span></a
+                            >
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a
+                                        class="nav-link"
+                                        href="/who-we-are/our-story/"
+                                        ><span class="menu-entry"
+                                            >Our Story</span
+                                        ></a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="nav-link"
+                                        href="/who-we-are/trustees/"
+                                        ><span class="menu-entry"
+                                            >Trustees</span
+                                        ></a
+                                    >
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="/who-we-are/team/"
+                                        ><span class="menu-entry">Team</span></a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="nav-link"
+                                        href="/who-we-are/annual-reports/"
+                                        ><span class="menu-entry"
+                                            >Annual Reports</span
+                                        ></a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a
+                                aria-expanded="false"
+                                class="nav-link dropdown-toggle"
+                                data-bs-toggle="dropdown"
+                                role="button"
+                                ><span class="menu-entry">What We Do</span></a
+                            >
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a
+                                        class="nav-link"
+                                        href="/what-we-do/services/"
+                                        ><span class="menu-entry"
+                                            >Services</span
+                                        ></a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="nav-link"
+                                        href="/what-we-do/training-and-outreach/"
+                                        ><span class="menu-entry"
+                                            >Training and Outreach</span
+                                        ></a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="nav-link"
+                                        href="/what-we-do/advocacy/"
+                                        ><span class="menu-entry"
+                                            >Advocacy</span
+                                        ></a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="nav-link"
+                                        href="/what-we-do/research/"
+                                        ><span class="menu-entry"
+                                            >Research</span
+                                        ></a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="nav-link"
+                                        href="/what-we-do/theory-of-change/"
+                                        ><span class="menu-entry"
+                                            >Theory of Change</span
+                                        ></a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="nav-link"
+                                        href="/what-we-do/our-policies/"
+                                        ><span class="menu-entry"
+                                            >Our Policies</span
+                                        ></a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="nav-link"
+                                        href="/what-we-do/resources/"
+                                        ><span class="menu-entry"
+                                            >Resources</span
+                                        ></a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a
+                                aria-expanded="false"
+                                class="nav-link dropdown-toggle"
+                                data-bs-toggle="dropdown"
+                                href="/join-us/"
+                                role="button"
+                                ><span class="menu-entry">Join Us</span></a
+                            >
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="nav-link" href="/join-us/careers/"
+                                        ><span class="menu-entry"
+                                            >Careers</span
+                                        ></a
+                                    >
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="/join-us/interns/"
+                                        ><span class="menu-entry"
+                                            >Internships</span
+                                        ></a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="nav-link"
+                                        href="/join-us/volunteers/"
+                                        ><span class="menu-entry"
+                                            >Volunteers</span
+                                        ></a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="nav-link"
+                                        href="/join-us/iap-fellowship/"
+                                        ><span class="menu-entry"
+                                            >IAP Fellowship</span
+                                        ></a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="nav-link"
+                                ><span class="menu-entry">Diary</span></a
+                            >
+                        </li>
+                        <li>
+                            <a class="nav-link"
+                                ><span class="menu-entry">Contact</span></a
+                            >
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/donate/"
+                                ><span class="menu-entry">Donate</span></a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
-    </nav>
+    </header>
 {{ end }}

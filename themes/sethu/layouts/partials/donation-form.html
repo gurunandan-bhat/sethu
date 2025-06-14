@@ -2,7 +2,8 @@
 <form
     class="fira-sans-regular border-start ps-5"
     id="donate"
-    data-order-url="{{ site.Params.orderURL }}">
+    data-order-url="{{- site.Params.orderURL }}"
+    data-callback-url="{{- site.Params.callbackURL }}">
     <div class="row mb-3">
         <div class="col-lg-12">
             <label for="name" class="form-label">Full Name</label>
@@ -40,8 +41,7 @@
         type="submit"
         class="btn btn-primary mt-5"
         data-project="{{ .Title }}"
-        data-pay-key="{{ site.Params.rkey }}"
         id="pay-now">
-        {{ .Title }} Now!
+        Donate to {{ .Title }} Now!
     </button>
 </form>

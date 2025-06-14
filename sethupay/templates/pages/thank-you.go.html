@@ -1,0 +1,17 @@
+{{ define "main" }}
+    {{- $template := withDashes .Project }}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <h3>Thank you for your Donation to {{ .Project }}</h3>
+                {{- if eq $template "build-our-bridge" }}
+                    {{ template "build-our-bridge" . }}
+                {{ else if eq $template "cheer-for-children" }}
+                    {{ template "cheer-for-children" . }}
+                {{ else if eq $template "the-sethu-corpus" }}
+                    {{ template "the-sethu-corpus" . }}
+                {{ end }}
+            </div>
+        </div>
+    </div>
+{{ end }}

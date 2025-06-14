@@ -1,3 +1,4 @@
 baseURL = 'https://example.org/'
 [params]
-orderURL = 'http://localhost:9091/sethupay/order'
+orderURL = 'http://127.0.0.1:9091/sethupay/order'
+callbackURL = 'http://127.0.0.1:9091/sethupay/paid'
