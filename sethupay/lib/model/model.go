@@ -92,16 +92,18 @@ func (m *Model) NewOrder(o *DBOrder) error {
 				vEmail,
 				iAmount,
 				vRcptID,
+				vRzpOrderID,
 				vProject,
 				vStatus
 			)
-			VALUES (?, ?, ?, ?, ?, ?)`
+			VALUES (?, ?, ?, ?, ?, ?, ?)`
 
 	result, err := m.DbHandle.Exec(qry,
 		o.VName,
 		o.VEmail,
 		o.IAmount,
 		o.VRcptID,
+		o.VRzpOrderID,
 		o.VProject,
 		o.VStatus,
 	)

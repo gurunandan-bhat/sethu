@@ -1,0 +1,11 @@
+{{ define "main" }}
+    {{ if eq .Project "Build Our Bridge" }}
+        {{ template "build-our-bridge" }}
+    {{ end }}
+    {{ if eq .Project "Cheer For Children" }}
+        {{ template "cheer-for-children" }}
+    {{ end }}
+    {{ if eq .Project "The Sethu Corpus" }}
+        {{ template "the-sethu-corpus" }}
+    {{ end }}
+{{ end }}

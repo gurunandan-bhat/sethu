@@ -1,7 +1,6 @@
 package service
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -93,24 +92,24 @@ func (s *Service) setRoutes() {
 	})
 }
 
-func (s *Service) getSessionVar(r *http.Request, name string) (any, error) {
+// func (s *Service) getSessionVar(r *http.Request, name string) (any, error) {
 
-	sessionName := s.Config.Session.Name
-	session, err := s.SessionStore.Get(r, sessionName)
-	if err != nil {
-		return nil, fmt.Errorf("error fetching session %s: %w", sessionName, err)
-	}
-	return session.Values[name], nil
-}
+// 	sessionName := s.Config.Session.Name
+// 	session, err := s.SessionStore.Get(r, sessionName)
+// 	if err != nil {
+// 		return nil, fmt.Errorf("error fetching session %s: %w", sessionName, err)
+// 	}
+// 	return session.Values[name], nil
+// }
 
-func (s *Service) setSessionVar(r *http.Request, w http.ResponseWriter, name string, value any) error {
+// func (s *Service) setSessionVar(r *http.Request, w http.ResponseWriter, name string, value any) error {
 
-	sessionName := s.Config.Session.Name
-	session, err := s.SessionStore.Get(r, sessionName)
-	if err != nil {
-		return fmt.Errorf("error fetching session %s: %w", sessionName, err)
-	}
+// 	sessionName := s.Config.Session.Name
+// 	session, err := s.SessionStore.Get(r, sessionName)
+// 	if err != nil {
+// 		return fmt.Errorf("error fetching session %s: %w", sessionName, err)
+// 	}
 
-	session.Values[name] = value
-	return session.Save(r, w)
-}
+// 	session.Values[name] = value
+// 	return session.Save(r, w)
+// }

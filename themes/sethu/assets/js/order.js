@@ -9,6 +9,7 @@
 	async function getOrderID() {
 		const project = event.submitter.dataset['project'];
 		const orderURL = event.target.dataset['orderUrl'];
+		const callbackURL = event.target.dataset['callbackUrl'];
 
 		const formData = new FormData(event.target);
 		formData.append('project', project);
@@ -32,14 +33,14 @@
 				description: `Donation towards ${jsonResp.VProject}`,
 				image: '',
 				order_id: jsonResp.VRzpOrderID,
-				callback_url: 'https://sethu.in/sethupay/paid',
+				callback_url: callbackURL,
 				redirect: true,
 				remember_customer: false,
 				handler: function (response) {
 					console.log(response);
 				},
 				prefill: {
-					name: jsonResp.VName, //your customer's name
+					name: jsonResp.VName,
 					email: jsonResp.VEmail,
 				},
 				notes: {
@@ -58,6 +59,7 @@
 			rzp.open();
 		} catch (e) {
 			const err = e.json().then((json) => console.log(json));
+			console.log(err);
 		}
 	}
 })();
