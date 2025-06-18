@@ -112,8 +112,3 @@ weight  = 50
 name    = 'Contact'
 pageRef = '/contact'
 weight  = 60
-
-[[main]]
-name    = 'Donate'
-pageRef = '/donate'
-weight  = 70
