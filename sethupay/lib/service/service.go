@@ -87,7 +87,7 @@ func NewService(cfg *config.Config) (*Service, error) {
 func (s *Service) setRoutes(cfg config.Config) {
 
 	fileServer := http.FileServer(http.Dir(cfg.HugoRoot + "/themes/sethu/assets"))
-	s.Muxer.Get("/assets/*", http.HandlerFunc(http.StripPrefix("/assets", fileServer).ServeHTTP))
+	s.Muxer.Get("/sethupay/assets/*", http.HandlerFunc(http.StripPrefix("/sethupay/assets", fileServer).ServeHTTP))
 
 	s.Muxer.Route("/sethupay", func(r chi.Router) {
 
