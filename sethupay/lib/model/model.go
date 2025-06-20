@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"sethupay/lib/config"
+	"sethupay/lib/payment"
 	"time"
 
 	mysqlstore "github.com/danielepintore/gorilla-sessions-mysql"
@@ -116,5 +117,29 @@ func (m *Model) NewOrder(o *DBOrder) error {
 		return fmt.Errorf("error fetch latest id: %w", err)
 	}
 	o.IDonateID = int(id)
+	return nil
+}
+
+func (m *Model) LogPaymentStatus(meta payment.PaymentResponse, status, details string) error {
+
+	orderID := meta.OrderID
+	paymentID := meta.PaymentID
+
+	qry := `UPDATE orders SET 
+				vRzpPaymentID = ?,
+				vStatus = ?,
+				vReturnStatus = ?
+			WHERE
+				vRzpOrderID = ?`
+	result, err := m.DbHandle.Exec(qry, paymentID, status, details, orderID)
+	if err != nil {
+		return fmt.Errorf("error updating orders for order_id %s: %w", orderID, err)
+	}
+
+	updt, err := result.RowsAffected()
+	if updt != 1 {
+		return fmt.Errorf("error updating single row %s, updated %d rows", orderID, updt)
+	}
+
 	return nil
 }

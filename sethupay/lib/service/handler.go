@@ -12,7 +12,7 @@ func (h ServiceHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		errStr := fmt.Sprintf("%+v", err)
 		http.Error(
 			w,
-			"from root handler"+errStr,
+			"from root handler: "+errStr,
 			http.StatusBadRequest,
 		)
 		return

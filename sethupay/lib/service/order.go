@@ -5,9 +5,11 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"sethupay/lib/config"
+	"net/url"
 	"sethupay/lib/model"
+	"sethupay/lib/payment"
 
+	"github.com/go-viper/mapstructure/v2"
 	"github.com/google/uuid"
 	"github.com/gorilla/schema"
 	razorpay "github.com/razorpay/razorpay-go"
@@ -19,42 +21,12 @@ type Donate struct {
 	EMail     string  `schema:"email,required"`
 	AmountINR float64 `schema:"amount,required"`
 	Project   string  `schema:"project,required"`
-}
-
-type Payment struct {
-	PaymentID string `schema:"razorpay_payment_id"`
-	OrderID   string `schema:"razorpay_order_id"`
-	Signature string `schema:"razorpay_signature"`
-}
-
-type PaymentError struct {
-	Code        string `json:"error_code,omitempty" schema:"error_code"`
-	Description string `json:"error_description,omitempty" schema:"error_description"`
-	Reason      string `json:"error_reason,omitempty" schema:"error_reason"`
-	Source      string `json:"error_source,omitempty" schema:"error_source"`
-	Step        string `json:"error_step,omitempty" schema:"error_step"`
-}
-
-type PaymentResponse struct {
-	Project  string
-	Name     string
-	Currency string
-	Amount   string
-}
-
-func (pe PaymentError) Error() string {
-
-	return fmt.Sprintf("error_code %s; %s %s %s", pe.Code, pe.Description, pe.Reason, pe.Source)
+	PAN       string  `schema:"pan"`
 }
 
 var decoder = schema.NewDecoder()
 
 func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
-
-	cfg, err := config.Configuration()
-	if err != nil {
-		return fmt.Errorf("unable to read configuration: %w", err)
-	}
 
 	if err := r.ParseMultipartForm(10 * 1024); err != nil {
 		return fmt.Errorf("error parsing form: %w", err)
@@ -66,12 +38,14 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("error decoding form data: %w", err)
 	}
 
+	cfg := s.Config
 	key := cfg.RazorPay.Test
 	if cfg.InProduction {
 		key = cfg.RazorPay.Live
 	}
 	keyID := key.KeyID
 	keySecret := key.KeySecret
+
 	client := razorpay.NewClient(keyID, keySecret)
 	id := uuid.New()
 	reciept := id.String()
@@ -84,7 +58,7 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 		"partial_payment": false,
 		"notes": map[string]any{
 			"project": donate.Project,
-			"payer":   donate.Name,
+			"name":    donate.Name,
 		},
 	}
 
@@ -124,115 +98,66 @@ func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 
 	defer r.Body.Close()
 
-	status := Payment{}
+	response := payment.PaymentResponse{}
 	if err := r.ParseForm(); err != nil {
 		return fmt.Errorf("error parsing form: %w", err)
 	}
 
 	// Check if the payment has failed
 	if err := r.PostFormValue("error[code]"); err != "" {
-		return errors.New(r.PostFormValue("error[reason]"))
+		return errors.New(s.logPaymentError(r.PostForm))
 	}
 
-	if err := decoder.Decode(&status, r.PostForm); err != nil {
+	if err := decoder.Decode(&response, r.PostForm); err != nil {
 		return fmt.Errorf("error decoding form values: %w", err)
 	}
 
-	// Check signature
-	cfg, err := config.Configuration()
-	if err != nil {
-		return fmt.Errorf("error fetching configuration: %w", err)
-	}
-
 	// Generate the expected signature
+	cfg := s.Config
 	key := cfg.RazorPay.Test
 	if cfg.InProduction {
 		key = cfg.RazorPay.Live
 	}
 	params := map[string]any{
-		"razorpay_order_id":   status.OrderID,
-		"razorpay_payment_id": status.PaymentID,
+		"razorpay_order_id":   response.OrderID,
+		"razorpay_payment_id": response.PaymentID,
 	}
-	matched := utils.VerifyPaymentSignature(params, status.Signature, key.KeySecret)
+	matched := utils.VerifyPaymentSignature(params, response.Signature, key.KeySecret)
 	if !matched {
 		return errors.New("signature mismatch, aborting payment")
 	}
 
 	// Payment was successful. Handle success
 	client := razorpay.NewClient(key.KeyID, key.KeySecret)
-	details, err := client.Payment.Fetch(status.PaymentID, nil, nil)
+	details, err := client.Payment.Fetch(response.PaymentID, nil, nil)
 	if details["error_code"] != nil {
 		return errors.New("error fetching payment details " + err.Error())
 	}
-	tmplData, err := paymentData(details)
-	if err != nil {
+
+	var paymentData payment.Payment
+	if err := mapstructure.Decode(details, &paymentData); err != nil {
 		return fmt.Errorf("error encoding response: %w", err)
 	}
-	// jsonBytes, err := json.Marshal(details)
-	// if err != nil {
-	// 	return fmt.Errorf("error marshaling order from session: %w", err)
-	// }
-	// fmt.Println(details)
 
-	// return s.renderJSON(w, jsonBytes, http.StatusOK)
-
-	return s.render(w, "thank-you.go.html", tmplData, http.StatusOK)
+	return s.render(w, "thank-you.go.html", paymentData, http.StatusOK)
 }
 
-func paymentData(details map[string]any) (PaymentResponse, error) {
+func (s *Service) logPaymentError(err url.Values) string {
 
-	pData := PaymentResponse{}
-
-	notes, ok := details["notes"].(map[string]any)
-	if !ok {
-		return pData, errors.New("key notes of details has unexpected type")
+	meta := payment.PaymentResponse{}
+	if err.Has("error[metadata]") {
+		if err := json.Unmarshal([]byte(err.Get("error[metadata]")), &meta); err != nil {
+			return fmt.Sprint("error unmarshaling payment response: ", err.Error())
+		}
 	}
-	project, ok := notes["project"].(string)
-	if !ok {
-		return pData, errors.New("key project of notes has unexpected type")
-	}
-	pData.Project = project
+	code := err.Get("error[code]")
+	description := err.Get("error[description]")
+	reason := err.Get("error[reason]")
 
-	payer, ok := notes["payer"].(string)
-	if !ok {
-		return pData, errors.New("key project of notes has unexpected type")
+	errStr := fmt.Sprintf("%s: %s (%s)", code, description, reason)
+	if err := s.Model.LogPaymentStatus(meta, "Failed", errStr); err != nil {
+		return "error logging response for " + errStr
 	}
-	pData.Name = payer
 
-	currency, ok := details["currency"].(string)
-	if !ok {
-		return pData, errors.New("key currency of details has unexpected type")
-	}
-	pData.Currency = currency
-
-	amt, ok := details["amount"].(float64)
-	if !ok {
-		return pData, errors.New("key amount of details has unexpected type")
-	}
-	amount := fmt.Sprintf("%.2f", (amt / 100))
-	pData.Amount = amount
-
-	return pData, nil
+	return "Payment Failed"
 }
-
-// func mkPaymentError(details map[string]any) PaymentError {
-
-// 	m := make(map[string]any)
-// 	for key, val := range details {
-// 		if strings.HasPrefix(key, "error_") {
-// 			m[key] = val
-// 		}
-// 	}
-
-// 	return PaymentError{}
-
-// }
-
-// func mkTypeError(field string) PaymentError {
-
-// 	return PaymentError{
-// 		"curom error",
-// 		fmt.Sprintf("incorrect type %s in payment details", field),
-// 		"", "", "",
-// 	}
-// }
