@@ -13,6 +13,8 @@ import (
 func newTemplateCache(templateRoot string) (map[string]*template.Template, error) {
 
 	cache := map[string]*template.Template{}
+
+	// Generate cache of web page templates
 	pages, err := filepath.Glob(templateRoot + "/pages/*.go.html")
 	if err != nil {
 		return nil, fmt.Errorf("error generating list of templates in pages: %w", err)
@@ -45,6 +47,28 @@ func newTemplateCache(templateRoot string) (map[string]*template.Template, error
 		cache[name] = tSet
 	}
 
+	// Append cache of email templates
+	emails, err := filepath.Glob(templateRoot + "/emails/*.go.html")
+	if err != nil {
+		return nil, fmt.Errorf("error generating list of templates in emails: %w", err)
+	}
+
+	tEmailSet, err := template.ParseGlob(templateRoot + "/emails/partials/*.go.html")
+	if err != nil {
+		return nil, fmt.Errorf("error generating partial templates for emails: %w", err)
+	}
+
+	for _, email := range emails {
+
+		name := filepath.Base(email)
+		tEmailSet, err = tEmailSet.ParseFiles(email)
+		if err != nil {
+			return nil, fmt.Errorf("error creating template set for %s: %w", email, err)
+		}
+
+		cache[name] = tEmailSet
+	}
+
 	return cache, nil
 }
 
@@ -67,6 +91,22 @@ func (s *Service) render(w http.ResponseWriter, template string, data any, statu
 
 	return nil
 }
+
+// func (s *Service) renderEmail(template string, data any) (bytes.Buffer, error) {
+
+// 	var emailBuf bytes.Buffer
+// 	// Check whether that template exists in the cache
+// 	tmpl, ok := s.Template[template]
+// 	if !ok {
+// 		return emailBuf, fmt.Errorf("template %s is not available in the cache", template)
+// 	}
+
+// 	if err := tmpl.ExecuteTemplate(&emailBuf, "email", data); err != nil {
+// 		return emailBuf, fmt.Errorf("error executing template %s: %w", template, err)
+// 	}
+
+// 	return emailBuf, nil
+// }
 
 func (s *Service) renderJSON(w http.ResponseWriter, data []byte, status int) error {
 

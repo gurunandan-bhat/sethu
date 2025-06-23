@@ -1,6 +1,7 @@
 package service
 
 import (
+	"errors"
 	"html/template"
 	"log"
 	"net/http"
@@ -35,10 +36,9 @@ func NewService(cfg *config.Config) (*Service, error) {
 		))
 	}
 
-	mux.Use(middleware.RequestID)
 	mux.Use(middleware.RealIP)
-	mux.Use(middleware.Logger)
 	mux.Use(middleware.Recoverer)
+	mux.Use(middleware.Logger)
 
 	mux.Use(cors.Handler(cors.Options{
 		AllowedOrigins:   []string{"http://localhost:*"},
@@ -48,13 +48,6 @@ func NewService(cfg *config.Config) (*Service, error) {
 		AllowCredentials: false,
 		MaxAge:           300, // Maximum value not ignored by any of major browsers
 	}))
-
-	// csrfMiddleware := csrf.Protect(
-	// 	[]byte(cfg.Security.CSRFKey),
-	// 	csrf.Secure(cfg.InProduction),
-	// 	csrf.SameSite(csrf.SameSiteStrictMode),
-	// )
-	// mux.Use(csrfMiddleware)
 
 	model, err := model.NewModel(cfg)
 	if err != nil {
@@ -97,24 +90,17 @@ func (s *Service) setRoutes(cfg config.Config) {
 	})
 }
 
-// func (s *Service) getSessionVar(r *http.Request, name string) (any, error) {
+func (s *Service) RazorpaySecret() (config.Secret, error) {
+	// Generate the expected signature
+	cfg := s.Config
+	key := cfg.RazorPay.Test
+	if cfg.InProduction {
+		key = cfg.RazorPay.Live
+	}
 
-// 	sessionName := s.Config.Session.Name
-// 	session, err := s.SessionStore.Get(r, sessionName)
-// 	if err != nil {
-// 		return nil, fmt.Errorf("error fetching session %s: %w", sessionName, err)
-// 	}
-// 	return session.Values[name], nil
-// }
+	if key.KeyID == "" || key.KeySecret == "" {
+		return key, errors.New("no valid keys found")
+	}
 
-// func (s *Service) setSessionVar(r *http.Request, w http.ResponseWriter, name string, value any) error {
-
-// 	sessionName := s.Config.Session.Name
-// 	session, err := s.SessionStore.Get(r, sessionName)
-// 	if err != nil {
-// 		return fmt.Errorf("error fetching session %s: %w", sessionName, err)
-// 	}
-
-// 	session.Values[name] = value
-// 	return session.Save(r, w)
-// }
+	return key, nil
+}

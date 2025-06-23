@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"net/url"
 	"sethupay/lib/model"
 	"sethupay/lib/payment"
 
@@ -96,40 +95,29 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 
 func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 
-	defer r.Body.Close()
-
-	response := payment.PaymentResponse{}
-	if err := r.ParseForm(); err != nil {
-		return fmt.Errorf("error parsing form: %w", err)
+	payResponse, payError := getPaymentResponse(r)
+	if payError != nil {
+		return payError
 	}
 
-	// Check if the payment has failed
-	if err := r.PostFormValue("error[code]"); err != "" {
-		return errors.New(s.logPaymentError(r.PostForm))
-	}
-
-	if err := decoder.Decode(&response, r.PostForm); err != nil {
-		return fmt.Errorf("error decoding form values: %w", err)
-	}
-
-	// Generate the expected signature
-	cfg := s.Config
-	key := cfg.RazorPay.Test
-	if cfg.InProduction {
-		key = cfg.RazorPay.Live
-	}
 	params := map[string]any{
-		"razorpay_order_id":   response.OrderID,
-		"razorpay_payment_id": response.PaymentID,
+		"razorpay_order_id":   payResponse.OrderID,
+		"razorpay_payment_id": payResponse.PaymentID,
 	}
-	matched := utils.VerifyPaymentSignature(params, response.Signature, key.KeySecret)
+
+	secret, err := s.RazorpaySecret()
+	if err != nil {
+		return err
+	}
+
+	matched := utils.VerifyPaymentSignature(params, payResponse.Signature, secret.KeySecret)
 	if !matched {
 		return errors.New("signature mismatch, aborting payment")
 	}
 
 	// Payment was successful. Handle success
-	client := razorpay.NewClient(key.KeyID, key.KeySecret)
-	details, err := client.Payment.Fetch(response.PaymentID, nil, nil)
+	client := razorpay.NewClient(secret.KeyID, secret.KeySecret)
+	details, err := client.Payment.Fetch(payResponse.PaymentID, nil, nil)
 	if details["error_code"] != nil {
 		return errors.New("error fetching payment details " + err.Error())
 	}
@@ -139,25 +127,44 @@ func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("error encoding response: %w", err)
 	}
 
+	s.sendEmail(paymentData.Email, "payment-email.go.html", paymentData)
 	return s.render(w, "thank-you.go.html", paymentData, http.StatusOK)
 }
 
-func (s *Service) logPaymentError(err url.Values) string {
+func getPaymentResponse(r *http.Request) (payment.PaymentInfo, error) {
 
-	meta := payment.PaymentResponse{}
-	if err.Has("error[metadata]") {
-		if err := json.Unmarshal([]byte(err.Get("error[metadata]")), &meta); err != nil {
-			return fmt.Sprint("error unmarshaling payment response: ", err.Error())
+	defer r.Body.Close()
+	rsp := payment.PaymentInfo{}
+
+	if err := r.ParseForm(); err != nil {
+		return rsp, fmt.Errorf("error parsing form: %w", err)
+	}
+	data := r.PostForm
+	// Check if the payment has failed
+	if data.Has("error[code]") {
+		// We have an error so we should parse it and return
+		meta := payment.PaymentInfo{}
+		if data.Has("error[metadata]") {
+			jsonBytes := []byte(data.Get("error[metadata]"))
+			if err := json.Unmarshal(jsonBytes, &meta); err != nil {
+				return rsp, fmt.Errorf("error unmarshaling payment response: %w", err)
+			}
 		}
+		err := payment.PaymentError{
+			Code:        data.Get("error[code]"),
+			Description: data.Get("error[description]"),
+			Reason:      data.Get("error[reason]"),
+			Source:      data.Get("error[source]"),
+			Step:        data.Get("err"),
+			Metadata:    meta,
+		}
+		return rsp, err
 	}
-	code := err.Get("error[code]")
-	description := err.Get("error[description]")
-	reason := err.Get("error[reason]")
 
-	errStr := fmt.Sprintf("%s: %s (%s)", code, description, reason)
-	if err := s.Model.LogPaymentStatus(meta, "Failed", errStr); err != nil {
-		return "error logging response for " + errStr
+	// No error so just decode the payment info
+	if err := decoder.Decode(&rsp, data); err != nil {
+		return rsp, fmt.Errorf("error decoding form values: %w", err)
 	}
 
-	return "Payment Failed"
+	return rsp, nil
 }

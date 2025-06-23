@@ -45,6 +45,13 @@ type Config struct {
 		AuthenticationKey string `json:"authenticationKey,omitempty"`
 		EncryptionKey     string `json:"encryptionKey,omitempty"`
 	} `json:"session,omitempty"`
+	SMTP struct {
+		Server    string `json:"server,omitempty"`
+		Port      int    `json:"port,omitempty"`
+		User      string `json:"user,omitempty"`
+		Password  string `json:"password,omitempty"`
+		TestEmail string `json:"testEmail,omitempty"`
+	} `json:"smtp,omitempty"`
 }
 
 var c = Config{}

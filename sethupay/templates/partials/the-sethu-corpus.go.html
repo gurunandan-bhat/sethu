@@ -1,5 +1,5 @@
 {{ define "the-sethu-corpus" }}
-    <p>Thank you {{ .Name }} for strengthening our roots.</p>
+    <p>Thank you {{ .Notes.Name }} for strengthening our roots.</p>
     <p>
         We have received your donation of {{ .Currency }} {{ .Amount }}. Your
         contribution to our corpus helps us focus on what truly matters—offering
@@ -8,6 +8,7 @@
         development and family-centred care. We’re so grateful for your
         long-term vision and trust.
     </p>
+    {{ template "payment-details" . }}
     <p>
         If you’d like to contribute again in the future and like a gentle
         reminder, just let us know how often, by writing to us at

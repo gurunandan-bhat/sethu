@@ -1,5 +1,5 @@
 {{ define "build-our-bridge" }}
-    <p>Thank you {{ .Name }} for walking this incredible path with us.</p>
+    <p>Thank you {{ .Notes.Name }} for walking this incredible path with us.</p>
     <p>
         We have received your donation of {{ .Currency }} {{ .Amount }}. Your
         gift brings us closer to a space where every child is seen, nurtured,
@@ -9,6 +9,7 @@
         sense. We’re deeply grateful to have you with us on this journey of
         hope.
     </p>
+    {{ template "payment-details" . }}
     <p>
         If you’d like to contribute again in the future and like a gentle
         reminder, just let us know how often, by writing to us at

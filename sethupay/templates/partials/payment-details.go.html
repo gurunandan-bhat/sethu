@@ -1,0 +1,16 @@
+{{ define "payment-details" }}
+    <table class="table table-striped">
+        <tr>
+            <th scope="row">Project</th>
+            <td>{{ .Notes.Project }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Amount</th>
+            <td>{{ .Currency }} {{ .Amount }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Order ID</th>
+            <td>{{ .OrderID }}</td>
+        </tr>
+    </table>
+{{ end }}
