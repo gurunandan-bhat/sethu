@@ -15,40 +15,40 @@ func newTemplateCache(templateRoot string) (map[string]*template.Template, error
 	cache := map[string]*template.Template{}
 
 	// Generate cache of web page templates
-	pages, err := filepath.Glob(templateRoot + "/pages/*.go.html")
+	webPages, err := filepath.Glob(templateRoot + "/web/pages/*.go.html")
 	if err != nil {
 		return nil, fmt.Errorf("error generating list of templates in pages: %w", err)
 	}
 
-	tSet, err := template.ParseGlob(templateRoot + "/partials/*.go.html")
+	tWebSet, err := template.ParseGlob(templateRoot + "/web/partials/*.go.html")
 	if err != nil {
 		return nil, fmt.Errorf("error generating partial templates for pages: %w", err)
 	}
-	tSet = tSet.Funcs(template.FuncMap{
+	tWebSet = tWebSet.Funcs(template.FuncMap{
 		"withDashes": projectTemplate,
 	})
 
-	for _, page := range pages {
+	for _, page := range webPages {
 
 		name := filepath.Base(page)
 		files := []string{
-			templateRoot + "/common/base.go.html",
-			templateRoot + "/common/head.go.html",
-			templateRoot + "/common/top-menu.go.html",
-			templateRoot + "/common/footer.go.html",
-			templateRoot + "/common/js-includes.go.html",
+			templateRoot + "/web/common/base.go.html",
+			templateRoot + "/web/common/head.go.html",
+			templateRoot + "/web/common/top-menu.go.html",
+			templateRoot + "/web/common/footer.go.html",
+			templateRoot + "/web/common/js-includes.go.html",
 			page,
 		}
-		tSet, err = tSet.ParseFiles(files...)
+		tWebSet, err = tWebSet.ParseFiles(files...)
 		if err != nil {
 			return nil, fmt.Errorf("error creating template set for %s: %w", page, err)
 		}
 
-		cache[name] = tSet
+		cache[name] = tWebSet
 	}
 
 	// Append cache of email templates
-	emails, err := filepath.Glob(templateRoot + "/emails/*.go.html")
+	emails, err := filepath.Glob(templateRoot + "/emails/pages/*.go.html")
 	if err != nil {
 		return nil, fmt.Errorf("error generating list of templates in emails: %w", err)
 	}
@@ -61,7 +61,13 @@ func newTemplateCache(templateRoot string) (map[string]*template.Template, error
 	for _, email := range emails {
 
 		name := filepath.Base(email)
-		tEmailSet, err = tEmailSet.ParseFiles(email)
+		files := []string{
+			templateRoot + "/email/common/base.go.html",
+			templateRoot + "/email/common/head.go.html",
+			templateRoot + "/email/common/footer.go.html",
+			email,
+		}
+		tEmailSet, err = tEmailSet.ParseFiles(files...)
 		if err != nil {
 			return nil, fmt.Errorf("error creating template set for %s: %w", email, err)
 		}

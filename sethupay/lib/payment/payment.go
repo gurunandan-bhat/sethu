@@ -55,6 +55,7 @@ type PaymentInfo struct {
 type Payment struct {
 	AcquirerData  AcquirerData `mapstructure:"acquirer_data"`
 	Amount        float64
+	AmountINR     string
 	Bank          string
 	Captured      bool
 	Card          Card

@@ -127,7 +127,8 @@ func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("error encoding response: %w", err)
 	}
 
-	s.sendEmail(paymentData.Email, "payment-email.go.html", paymentData)
+	paymentData.AmountINR = fmt.Sprintf("%.2f", (paymentData.Amount / 100.00))
+	s.sendEmail(paymentData.Email, "success.go.html", paymentData)
 	return s.render(w, "thank-you.go.html", paymentData, http.StatusOK)
 }
 
