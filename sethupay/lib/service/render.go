@@ -62,9 +62,9 @@ func newTemplateCache(templateRoot string) (map[string]*template.Template, error
 
 		name := filepath.Base(email)
 		files := []string{
-			templateRoot + "/email/common/base.go.html",
-			templateRoot + "/email/common/head.go.html",
-			templateRoot + "/email/common/footer.go.html",
+			templateRoot + "/emails/common/base.go.html",
+			templateRoot + "/emails/common/head.go.html",
+			templateRoot + "/emails/common/footer.go.html",
 			email,
 		}
 		tEmailSet, err = tEmailSet.ParseFiles(files...)
