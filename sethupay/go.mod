@@ -13,7 +13,7 @@ require (
 	github.com/gorilla/securecookie v1.1.2
 	github.com/gorilla/sessions v1.4.0
 	github.com/jmoiron/sqlx v1.4.0
-	github.com/razorpay/razorpay-go v1.3.4
+	github.com/razorpay/razorpay-go v1.4.0
 	github.com/spf13/viper v1.20.1
 	gopkg.in/mail.v2 v2.3.1
 )
