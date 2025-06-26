@@ -4,7 +4,9 @@ import (
 	"errors"
 	"html/template"
 	"log"
+	"log/slog"
 	"net/http"
+	"os"
 	"path/filepath"
 	"sethupay/lib/config"
 	"sethupay/lib/model"
@@ -20,6 +22,7 @@ type Service struct {
 	Config       *config.Config
 	Model        *model.Model
 	Muxer        *chi.Mux
+	Logger       *slog.Logger
 	SessionStore *mysqlstore.MysqlStore
 	Template     map[string]*template.Template
 }
@@ -38,7 +41,9 @@ func NewService(cfg *config.Config) (*Service, error) {
 
 	mux.Use(middleware.RealIP)
 	mux.Use(middleware.Recoverer)
-	mux.Use(middleware.Logger)
+
+	logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
+	mux.Use(newSlogger(cfg, logger))
 
 	mux.Use(cors.Handler(cors.Options{
 		AllowedOrigins:   []string{"http://localhost:*"},

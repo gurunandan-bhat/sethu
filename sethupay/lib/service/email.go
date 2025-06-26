@@ -26,7 +26,6 @@ func (s *Service) sendEmail(recipient, template string, data any) error {
 		fmt.Println("Generating Template: " + logErr.Error())
 		return logErr
 	}
-	fmt.Println("Email Text " + emailBuf.String())
 
 	if err := smtp.SendEmail(validEmail.Address, emailBuf.String()); err != nil {
 		logErr := fmt.Errorf("error sending email %w", err)
