@@ -18,8 +18,9 @@ type Secret struct {
 type Config struct {
 	InProduction bool   `json:"inProduction,omitempty"`
 	AppRoot      string `json:"appRoot,omitempty"`
-	AppPort      int    `json:"appPort,omitempty"`
 	HugoRoot     string `json:"hugoRoot,omitempty"`
+	AppHost      string `json:"appHost,omitempty"`
+	AppPort      int    `json:"appPort,omitempty"`
 	RazorPay     struct {
 		Test Secret `json:"test,omitempty"`
 		Live Secret `json:"live,omitempty"`
@@ -46,11 +47,10 @@ type Config struct {
 		EncryptionKey     string `json:"encryptionKey,omitempty"`
 	} `json:"session,omitempty"`
 	SMTP struct {
-		Server    string `json:"server,omitempty"`
-		Port      int    `json:"port,omitempty"`
-		User      string `json:"user,omitempty"`
-		Password  string `json:"password,omitempty"`
-		TestEmail string `json:"testEmail,omitempty"`
+		Server   string `json:"server,omitempty"`
+		Port     int    `json:"port,omitempty"`
+		User     string `json:"user,omitempty"`
+		Password string `json:"password,omitempty"`
 	} `json:"smtp,omitempty"`
 }
 

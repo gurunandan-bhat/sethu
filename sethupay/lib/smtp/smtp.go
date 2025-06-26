@@ -16,7 +16,7 @@ func SendEmail(to, htmlBody string) error {
 	}
 
 	m := gomail.NewMessage()
-	m.SetHeader("From", fmt.Sprintf("%s <%s>", "Mario Gallery", cfg.SMTP.User))
+	m.SetHeader("From", fmt.Sprintf("%s <%s>", "Sethu", cfg.SMTP.User))
 	m.SetHeader("To", to)
 	m.SetHeader("Subject", "Sethu Thanks You for your Generous Donation")
 	m.SetBody("text/html", htmlBody)
