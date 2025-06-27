@@ -95,14 +95,14 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 
 func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 
-	payResponse, payError := getPaymentResponse(r)
+	paymentResponse, payError := s.getPaymentResponse(r)
 	if payError != nil {
 		return payError
 	}
 
 	params := map[string]any{
-		"razorpay_order_id":   payResponse.OrderID,
-		"razorpay_payment_id": payResponse.PaymentID,
+		"razorpay_order_id":   paymentResponse.OrderID,
+		"razorpay_payment_id": paymentResponse.PaymentID,
 	}
 
 	secret, err := s.RazorpaySecret()
@@ -110,14 +110,14 @@ func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 		return err
 	}
 
-	matched := utils.VerifyPaymentSignature(params, payResponse.Signature, secret.KeySecret)
+	matched := utils.VerifyPaymentSignature(params, paymentResponse.Signature, secret.KeySecret)
 	if !matched {
 		return errors.New("signature mismatch, aborting payment")
 	}
 
 	// Payment was successful. Handle success
 	client := razorpay.NewClient(secret.KeyID, secret.KeySecret)
-	details, err := client.Payment.Fetch(payResponse.PaymentID, nil, nil)
+	details, err := client.Payment.Fetch(paymentResponse.PaymentID, nil, nil)
 	if details["error_code"] != nil {
 		return errors.New("error fetching payment details " + err.Error())
 	}
@@ -127,15 +127,19 @@ func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("error encoding response: %w", err)
 	}
 
+	if err := s.Model.LogPaymentStatus(paymentResponse, "Paid", fmt.Sprintf("%+v\n", details)); err != nil {
+		return fmt.Errorf("error updating order after payment: %w", err)
+	}
+
 	paymentData.AmountINR = fmt.Sprintf("%.2f", (paymentData.Amount / 100.00))
 	s.sendEmail(paymentData.Email, "success.go.html", paymentData)
 	return s.render(w, "thank-you.go.html", paymentData, http.StatusOK)
 }
 
-func getPaymentResponse(r *http.Request) (payment.PaymentInfo, error) {
+func (s *Service) getPaymentResponse(r *http.Request) (payment.PaymentResponse, error) {
 
 	defer r.Body.Close()
-	rsp := payment.PaymentInfo{}
+	rsp := payment.PaymentResponse{}
 
 	if err := r.ParseForm(); err != nil {
 		return rsp, fmt.Errorf("error parsing form: %w", err)
@@ -144,10 +148,9 @@ func getPaymentResponse(r *http.Request) (payment.PaymentInfo, error) {
 	// Check if the payment has failed
 	if data.Has("error[code]") {
 		// We have an error so we should parse it and return
-		meta := payment.PaymentInfo{}
 		if data.Has("error[metadata]") {
 			jsonBytes := []byte(data.Get("error[metadata]"))
-			if err := json.Unmarshal(jsonBytes, &meta); err != nil {
+			if err := json.Unmarshal(jsonBytes, &rsp); err != nil {
 				return rsp, fmt.Errorf("error unmarshaling payment response: %w", err)
 			}
 		}
@@ -157,8 +160,12 @@ func getPaymentResponse(r *http.Request) (payment.PaymentInfo, error) {
 			Reason:      data.Get("error[reason]"),
 			Source:      data.Get("error[source]"),
 			Step:        data.Get("err"),
-			Metadata:    meta,
+			Metadata:    rsp,
 		}
+		if err := s.Model.LogPaymentStatus(rsp, "Failed", fmt.Sprintf("%+v\n", data)); err != nil {
+			return rsp, fmt.Errorf("error updating order after payment: %w", err)
+		}
+
 		return rsp, err
 	}
 

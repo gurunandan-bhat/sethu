@@ -120,10 +120,10 @@ func (m *Model) NewOrder(o *DBOrder) error {
 	return nil
 }
 
-func (m *Model) LogPaymentStatus(meta payment.PaymentInfo, status, details string) error {
+func (m *Model) LogPaymentStatus(resp payment.PaymentResponse, status, details string) error {
 
-	orderID := meta.OrderID
-	paymentID := meta.PaymentID
+	orderID := resp.OrderID
+	paymentID := resp.PaymentID
 
 	qry := `UPDATE orders SET 
 				vRzpPaymentID = ?,

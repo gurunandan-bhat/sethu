@@ -33,12 +33,12 @@ type Notes struct {
 }
 
 type PaymentError struct {
-	Code        string      `mapstructure:"error_code" schema:"error[code]"`
-	Description string      `mapstructure:"error_description" schema:"error[description]"`
-	Reason      string      `mapstructure:"error_reason" schema:"error[reason]"`
-	Source      string      `mapstructure:"error_source" schema:"error[source]"`
-	Step        string      `mapstructure:"error_step" schema:"error[step]"`
-	Metadata    PaymentInfo `mapstructure:"error_metadata" schema:"error[metadata]"`
+	Code        string          `mapstructure:"error_code" schema:"error[code]"`
+	Description string          `mapstructure:"error_description" schema:"error[description]"`
+	Reason      string          `mapstructure:"error_reason" schema:"error[reason]"`
+	Source      string          `mapstructure:"error_source" schema:"error[source]"`
+	Step        string          `mapstructure:"error_step" schema:"error[step]"`
+	Metadata    PaymentResponse `mapstructure:"error_metadata" schema:"error[metadata]"`
 }
 
 func (pe PaymentError) Error() string {
@@ -46,7 +46,7 @@ func (pe PaymentError) Error() string {
 	return fmt.Sprintf("Payment failed with code %s: %s (%s:%s)", pe.Code, pe.Description, pe.Source, pe.Reason)
 }
 
-type PaymentInfo struct {
+type PaymentResponse struct {
 	PaymentID string `schema:"razorpay_payment_id" mapstructure:"payment_id" json:"payment_id,omitempty"`
 	OrderID   string `schema:"razorpay_order_id" mapstructure:"order_id" json:"order_id,omitempty"`
 	Signature string `schema:"razorpay_signature"`
