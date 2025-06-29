@@ -42,8 +42,11 @@ type PaymentError struct {
 }
 
 func (pe PaymentError) Error() string {
-
-	return fmt.Sprintf("Payment failed with code %s: %s (%s:%s)", pe.Code, pe.Description, pe.Source, pe.Reason)
+	return fmt.Sprintf("Payment failed with code %s: %s (%s:%s)",
+		pe.Code,
+		pe.Description,
+		pe.Source,
+		pe.Reason)
 }
 
 type PaymentResponse struct {

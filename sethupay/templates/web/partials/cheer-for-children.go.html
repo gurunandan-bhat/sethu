@@ -1,11 +1,14 @@
 {{ define "cheer-for-children" }}
+    <img
+        src="/sethupay/assets/images/email-1.png"
+        class="m-2 img-fluid w-100" />
     <p>Thank you {{ .Notes.Name }} for choosing to cheer for children.</p>
     <p>
         We have received your donation of {{ .Currency }} {{ .AmountINR }}. Your
-        support lifts up children who simply need that extra boost to shine.
-        Thanks to your generosity, we can offer highly subsidised services and
-        stand by our vision: a world where every child is nurtured and
-        celebrated. We're honoured to have your belief and backing.
+        support brings hope—and helps every child reach their potential. With
+        you by our side, we can keep care within reach for those who need it
+        most and keep offering highly subsidised services and quality care to
+        every child who needs it.
     </p>
     {{ template "payment-details" . }}
     <p>
