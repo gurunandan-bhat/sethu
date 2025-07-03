@@ -20,6 +20,10 @@ type Donate struct {
 	EMail     string  `schema:"email,required"`
 	AmountINR float64 `schema:"amount,required"`
 	Project   string  `schema:"project,required"`
+	Address1  string  `schema:"addr1,required"`
+	Address2  string  `schema:"addr2"`
+	City      string  `schema:"city,required"`
+	State     string  `schema:"state,required"`
 	PAN       string  `schema:"pan"`
 }
 
@@ -56,8 +60,13 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 		"receipt":         reciept,
 		"partial_payment": false,
 		"notes": map[string]any{
-			"project": donate.Project,
-			"name":    donate.Name,
+			"project":  donate.Project,
+			"name":     donate.Name,
+			"address1": donate.Address1,
+			"address2": donate.Address2,
+			"city":     donate.City,
+			"state":    donate.State,
+			"pan":      donate.PAN,
 		},
 	}
 
@@ -78,6 +87,11 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 		VEmail:      donate.EMail,
 		IAmount:     amountINR,
 		VProject:    donate.Project,
+		VAddress1:   donate.Address1,
+		VAddress2:   donate.Address2,
+		VCity:       donate.City,
+		VState:      donate.State,
+		VPAN:        donate.PAN,
 		VStatus:     "Created",
 	}
 	if err := s.Model.NewOrder(&order); err != nil {

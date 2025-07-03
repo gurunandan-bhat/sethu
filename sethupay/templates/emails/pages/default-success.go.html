@@ -1,0 +1,38 @@
+{{ define "main" }}
+    <p>Dear {{ .Name }}</p>
+    <p>
+        Your generous donation of {{ .Currency }} {{ .Amount }} has profoundly
+        touched our hearts.
+    </p>
+    <p>
+        Thanks to your support, many neurodiverse children in our community will
+        receive the specialised care and opportunities they deserve. Your
+        kindness is not just a gift; it's a beacon of hope for many families.
+    </p>
+    <p>
+        Your partnership fuels our mission to create an inclusive world for our
+        children, filled with cheerleaders who celebrate their strengths and
+        take action to give them the opportunities they deserve to shine. It is
+        a huge task, which appears challenging at times. However, together with
+        people like you, who bring love, joy and determination to the cause, it
+        is possible.
+    </p>
+    <p>
+        {{ with .PAN }}
+            We have your PAN as {{ .PAN }} and we will send you the documents
+            required to avail of tax benefits shortly. If this is not the
+            correct PAN, write to us at
+            <a href="mailto:reachus@sethu.in">this email</a> with the correct
+            PAN.
+        {{ else }}
+            In order to help you avail of tax benefits, kindly share your PAN
+            details with us.
+        {{ end }}
+    </p>
+    <p>
+        Thank you again for being a vital part of our journey. Together, we are
+        fostering a more inclusive and supportive community. Celebrating
+        Neurodiversity. Empowering Inclusion!
+    </p>
+    <p>With heartfelt gratitude,</p>
+{{ end }}

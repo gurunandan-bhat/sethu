@@ -27,6 +27,12 @@ type DBOrder struct {
 	VEmail        string    `db:"vEmail"`
 	IAmount       int       `db:"iAmount"`
 	VProject      string    `db:"vProject"`
+	VAddress1     string    `db:"vAddr1"`
+	VAddress2     string    `db:"vAddr2"`
+	VCity         string    `db:"vCity"`
+	VPIN          string    `db:"vPIN"`
+	VState        string    `db:"vState"`
+	VPAN          string    `db:"vPAN"`
 	VStatus       string    `db:"vStatus"`
 	VReturnStatus string    `db:"vReturnStatus"`
 	DtCreatedAt   time.Time `db:"dtCreatedAt"`
@@ -137,7 +143,7 @@ func (m *Model) LogPaymentStatus(resp payment.PaymentResponse, status, details s
 	}
 
 	updt, err := result.RowsAffected()
-	if updt != 1 {
+	if updt != 1 || err != nil {
 		return fmt.Errorf("error updating single row %s, updated %d rows", orderID, updt)
 	}
 

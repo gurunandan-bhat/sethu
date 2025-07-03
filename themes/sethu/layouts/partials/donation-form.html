@@ -1,71 +1,177 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<div class="row">
-    <div class="col-lg-8 offset-lg-2">
-        <p class="small">
-            "Sethu" is registered under Section 12A of the Income Tax Act (1961)
-            and a donation from India passport holders is approved by the
-            Director of Income Tax (Exemptions) under Section 80G(5). We are
-            also registered under the Foreign Contribution Regulation Act
-            (FCRA-2010) for donations from outside India.
-        </p>
-        <p class="small">
-            If you plan to claim Tax Exemptions, do make sure that your name
-            below matches your name on your PAN Card and do provide your PAN
-        </p>
+<div class="border-start">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <p class="small">
+                "Sethu" is registered under Section 12A of the Income Tax Act
+                (1961) and a donation from India passport holders is approved by
+                the Director of Income Tax (Exemptions) under Section 80G(5). We
+                are also registered under the Foreign Contribution Regulation
+                Act (FCRA-2010) for donations from outside India.
+            </p>
+            <p class="small">
+                If you plan to claim Tax Exemptions, do make sure that your name
+                below matches your name on your PAN Card and do provide your PAN
+            </p>
+        </div>
     </div>
+    <form
+        class="fira-sans-regular ps-5"
+        id="donate"
+        data-order-url="{{- site.Params.orderURL }}"
+        data-callback-url="{{- site.Params.callbackURL }}">
+        <div class="row mb-2">
+            <div class="col-lg-12">
+                <label for="name" class="form-label small">Full Name</label>
+                <input
+                    required
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    id="name" />
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-lg-12">
+                <label for="email" class="form-label small">Email</label>
+                <input
+                    required
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    id="email" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-lg-12">
+                <label for="amount" class="form-label small"
+                    >Amount in INR</label
+                >
+                <input
+                    required
+                    type="number"
+                    name="amount"
+                    class="form-control"
+                    id="amount" />
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-lg-12">
+                <label for="addr1" class="form-label small"
+                    >Address Line 1</label
+                >
+                <input
+                    required
+                    type="text"
+                    name="addr1"
+                    class="form-control"
+                    id="addr1" />
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-lg-12">
+                <label for="addr2" class="form-label small"
+                    >Address Line 2</label
+                >
+                <input
+                    type="text"
+                    name="addr2"
+                    class="form-control"
+                    id="addr2" />
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-lg-6">
+                <label for="city" class="form-label small">City</label>
+                <input
+                    type="text"
+                    name="city"
+                    class="form-control"
+                    id="city"
+                    required />
+            </div>
+            <div class="col-lg-6">
+                <label for="pin" class="form-label small">PIN</label>
+                <input
+                    type="text"
+                    name="pin"
+                    class="form-control"
+                    id="pin"
+                    required />
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-lg-6">
+                <label for="state" class="form-label small"
+                    >State or Union Territory</label
+                >
+                <select
+                    class="form-select form-select-md"
+                    aria-label="States of India"
+                    required>
+                    <option value="" disabled selected>
+                        Select your State/UT
+                    </option>
+                    <option value="AP">Andhra Pradesh</option>
+                    <option value="AR">Arunachal Pradesh</option>
+                    <option value="AS">Assam</option>
+                    <option value="BR">Bihar</option>
+                    <option value="CT">Chhattisgarh</option>
+                    <option value="GA">Goa</option>
+                    <option value="GA">Gujarat</option>
+                    <option value="HR">Haryana</option>
+                    <option value="HP">Himachal Pradesh</option>
+                    <option value="JH">Jharkhand</option>
+                    <option value="KA">Karnataka</option>
+                    <option value="KL">Kerala</option>
+                    <option value="MP">Madhya Pradesh</option>
+                    <option value="MH">Maharashtra</option>
+                    <option value="MN">Manipur</option>
+                    <option value="ML">Meghalaya</option>
+                    <option value="MZ">Mizoram</option>
+                    <option value="NL">Nagaland</option>
+                    <option value="OR">Odisha</option>
+                    <option value="PB">Punjab</option>
+                    <option value="RJ">Rajasthan</option>
+                    <option value="SK">Sikkim</option>
+                    <option value="TN">Tamil Nadu</option>
+                    <option value="TG">Telangana</option>
+                    <option value="TR">Tripura</option>
+                    <option value="UT">Uttarakhand</option>
+                    <option value="UP">Uttar Pradesh</option>
+                    <option value="WB">West Bengal</option>
+                    <option value="AN">Andaman and Nicobar Islands</option>
+                    <option value="CH">Chandigarh</option>
+                    <option value="DN">Dadra and Nagar Haveli</option>
+                    <option value="DD">Daman and Diu</option>
+                    <option value="DL">Delhi, NCT</option>
+                    <option value="JK">Jammu and Kashmir</option>
+                    <option value="LA">Ladakh</option>
+                    <option value="LD">Lakshadweep</option>
+                    <option value="PY">Puducherry</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-lg-12">
+                <hr />
+                <label for="pan" class="form-label small"
+                    >Required only if you plan to claim Tax Exemptions<br />Your
+                    PAN (optional).</label
+                >
+                <input type="text" name="pan" class="form-control" id="pan" />
+            </div>
+        </div>
+        <button
+            type="submit"
+            class="btn btn-primary mt-5"
+            data-project="{{ .Title }}"
+            id="pay-now">
+            Donate to {{ .Title }} Now!
+        </button>
+    </form>
 </div>
-<form
-    class="fira-sans-regular border-start ps-5"
-    id="donate"
-    data-order-url="{{- site.Params.orderURL }}"
-    data-callback-url="{{- site.Params.callbackURL }}">
-    <div class="row mb-2">
-        <div class="col-lg-12">
-            <label for="name" class="form-label">Full Name</label>
-            <input
-                required
-                type="text"
-                name="name"
-                class="form-control"
-                id="name" />
-        </div>
-    </div>
-    <div class="row mb-2">
-        <div class="col-lg-12">
-            <label for="email" class="form-label">Email</label>
-            <input
-                required
-                type="email"
-                name="email"
-                class="form-control"
-                id="email" />
-        </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-lg-12">
-            <label for="amount" class="form-label">Amount in INR</label>
-            <input
-                required
-                type="number"
-                name="amount"
-                class="form-control"
-                id="amount" />
-        </div>
-    </div>
-    <div class="row mb-2">
-        <div class="col-lg-12">
-            <label for="pan" class="form-label"
-                >Required only if you plan to claim Tax Exemptions<br />Your PAN
-                (optional).</label
-            >
-            <input type="text" name="pan" class="form-control" id="pan" />
-        </div>
-    </div>
-    <button
-        type="submit"
-        class="btn btn-primary mt-5"
-        data-project="{{ .Title }}"
-        id="pay-now">
-        Donate to {{ .Title }} Now!
-    </button>
-</form>

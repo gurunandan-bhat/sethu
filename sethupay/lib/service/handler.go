@@ -17,6 +17,4 @@ func (h ServiceHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		)
 		return
 	}
-
-	return
 }
