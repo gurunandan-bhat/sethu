@@ -23,12 +23,14 @@ type Donate struct {
 	Address1  string  `schema:"addr1,required"`
 	Address2  string  `schema:"addr2"`
 	City      string  `schema:"city,required"`
+	Pin       string  `schema:"pin,required"`
 	State     string  `schema:"state,required"`
 	PAN       string  `schema:"pan"`
 }
 
 var decoder = schema.NewDecoder()
 
+// This is called from JS so we output a JSON and return an error
 func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 
 	if err := r.ParseMultipartForm(10 * 1024); err != nil {
@@ -60,13 +62,14 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 		"receipt":         reciept,
 		"partial_payment": false,
 		"notes": map[string]any{
-			"project":  donate.Project,
-			"name":     donate.Name,
-			"address1": donate.Address1,
-			"address2": donate.Address2,
-			"city":     donate.City,
-			"state":    donate.State,
-			"pan":      donate.PAN,
+			"Project":  donate.Project,
+			"Name":     donate.Name,
+			"Address1": donate.Address1,
+			"Address2": donate.Address2,
+			"City":     donate.City,
+			"Pin":      donate.Pin,
+			"State":    donate.State,
+			"PAN":      donate.PAN,
 		},
 	}
 
@@ -90,6 +93,7 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 		VAddress1:   donate.Address1,
 		VAddress2:   donate.Address2,
 		VCity:       donate.City,
+		VPin:        donate.Pin,
 		VState:      donate.State,
 		VPAN:        donate.PAN,
 		VStatus:     "Created",
@@ -146,7 +150,10 @@ func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 	}
 
 	paymentData.AmountINR = fmt.Sprintf("%.2f", (paymentData.Amount / 100.00))
-	s.sendEmail(paymentData.Email, "success.go.html", paymentData)
+
+	emailTmpl := "default-success.go.html"
+	s.sendEmail(paymentData.Email, emailTmpl, paymentData)
+
 	return s.render(w, "thank-you.go.html", paymentData, http.StatusOK)
 }
 

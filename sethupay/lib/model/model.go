@@ -30,7 +30,7 @@ type DBOrder struct {
 	VAddress1     string    `db:"vAddr1"`
 	VAddress2     string    `db:"vAddr2"`
 	VCity         string    `db:"vCity"`
-	VPIN          string    `db:"vPIN"`
+	VPin          string    `db:"vPin"`
 	VState        string    `db:"vState"`
 	VPAN          string    `db:"vPAN"`
 	VStatus       string    `db:"vStatus"`

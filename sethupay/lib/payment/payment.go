@@ -27,9 +27,15 @@ type AcquirerData struct {
 }
 
 type Notes struct {
-	Name    string
-	Project string
-	Email   string
+	Name     string
+	Project  string
+	Email    string
+	Address1 string
+	Address2 string
+	City     string
+	Pin      string
+	State    string
+	PAN      string
 }
 
 type PaymentError struct {
