@@ -15,31 +15,36 @@ import (
 	"github.com/razorpay/razorpay-go/utils"
 )
 
-type Donate struct {
-	Name      string  `schema:"name,required"`
-	EMail     string  `schema:"email,required"`
-	AmountINR float64 `schema:"amount,required"`
-	Project   string  `schema:"project,required"`
-	Address1  string  `schema:"addr1,required"`
-	Address2  string  `schema:"addr2"`
-	City      string  `schema:"city,required"`
-	Pin       string  `schema:"pin,required"`
-	State     string  `schema:"state,required"`
-	PAN       string  `schema:"pan"`
-}
-
 var decoder = schema.NewDecoder()
 
 // This is called from JS so we output a JSON and return an error
 func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 
 	if err := r.ParseMultipartForm(10 * 1024); err != nil {
-		return fmt.Errorf("error parsing form: %w", err)
+		s.Logger.Error("Validating form: ", "error", err.Error())
+		errJSON := fmt.Sprintf(`{"error": "%s"}`, err.Error())
+		s.renderJSON(w, []byte(errJSON), http.StatusBadRequest)
+		return nil
 	}
 	defer r.Body.Close()
 
-	var donate Donate
+	var donate payment.Notes
 	if err := decoder.Decode(&donate, r.Form); err != nil {
+		fmt.Printf("Found type to be: %T\n", err)
+		missingErr, ok := err.(schema.MultiError)
+		if ok {
+			jsonBytes, err := json.Marshal(missingErr)
+			if err != nil {
+				s.Logger.Error("Unmarshaling schema error: ", "error", err.Error())
+				errJSON := fmt.Sprintf(`{"error": "%s"}`, err.Error())
+				s.renderJSON(w, []byte(errJSON), http.StatusBadRequest)
+				return nil
+			}
+			fmt.Printf("%+v\n", missingErr)
+			s.renderJSON(w, jsonBytes, http.StatusBadRequest)
+			return nil
+		}
+		s.Logger.Error("Validating form: ", "error", err.Error())
 		return fmt.Errorf("error decoding form data: %w", err)
 	}
 
@@ -56,36 +61,41 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 	reciept := id.String()
 	amountINR := int(100 * donate.AmountINR)
 
+	var notes = new(map[string]any)
+	if err := mapstructure.Decode(donate, notes); err != nil {
+		s.Logger.Error("error converting struct to map: ", "error", err.Error())
+		errJSON := fmt.Sprintf(`{"error": "%s"}`, err.Error())
+		s.renderJSON(w, []byte(errJSON), http.StatusBadRequest)
+		return nil
+	}
 	data := map[string]any{
 		"amount":          amountINR,
 		"currency":        "INR",
 		"receipt":         reciept,
 		"partial_payment": false,
-		"notes": map[string]any{
-			"Project":  donate.Project,
-			"Name":     donate.Name,
-			"Address1": donate.Address1,
-			"Address2": donate.Address2,
-			"City":     donate.City,
-			"Pin":      donate.Pin,
-			"State":    donate.State,
-			"PAN":      donate.PAN,
-		},
+		"notes":           *notes,
 	}
+	s.Logger.Info("Notes encoded to map: ", "data", data)
 
 	body, err := client.Order.Create(data, nil)
 	if err != nil {
-		return fmt.Errorf("error creating order: %w", err)
+		s.Logger.Error("error creating order: ", "error", err.Error())
+		errJSON := fmt.Sprintf(`{"error": "%s"}`, err.Error())
+		s.renderJSON(w, []byte(errJSON), http.StatusBadRequest)
+		return nil
 	}
 
 	vRzpOrderID, ok := body["id"].(string)
 	if !ok {
-		return fmt.Errorf("cannot read order_id as string: %w", err)
+		s.Logger.Error("error - no razorpay id found: ", "error", "no field id in response body")
+		errJSON := fmt.Sprintf(`{"error": "%s"}`, "no field id in response body")
+		s.renderJSON(w, []byte(errJSON), http.StatusBadRequest)
+		return nil
 	}
 
 	order := model.DBOrder{
-		VRcptID:     reciept,
 		VRzpOrderID: vRzpOrderID,
+		VRcptID:     reciept,
 		VName:       donate.Name,
 		VEmail:      donate.EMail,
 		IAmount:     amountINR,
@@ -99,13 +109,19 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 		VStatus:     "Created",
 	}
 	if err := s.Model.NewOrder(&order); err != nil {
-		return err
+		s.Logger.Error("error creating db order: ", "error", err.Error())
+		errJSON := fmt.Sprintf(`{"error": "%s"}`, err.Error())
+		s.renderJSON(w, []byte(errJSON), http.StatusBadRequest)
+		return nil
 	}
 
 	order.VRzpKeyID = keyID
 	jsonBytes, err := json.Marshal(order)
 	if err != nil {
-		return fmt.Errorf("error marshaling response: %w", err)
+		s.Logger.Error("error marshaling order from response: ", "error", err.Error())
+		errJSON := fmt.Sprintf(`{"error": "%s"}`, err.Error())
+		s.renderJSON(w, []byte(errJSON), http.StatusBadRequest)
+		return nil
 	}
 
 	return s.renderJSON(w, jsonBytes, http.StatusOK)
@@ -113,7 +129,7 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 
 func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 
-	paymentResponse, payError := s.getPaymentResponse(r)
+	paymentResponse, payError := s.decodePaymentResponse(r)
 	if payError != nil {
 		return payError
 	}
@@ -142,6 +158,10 @@ func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 
 	var paymentData payment.Payment
 	if err := mapstructure.Decode(details, &paymentData); err != nil {
+		// There was an error which could be due to decoding or a
+		// payment error, which can checked with error_code. We
+		// therefore need to do two things - Log the error and send
+		// error apology page and the error email.
 		return fmt.Errorf("error encoding response: %w", err)
 	}
 
@@ -149,15 +169,14 @@ func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("error updating order after payment: %w", err)
 	}
 
+	// Convert paise to rupees and send success email
 	paymentData.AmountINR = fmt.Sprintf("%.2f", (paymentData.Amount / 100.00))
-
-	emailTmpl := "default-success.go.html"
-	s.sendEmail(paymentData.Email, emailTmpl, paymentData)
-
+	//emailTmpl := "default-success.go.html"
+	// s.sendEmail(paymentData.Email, emailTmpl, paymentData)
 	return s.render(w, "thank-you.go.html", paymentData, http.StatusOK)
 }
 
-func (s *Service) getPaymentResponse(r *http.Request) (payment.PaymentResponse, error) {
+func (s *Service) decodePaymentResponse(r *http.Request) (payment.PaymentResponse, error) {
 
 	defer r.Body.Close()
 	rsp := payment.PaymentResponse{}

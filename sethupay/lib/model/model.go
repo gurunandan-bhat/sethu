@@ -95,23 +95,35 @@ func (m *Model) NewDbSessionStore(cfg *config.Config) (*mysqlstore.MysqlStore, e
 func (m *Model) NewOrder(o *DBOrder) error {
 
 	qry := `INSERT INTO orders (
+				vRzpOrderID,
+				vRcptID,
 				vName,
 				vEmail,
 				iAmount,
-				vRcptID,
-				vRzpOrderID,
 				vProject,
+				vAddr1,
+				vAddr2,
+				vCity,
+				vPin,
+				vState,
+				vPAN,
 				vStatus
 			)
-			VALUES (?, ?, ?, ?, ?, ?, ?)`
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 
 	result, err := m.DbHandle.Exec(qry,
+		o.VRzpOrderID,
+		o.VRcptID,
 		o.VName,
 		o.VEmail,
 		o.IAmount,
-		o.VRcptID,
-		o.VRzpOrderID,
 		o.VProject,
+		o.VAddress1,
+		o.VAddress2,
+		o.VCity,
+		o.VPin,
+		o.VState,
+		o.VPAN,
 		o.VStatus,
 	)
 	if err != nil {

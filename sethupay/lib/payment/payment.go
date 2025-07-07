@@ -27,15 +27,16 @@ type AcquirerData struct {
 }
 
 type Notes struct {
-	Name     string
-	Project  string
-	Email    string
-	Address1 string
-	Address2 string
-	City     string
-	Pin      string
-	State    string
-	PAN      string
+	Name      string  `schema:"name,required"`
+	EMail     string  `schema:"email,required"`
+	AmountINR float64 `schema:"amount,required" mapstructure:"-"`
+	Project   string  `schema:"project,required"`
+	Address1  string  `schema:"addr1,required"`
+	Address2  string  `schema:"addr2"`
+	City      string  `schema:"city,required"`
+	Pin       string  `schema:"pin,required"`
+	State     string  `schema:"state,required"`
+	PAN       string  `schema:"pan"`
 }
 
 type PaymentError struct {

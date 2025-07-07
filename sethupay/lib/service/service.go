@@ -2,6 +2,7 @@ package service
 
 import (
 	"errors"
+	"fmt"
 	"html/template"
 	"log"
 	"log/slog"
@@ -69,12 +70,15 @@ func NewService(cfg *config.Config) (*Service, error) {
 		log.Fatalf("Cannot build template cache: %s", err)
 	}
 
+	fmt.Printf("%+v\n", template)
+
 	s := &Service{
 		Config:       cfg,
 		SessionStore: dbStore,
 		Model:        model,
 		Muxer:        mux,
 		Template:     template,
+		Logger:       logger,
 	}
 
 	s.setRoutes(*cfg)
@@ -88,7 +92,6 @@ func (s *Service) setRoutes(cfg config.Config) {
 	s.Muxer.Get("/sethupay/assets/*", http.HandlerFunc(http.StripPrefix("/sethupay/assets", fileServer).ServeHTTP))
 
 	s.Muxer.Route("/sethupay", func(r chi.Router) {
-
 		r.Method(http.MethodPost, "/order", ServiceHandler(s.order))
 		r.Method(http.MethodPost, "/paid", ServiceHandler(s.paid))
 		r.Method(http.MethodGet, "/thanks", ServiceHandler(s.thanks))

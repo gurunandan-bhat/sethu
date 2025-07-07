@@ -20,7 +20,8 @@
 				body: formData,
 			});
 			if (!response.ok) {
-				throw new Error(response);
+				data = await response.json();
+				throw data;
 			}
 			const jsonResp = await response.json();
 			console.log(jsonResp);
@@ -43,23 +44,16 @@
 					name: jsonResp.VName,
 					email: jsonResp.VEmail,
 				},
-				notes: {
-					project: jsonResp.VProject,
-				},
 				theme: {
 					color: '#3399cc',
 				},
 			};
 			console.log(options);
-
 			var rzp = new Razorpay(options);
-			rzp.on('payment.failed', function (response) {
-				const err = response.json().then((json) => console.log(json));
-			});
 			rzp.open();
 		} catch (e) {
-			const err = e.json().then((json) => console.log(json));
-			console.log(err);
+			// const err = e.json().then((json) => console.log(json));
+			console.log(e);
 		}
 	}
 })();
