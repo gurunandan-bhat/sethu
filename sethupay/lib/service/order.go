@@ -31,21 +31,25 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 	var donate payment.Notes
 	if err := decoder.Decode(&donate, r.Form); err != nil {
 		fmt.Printf("Found type to be: %T\n", err)
-		missingErr, ok := err.(schema.MultiError)
+		multiErr, ok := err.(schema.MultiError)
 		if ok {
-			jsonBytes, err := json.Marshal(missingErr)
+			jsonBytes, err := json.Marshal(multiErr)
 			if err != nil {
 				s.Logger.Error("Unmarshaling schema error: ", "error", err.Error())
 				errJSON := fmt.Sprintf(`{"error": "%s"}`, err.Error())
 				s.renderJSON(w, []byte(errJSON), http.StatusBadRequest)
 				return nil
 			}
-			fmt.Printf("%+v\n", missingErr)
+			j, _ := json.Marshal(multiErr)
+			fmt.Println(string(j))
+			s.Logger.Error("schema multi error: ", "error", multiErr)
 			s.renderJSON(w, jsonBytes, http.StatusBadRequest)
 			return nil
 		}
 		s.Logger.Error("Validating form: ", "error", err.Error())
-		return fmt.Errorf("error decoding form data: %w", err)
+		errJSON := fmt.Sprintf(`{"error": "%s"}`, err.Error())
+		s.renderJSON(w, []byte(errJSON), http.StatusBadRequest)
+		return nil
 	}
 
 	cfg := s.Config
