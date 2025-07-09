@@ -1,12 +1,14 @@
 {{ define "main" }}
-    <p>Dear {{ .Name }}</p>
     <p>
-        Thank you for your generous donation towards 'Buy a Brick for Sethu's
-        Inclusive New Building'. Every contribution brings us closer to the
-        dream of our very own state-of-the-art child development centre, where
-        all children can receive the support and acceptance to grow to their
-        full potential, despite any challenges they face. A bridge of hope in
-        Goa, that will be an inspiration for the world.
+        Thank you for your generous donation of
+        {{ .Currency }}
+        {{ .Amount }}
+        towards 'Buy a Brick for Sethu's Inclusive New Building'. Every
+        contribution brings us closer to the dream of our very own
+        state-of-the-art child development centre, where all children can
+        receive the support and acceptance to grow to their full potential,
+        despite any challenges they face. A bridge of hope in Goa, that will be
+        an inspiration for the world.
     </p>
     <p>
         Your partnership fuels our mission to create an inclusive world for our
@@ -17,10 +19,10 @@
         is possible.
     </p>
     <p>
-        {{ with .PAN }}
-            We have your PAN as {{ .PAN }} and we will send you the documents
-            required to avail of tax benefits shortly. If this is not the
-            correct PAN, write to us at
+        {{ with .Notes.PAN }}
+            We have your PAN as {{ .Notes.PAN }} and we will send you the
+            documents required to avail of tax benefits shortly. If this is not
+            the correct PAN, write to us at
             <a href="mailto:reachus@sethu.in">this email</a> with the correct
             PAN.
         {{ else }}

@@ -1,5 +1,5 @@
 {{ define "main" }}
-    <p>Dear {{ .Name }}</p>
+    <p>Dear {{ .Notes.Name }}</p>
     <p>
         Your generous donation of {{ .Currency }} {{ .Amount }} has profoundly
         touched our hearts.
@@ -18,10 +18,10 @@
         is possible.
     </p>
     <p>
-        {{ with .PAN }}
-            We have your PAN as {{ .PAN }} and we will send you the documents
-            required to avail of tax benefits shortly. If this is not the
-            correct PAN, write to us at
+        {{ with .Notes.PAN }}
+            We have your PAN as {{ .Notes.PAN }} and we will send you the
+            documents required to avail of tax benefits shortly. If this is not
+            the correct PAN, write to us at
             <a href="mailto:reachus@sethu.in">this email</a> with the correct
             PAN.
         {{ else }}

@@ -30,7 +30,6 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 
 	var donate payment.Notes
 	if err := decoder.Decode(&donate, r.Form); err != nil {
-		fmt.Printf("Found type to be: %T\n", err)
 		multiErr, ok := err.(schema.MultiError)
 		if ok {
 			jsonBytes, err := json.Marshal(multiErr)
@@ -40,8 +39,6 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 				s.renderJSON(w, []byte(errJSON), http.StatusBadRequest)
 				return nil
 			}
-			j, _ := json.Marshal(multiErr)
-			fmt.Println(string(j))
 			s.Logger.Error("schema multi error: ", "error", multiErr)
 			s.renderJSON(w, jsonBytes, http.StatusBadRequest)
 			return nil
@@ -101,7 +98,7 @@ func (s *Service) order(w http.ResponseWriter, r *http.Request) error {
 		VRzpOrderID: vRzpOrderID,
 		VRcptID:     reciept,
 		VName:       donate.Name,
-		VEmail:      donate.EMail,
+		VEmail:      donate.Email,
 		IAmount:     amountINR,
 		VProject:    donate.Project,
 		VAddress1:   donate.Address1,
@@ -175,8 +172,17 @@ func (s *Service) paid(w http.ResponseWriter, r *http.Request) error {
 
 	// Convert paise to rupees and send success email
 	paymentData.AmountINR = fmt.Sprintf("%.2f", (paymentData.Amount / 100.00))
-	//emailTmpl := "default-success.go.html"
-	// s.sendEmail(paymentData.Email, emailTmpl, paymentData)
+	s.Logger.Info("Payment Data: ", "data", paymentData)
+
+	emailTmpl := "default-success.go.html"
+	if paymentData.Notes.Project == "Build our Bridge" {
+		emailTmpl = "build-our-bridge-success.go.html"
+	}
+
+	if err := s.sendEmail(paymentData.Email, emailTmpl, paymentData); err != nil {
+		s.Logger.Error("Error sending email: ", "smtp", err.Error())
+		return fmt.Errorf("error sending email: %w", err)
+	}
 	return s.render(w, "thank-you.go.html", paymentData, http.StatusOK)
 }
 

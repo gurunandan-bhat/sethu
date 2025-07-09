@@ -2,7 +2,6 @@ package service
 
 import (
 	"errors"
-	"fmt"
 	"html/template"
 	"log"
 	"log/slog"
@@ -69,8 +68,6 @@ func NewService(cfg *config.Config) (*Service, error) {
 	if err != nil {
 		log.Fatalf("Cannot build template cache: %s", err)
 	}
-
-	fmt.Printf("%+v\n", template)
 
 	s := &Service{
 		Config:       cfg,

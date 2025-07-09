@@ -1,6 +1,6 @@
 module sethupay
 
-go 1.24.4
+go 1.24.5
 
 require (
 	github.com/danielepintore/gorilla-sessions-mysql v0.1.5

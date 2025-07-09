@@ -28,7 +28,7 @@ type AcquirerData struct {
 
 type Notes struct {
 	Name      string  `schema:"name,required"`
-	EMail     string  `schema:"email,required"`
+	Email     string  `schema:"email,required"`
 	AmountINR float64 `schema:"amount,required" mapstructure:"-"`
 	Project   string  `schema:"project,required"`
 	Address1  string  `schema:"addr1,required"`

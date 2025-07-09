@@ -14,23 +14,22 @@ func (s *Service) sendEmail(recipient, template string, data any) error {
 		return err
 	}
 
+	s.Logger.Info("Template", "name", template)
 	emailTemplate, ok := s.Template[template]
 	if !ok {
 		logErr := fmt.Errorf("cannot find template %s in template cache", template)
-		fmt.Println("Checking Cache: " + logErr.Error())
 		return logErr
 	}
 	var emailBuf bytes.Buffer
 	if err := emailTemplate.ExecuteTemplate(&emailBuf, "base", data); err != nil {
 		logErr := fmt.Errorf("error generating email from template %s: %w", template, err)
-		fmt.Println("Generating Template: " + logErr.Error())
 		return logErr
 	}
 
+	s.Logger.Info("Email string", "email", emailBuf.String())
 	if err := smtp.SendEmail(validEmail.Address, emailBuf.String()); err != nil {
 		logErr := fmt.Errorf("error sending email %w", err)
-		fmt.Println("Sending : " + logErr.Error())
-		return err
+		return logErr
 	}
 
 	return nil
