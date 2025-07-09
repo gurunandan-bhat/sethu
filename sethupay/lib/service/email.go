@@ -13,8 +13,6 @@ func (s *Service) sendEmail(recipient, template string, data any) error {
 	if err != nil {
 		return err
 	}
-
-	s.Logger.Info("Template", "name", template)
 	emailTemplate, ok := s.Template[template]
 	if !ok {
 		logErr := fmt.Errorf("cannot find template %s in template cache", template)
@@ -26,7 +24,6 @@ func (s *Service) sendEmail(recipient, template string, data any) error {
 		return logErr
 	}
 
-	s.Logger.Info("Email string", "email", emailBuf.String())
 	if err := smtp.SendEmail(validEmail.Address, emailBuf.String()); err != nil {
 		logErr := fmt.Errorf("error sending email %w", err)
 		return logErr

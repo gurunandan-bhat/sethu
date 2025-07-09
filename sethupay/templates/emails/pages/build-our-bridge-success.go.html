@@ -2,7 +2,7 @@
     <p>
         Thank you for your generous donation of
         {{ .Currency }}
-        {{ .Amount }}
+        {{ .AmountINR }}
         towards 'Buy a Brick for Sethu's Inclusive New Building'. Every
         contribution brings us closer to the dream of our very own
         state-of-the-art child development centre, where all children can
@@ -20,9 +20,9 @@
     </p>
     <p>
         {{ with .Notes.PAN }}
-            We have your PAN as {{ .Notes.PAN }} and we will send you the
-            documents required to avail of tax benefits shortly. If this is not
-            the correct PAN, write to us at
+            We have your PAN as {{ . }} and we will send you the documents
+            required to avail of tax benefits shortly. If this is not the
+            correct PAN, write to us at
             <a href="mailto:reachus@sethu.in">this email</a> with the correct
             PAN.
         {{ else }}

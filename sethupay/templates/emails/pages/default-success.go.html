@@ -1,8 +1,7 @@
 {{ define "main" }}
-    <p>Dear {{ .Notes.Name }}</p>
     <p>
-        Your generous donation of {{ .Currency }} {{ .Amount }} has profoundly
-        touched our hearts.
+        Your generous donation of {{ .Currency }} {{ .AmountINR }} has
+        profoundly touched our hearts.
     </p>
     <p>
         Thanks to your support, many neurodiverse children in our community will
@@ -19,9 +18,9 @@
     </p>
     <p>
         {{ with .Notes.PAN }}
-            We have your PAN as {{ .Notes.PAN }} and we will send you the
-            documents required to avail of tax benefits shortly. If this is not
-            the correct PAN, write to us at
+            We have your PAN as {{ . }} and we will send you the documents
+            required to avail of tax benefits shortly. If this is not the
+            correct PAN, write to us at
             <a href="mailto:reachus@sethu.in">this email</a> with the correct
             PAN.
         {{ else }}
