@@ -18,6 +18,10 @@ hdrImage = 'sethu-cover.png'
 - Because every child has potential.
 - And every family deserves support.
 
+#### Our Mission
+
+To be a centre of excellence in child development, family-centred care and inclusion through interdisciplinary services, training, advocacy and research
+
 #### Neurodiversity Affirming
 
 We recognise, respect, and value neurological differences as natural variations of the human experience, while fostering an environment of acceptance and inclusion for all neurotypes.
