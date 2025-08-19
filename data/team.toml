@@ -15,9 +15,9 @@ img         = 'Image 18.jpg'
 name        = 'Anjali Barreto'
 designation = 'Speech-Language Pathologist, Head - Child Development Centre'
 [[members]]
-img         = 'Image 19.jpg'
-name        = 'Anusha Doshi'
-designation = 'Head, Inclusive Education Programme'
+img         = 'Image 180.jpg'
+name        = 'Atiya Mishra'
+designation = 'Counsellor'
 [[members]]
 img         = 'Image 20.jpg'
 name        = 'Deepika Hosur'
@@ -59,6 +59,10 @@ img         = 'Image 30.jpg'
 name        = 'Pooja Kambli'
 designation = 'Administration Assistant'
 [[members]]
+img         = 'Image 300.jpg'
+name        = 'Prajakta Chavan'
+designation = 'Family Advisor'
+[[members]]
 img         = 'Image 31.jpg'
 name        = 'Pricilla de Souza'
 designation = 'Case Coordinator'
@@ -67,21 +71,17 @@ img         = 'Image 32.jpg'
 name        = 'Purva Kamat'
 designation = 'Autism Intervention Specialist'
 [[members]]
+img         = 'Image 320.png'
+name        = 'Dr. Rucha Mehta'
+designation = 'IAP Fellow in Developmental and Behavioural Paediatrics'
+[[members]]
 img         = 'Image 34.jpg'
 name        = 'Ruella Pires'
 designation = 'Psychologist'
 [[members]]
-img         = 'Image 46.jpg'
-name        = 'Dr Samruddhi Vernekar'
-designation = 'Paediatrician'
-[[members]]
 img         = 'Image 35.jpg'
 name        = 'Sennely Costa'
 designation = 'Child Development Trainer'
-[[members]]
-img         = 'Image 37.jpg'
-name        = 'Shaila Maria Faleiro'
-designation = 'Consultant, Communications and Branding'
 [[members]]
 img         = 'Image 38.jpg'
 name        = 'Shenessa Barreto'
