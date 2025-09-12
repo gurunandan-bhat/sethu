@@ -1,0 +1,23 @@
+Template: authors/term.html
+<pre>{{ debug.Dump . }}</pre>
+<hr />
+<pre>{{ urlize .LinkTitle }}</pre>
+<hr />
+<pre>{{ debug.Dump .RelPermalink }}</pre>
+<hr />
+<pre>{{ debug.Dump .Pages }}</pre>
+{{ define "main" }}
+    {{ with .Params.hdrImage }}
+        <div class="container-fluid mb-5">
+            <img src="/images/{{ . }}" class="img-responsive w-100" />
+        </div>
+    {{ end }}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 mt-5">
+                <h1>{{ .Title }}</h1>
+                {{ .Content }}
+            </div>
+        </div>
+    </div>
+{{ end }}

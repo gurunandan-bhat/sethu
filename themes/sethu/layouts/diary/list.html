@@ -1,0 +1,52 @@
+{{ define "main" }}
+    <div class="container">
+        <p>This is the diary/list template</p>
+        <div class="row">
+            <div class="offset-lg-2 col-lg-8">
+                <h1>Diary</h1>
+                {{ .Content }}
+                {{ range .Pages }}
+                    <div class="row mb-5 pb-5">
+                        <h3 class="text-end">
+                            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                            </h3>
+                        </h3>
+                        <div class="col-lg-4">
+                            {{- $title := .LinkTitle }}
+                            {{- with .Params.authors }}
+                            {{- with index . 0 }}
+                                <h5 style="border-bottom: none !important; line-height: 1.8rem;"><a href="{{- printf "/authors/%s" (urlize .) }}">{{- . }}</a><br />
+                                        <span class="small">{{ $.Date | time.Format ":date_medium" }}</span>
+                                        </h5>
+                            {{- end }}
+                            {{- end }}
+
+                            {{- with .Params.image }}
+                                {{- with resources.Get (printf "images/diary/%s" .) }}
+                                    <img
+                                        src="{{- .RelPermalink -}}"
+                                        class="img-fluid w-100"
+                                        alt="{{- $title -}}" />
+                                {{- end }}
+                            {{- end }} 
+                        </div>
+                        <div class="col-lg-8">
+                            {{ .Summary }}
+                            <div>
+                                {{ with .GetTerms "topics" }}
+                                    <p>Tags</p>
+                                    <ul>
+                                    {{ range . }}
+                                        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+                                    {{ end }}
+                                    </ul>
+                                {{ end }}
+                            </div>
+                        </div>
+
+                    </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+{{ end }}

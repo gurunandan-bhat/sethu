@@ -18,3 +18,7 @@ min      = "0.147.8"
 [markup.goldmark.parser]
 [markup.goldmark.parser.attribute]
 block = true
+
+[taxonomies]
+author = 'authors'
+topic = 'topics'

@@ -1,0 +1,43 @@
+{{ define "main" }}
+<pre>Template: taxonomy.html</pre>
+<pre>.Site.Taxonomies.authors {{ debug.Dump .Site.Taxonomies.authors }}</pre>
+<hr />
+<pre>.Pages {{ debug.Dump .Pages }}</pre>
+    <div class="container">
+        <p>This is the diary/list template</p>
+        <div class="row">
+            <div class="offset-lg-2 col-lg-8">
+                <h1>Diary</h1>
+                {{ .Content }}
+                {{ range .Pages }}
+                    <div class="row mb-5 pb-5">
+                        <h3 class="text-end">
+                            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                            </h3>
+                        </h3>
+                        <div class="col-lg-4">
+                            {{- $title := .LinkTitle }}
+                            {{- with .Params.authors }}
+                                <h5 style="border-bottom: none !important;">{{- index . 0 }}<br />
+                                        <span class="small">{{ $.Date | time.Format ":date_medium" }}</span>
+                                        </h5>
+                            {{- end }}
+
+                            {{- with .Params.image }}
+                                {{- with resources.Get (printf "images/diary/%s" .) }}
+                                    <img
+                                        src="{{- .RelPermalink -}}"
+                                        class="img-fluid w-100"
+                                        alt="{{- $title -}}" />
+                                {{- end }}
+                            {{- end }}
+                        </div>
+                        <div class="col-lg-8">
+                            {{ .Summary }}
+                        </div>
+                    </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+{{ end }}
