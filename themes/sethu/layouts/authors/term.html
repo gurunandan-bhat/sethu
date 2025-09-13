@@ -1,22 +1,47 @@
-Template: authors/term.html
-<pre>{{ debug.Dump . }}</pre>
-<hr />
-<pre>{{ urlize .LinkTitle }}</pre>
-<hr />
-<pre>{{ debug.Dump .RelPermalink }}</pre>
-<hr />
-<pre>{{ debug.Dump .Pages }}</pre>
 {{ define "main" }}
-    {{ with .Params.hdrImage }}
-        <div class="container-fluid mb-5">
-            <img src="/images/{{ . }}" class="img-responsive w-100" />
-        </div>
-    {{ end }}
     <div class="container">
+        <p>This is the diary/list template</p>
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 mt-5">
-                <h1>{{ .Title }}</h1>
+            <div class="offset-lg-2 col-lg-8">
+                <h1>Articles by {{ .LinkTitle }}</h1>
                 {{ .Content }}
+                {{ range .Pages }}
+                    {{- $links := slice }}
+                    {{- range .GetTerms "topics" }}
+                        {{- $links = append (printf "<a href='%s'>%s</a>" .RelPermalink .LinkTitle)  $links}}
+                    {{- end }}
+                    {{ $tags := delimit $links ", " }} 
+                    <div class="row mb-5 pb-5">
+                        <h3 class="text-end">
+                            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                            </h3>
+                        </h3>
+                        <div class="col-lg-4">
+                            {{- $title := .LinkTitle }}
+                            {{- with .Params.image }}
+                                {{- with resources.Get (printf "images/diary/%s" .) }}
+                                    <img
+                                        src="{{- .RelPermalink -}}"
+                                        class="img-fluid w-100 mb-2"
+                                        alt="{{- $title -}}" />
+                                {{- end }}
+                            {{- end }} 
+                        </div>
+                        <div class="col-lg-8">
+                            <h6 style="float: right; border-bottom: none !important; margin-bottom: 0">
+                                {{ $.Date | time.Format ":date_medium" }}
+                            </h6>
+                            <div style="clear: right;">
+                                {{/*  {{- partial "author.html" (dict "author" (index .Params.authors 0)) }}  */}}
+                                {{ .Summary }} 
+                                <p>
+                                    <a href="{{- .RelPermalink }}">Continue Reading &hellip;</a><br />
+                                    Tags: {{ $tags | safeHTML }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {{ end }}
             </div>
         </div>
     </div>

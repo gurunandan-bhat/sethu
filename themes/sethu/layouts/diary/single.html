@@ -8,6 +8,18 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2 mt-5">
                 <h1>{{ .Title }}</h1>
+                <h5
+                    style="border-bottom: none !important; line-height: 1.8rem;">
+                    <span class="small"
+                        >{{ $.Date | time.Format ":date_medium" }}</span
+                    >
+                </h5>
+                {{ with resources.Get (printf "images/diary/%s" .Params.image) }}
+                    <img
+                        src="{{ .RelPermalink }}"
+                        class="img-fluid w-100 mb-5" />
+                {{ end }}
+                {{- partial "author.html" (dict "author" (index .Params.authors 0)) }}
                 {{ .Content }}
             </div>
         </div>

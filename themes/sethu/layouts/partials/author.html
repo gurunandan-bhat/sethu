@@ -1,0 +1,18 @@
+{{- $authorName := .author }}
+{{- with index (site.Data.authors.author) ($authorName | urlize) }}
+    <a href="{{ printf "/authors/%s" (.name | urlize) }}">
+        <div
+            class="text-center"
+            style="max-width: 175px; float: left; padding: 10px 10px; border: 1px solid #e2e2e2; margin: 0 25px 10px 0;">
+            {{- with resources.Get (printf "images/team/%s" .img) }}
+                <img
+                    src="{{ .RelPermalink }}"
+                    class="img-responsive w-100 pb-2" />
+            {{- end }}
+            <p class="author">
+                <strong>{{ .name }}</strong>
+            </p>
+            <p class="designation">{{ .designation }}</p>
+        </div>
+    </a>
+{{ end }}

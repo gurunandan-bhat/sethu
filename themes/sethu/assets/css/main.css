@@ -60,3 +60,17 @@ a {
 .list-group {
     --bs-list-group-bg: var(--bs-body-bg): rgb(249, 249, 251) !important;
 }
+
+p.author {
+    text-transform: uppercase;
+    margin-bottom: 0.2rem !important;
+    color: #9a191b;
+    font-size: 0.8rem;
+}
+
+p.designation {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    line-height: 1rem;
+    color: #9a191b;
+}
