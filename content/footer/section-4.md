@@ -12,4 +12,4 @@ hdrImage = '/donate/socials.png'
 
 {{< linkedin link="https://in.linkedin.com/company/sethu" >}}
 
-{{< youtube link=" https://www.youtube.com/@sethu2535" >}}
+{{< youtube link="https://www.youtube.com/@sethu2535" >}}

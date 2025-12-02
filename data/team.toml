@@ -19,10 +19,6 @@ img         = 'Image 180.jpg'
 name        = 'Atiya Mishra'
 designation = 'Counsellor'
 [[members]]
-img         = 'Image 20.jpg'
-name        = 'Deepika Hosur'
-designation = 'Child Development Trainer'
-[[members]]
 img         = 'Image 21.jpg'
 name        = 'Jerry Gonsalves'
 designation = 'Head, Operations'
@@ -30,6 +26,10 @@ designation = 'Head, Operations'
 img         = 'Image 22.jpg'
 name        = 'Kais Bijapur'
 designation = 'Caretaker'
+[[members]]
+img         = 'Kevin Couto.jpg'
+name        = 'Kevin Couto'
+designation = 'Social Worker'
 [[members]]
 img         = 'Image 23.jpg'
 name        = 'Laxmi Jogdand'

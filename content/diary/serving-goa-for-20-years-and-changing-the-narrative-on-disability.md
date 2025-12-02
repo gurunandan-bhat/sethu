@@ -1,5 +1,5 @@
 +++
-date = '2025-09-11T10:50:41+05:30'
+date = '2025-07-01T10:50:41+05:30'
 draft = false
 title = 'Serving Goa for 20 Years and Changing the Narrative on Disability'
 authors = ["Zurica D'souza"]

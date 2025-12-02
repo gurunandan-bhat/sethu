@@ -1,5 +1,5 @@
 +++
-date = '2025-09-11T10:17:54+05:30'
+date = '2025-08-26T10:17:54+05:30'
 draft = false
 title = 'Reading Our Way to Change'
 authors = ["Andre Velho"]
