@@ -21,23 +21,31 @@
                         strengths and hope.
                     </p>
                     {{ range site.Data.team.members }}
-                        <div class="col-lg-4 mb-5">
-                            <div class="p-3 border">
-                                <h4 class="lead text-center pb-2">
-                                    {{ .name }}
-                                </h4>
-                                {{ with partial "scaledImage" (dict "file" (printf "%s/%s" site.Params.images.team .img) "w" 320 "h" 320) }}
-                                    <img
-                                        src="{{ .RelPermalink }}"
-                                        class="img-responsive w-100 mb-3" />
-                                {{ end }}
-                                <p
-                                    class="poppins-400 small text-center"
-                                    style="height: 3rem;">
-                                    {{ .designation }}
-                                </p>
+                        {{- $active := true }}
+                        {{- with .inactive }}
+                            {{- if . }}
+                                {{- $active = false }}
+                            {{- end }}
+                        {{- end }}
+                        {{- if $active }}
+                            <div class="col-lg-4 mb-5">
+                                <div class="p-3 border">
+                                    <h4 class="lead text-center pb-2">
+                                        {{ .name }}
+                                    </h4>
+                                    {{ with partial "scaledImage" (dict "file" (printf "%s/%s" site.Params.images.team .img) "w" 320 "h" 320) }}
+                                        <img
+                                            src="{{ .RelPermalink }}"
+                                            class="img-responsive w-100 mb-3" />
+                                    {{ end }}
+                                    <p
+                                        class="poppins-400 small text-center"
+                                        style="height: 3rem;">
+                                        {{ .designation }}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        {{- end }}
                     {{ end }}
                 </div>
             </div>

@@ -62,6 +62,7 @@ designation = 'Administration Assistant'
 img         = 'Image 300.jpg'
 name        = 'Prajakta Chavan'
 designation = 'Family Advisor'
+inactive    = true
 [[members]]
 img         = 'Image 31.jpg'
 name        = 'Pricilla de Souza'
