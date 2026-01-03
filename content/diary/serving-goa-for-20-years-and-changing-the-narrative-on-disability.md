@@ -18,9 +18,9 @@ Back then, the word _disability_ was still wrapped in silence. Many parents walk
 
 But together, we began to rewrite that story.
 
-_From silence to openness; We’ve created safe spaces in schools, communities, and homes — where conversations about neurodivergence are normal, compassionate, and informed._  
-_From isolation to belonging; We’ve connected families not just to services, but to each other. We’ve helped them realise they’re not alone._  
-_From temporary fixes to lasting change; We’ve worked across systems — disability rights in education, healthcare, access to services— to build a more inclusive Goa from the inside out._  
+_From silence to openness; We’ve created safe spaces in schools, communities, and homes — where conversations about neurodivergence are normal, compassionate, and informed._
+_From isolation to belonging; We’ve connected families not just to services, but to each other. We’ve helped them realise they’re not alone._
+_From temporary fixes to lasting change; We’ve worked across systems — disability rights in education, healthcare, access to services— to build a more inclusive Goa from the inside out._
 _From ‘what’s wrong?’ to ‘what’s strong?; that’s always been our focus— strengths, possibilities, and potential._
 
 Today, in 2025, we are a team of 30 dedicated professionals guided by five trustees, who have served thousands of families across Goa. We have grown in size, in strength, and in spirit — but what anchors us still is that very same belief: every child deserves to be seen, to be supported, and to shine.
@@ -29,7 +29,7 @@ We continue to change the story of disability in Goa — one family at a time. T
 
 No one else in Goa offers this kind of family-centred care; where families are not just included, but honoured. Where they are not just cared for, but empowered. This is our heartbeat. And it’s what transforms support into healing.
 
-### Two decades of shifting mindsets and opening hearts
+## Two decades of shifting mindsets and opening hearts
 
 And now, as we celebrate 20 years, we step into a new chapter — **our dream centre built to last**, in Guirim, Goa. Purpose-built for inclusion, joy, and belonging, this space is not just a building. It is a promise: that Sethu is here to stay, and that our work has only just begun.
 

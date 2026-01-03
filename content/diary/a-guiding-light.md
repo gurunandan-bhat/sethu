@@ -2,7 +2,7 @@
 date = '2026-01-03T11:11:21+05:30'
 draft = false
 title = 'A Guiding Light'
-authors = ["Zurica Dsouza"]
+authors = ["Zurica D'souza"]
 topics = [""]
 opening = ""
 +++

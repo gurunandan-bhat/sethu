@@ -2,7 +2,7 @@
 date = '2026-01-03T11:29:59+05:30'
 draft = false
 title = "Celebrating What's Strong: Fostering Inclusive Societies and Empowering Every Child"
-authors = ["Zurica Dsouza"]
+authors = ["Zurica D'souza"]
 topics = [""]
 +++
 
