@@ -5,7 +5,7 @@
                 <h1>{{ .Title }}</h1>
                 <p class="mb-5">{{ .Content }}</p>
                 <div class="trustee-list">
-                    {{ range .Site.Data.trustees.trustee }}
+                    {{ range hugo.Data.trustees.trustee }}
                         <div class="row my-5">
                             <div class="col-lg-4">
                                 {{ with partial "scaledImage" (dict "file" (printf "%s/%s" site.Params.images.trustees .img) "w" 640 "h" 640) }}

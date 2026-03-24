@@ -5,7 +5,7 @@ title = 'What We Do'
 [build]
 render = 'never'
 [[cascade]]
-  [cascade._target]
+  [cascade.target]
     kind = 'section'
     path = '/what-we-do/our-policies'
   [cascade.params]

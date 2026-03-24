@@ -1,5 +1,5 @@
 {{- $authorName := .author }}
-{{- with index (site.Data.authors.author) ($authorName | urlize) }}
+{{- with index (hugo.Data.authors.author) ($authorName | urlize) }}
     <a href="{{ printf "/authors/%s" (.name | urlize) }}">
         <div
             class="text-center"

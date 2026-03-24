@@ -15,7 +15,7 @@
                 <h3>Our Handouts</h3>
                 <p>All links to documents open in a new Browser Tab</p>
                 <div class="row">
-                    {{ range sort site.Data.handouts.handouts ".title" }}
+                    {{ range sort hugo.Data.handouts.handouts ".title" }}
                         <div class="col-lg-4 pb-5 pt-5">
                             <a href="/pdf/handouts/{{ .pdf }}" target="_blank">
                                 <h6>{{ .title }}</h6>
@@ -34,7 +34,7 @@
                 <h3>Media Mentions</h3>
                 <p>All links to articles open in a new Browser Tab</p>
                 <div class="row">
-                    {{ range sort site.Data.media.mentions }}
+                    {{ range sort hugo.Data.media.mentions }}
                         <div class="col-lg-4 pb-5 pt-5">
                             <a
                                 href="/images/media/{{- .image }}"

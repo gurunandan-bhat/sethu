@@ -4,7 +4,7 @@ draft = false
 title = 'Services'
 hdrImage = 'Image64.jpg'
 [[cascade]]
-  [cascade._target]
+  [cascade.target]
     kind = 'section'
     path = '/what-we-do/services/**'
   [cascade.params]

@@ -8,19 +8,19 @@ draft = false
   [cascade.build]
     render = 'never'
 [[cascade]]
-  [cascade._target]
+  [cascade.target]
   kind = 'page'
   path = '/home/features/**'
   [cascade.params]
   type = 'feature'
 [[cascade]]
-  [cascade._target]
+  [cascade.target]
   kind = 'page'
   path = '/home/reviews/**'
   [cascade.params]
   type = 'review'
 [[cascade]]
-  [cascade._target]
+  [cascade.target]
   kind = 'page'
   path = '/home/footer/**'
   [cascade.params]

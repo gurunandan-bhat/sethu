@@ -10,7 +10,19 @@ Drop us a line even if you don't see a current opening and we’ll reach out to 
 ## New Opportunities
 
 {{< figure
-src="/images/careers/Speech Therapy Hiring poster 210525.png"
-alt="A new opportunity at Sethu for Speech Therapists"
+src="/images/careers/Careers - Page 1.png"
+alt="A new opportunity as CEO at Sethu - Page 1"
+width="100%"
+class="img-fluid w-100" >}}
+
+{{< figure
+src="/images/careers/Careers - Page 2.png"
+alt="A new opportunity as CEO at Sethu - Page 2"
+width="100%"
+class="img-fluid w-100" >}}
+
+{{< figure
+src="/images/careers/Careers - Page 3.png"
+alt="A new opportunity at Sethu for Speech Therapists- Page 1"
 width="100%"
 class="img-fluid w-100" >}}

@@ -20,7 +20,7 @@
                         the doom and gloom narrative of disabilities to one of
                         strengths and hope.
                     </p>
-                    {{ range site.Data.team.members }}
+                    {{ range hugo.Data.team.members }}
                         {{- $active := true }}
                         {{- with .inactive }}
                             {{- if . }}
