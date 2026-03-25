@@ -3,6 +3,10 @@ img         = 'Image 14.jpg'
 name        = 'Aileen de Souza'
 designation = 'Senior Psychologist and Coordinator, Mental Health Programme'
 [[members]]
+img         = 'Image 50.jpg'
+name        = 'Dr. Akhila Boppudi'
+designation = 'IAP Fellow in Developmental and Behavioural Paediatrics'
+[[members]]
 img         = 'Image 15.jpg'
 name        = 'Alisha Narvekar'
 designation = 'Child Development Trainer'
@@ -74,7 +78,7 @@ designation = 'Autism Intervention Specialist'
 [[members]]
 img         = 'Image 320.png'
 name        = 'Dr. Rucha Mehta'
-designation = 'IAP Fellow in Developmental and Behavioural Paediatrics'
+designation = 'Developmental and Behavioral Paediatrician '
 [[members]]
 img         = 'Image 34.jpg'
 name        = 'Ruella Pires'

@@ -50,5 +50,8 @@ logo = 'saathire.webp'
 name = 'Self Reliant Inc.'
 logo = 'sri.webp'
 [[supporters]]
+name = 'Hoffmann La Roche'
+logo = 'roche.webp'
+[[supporters]]
 name = 'Unitop Chemicals'
 logo = 'unitop.webp'
