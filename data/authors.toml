@@ -10,3 +10,7 @@ designation = 'Family Advisor'
 img         = 'Image 47.jpg'
 name        = "Zurica D'souza"
 designation = 'Head, Marketing and Donor Relations'
+[author.zamora-da-silva]
+img         = 'Image 45.jpg'
+name        = "Zamora Da'Silva"
+designation = 'Counsellor'
