@@ -14,3 +14,7 @@ designation = 'Head, Marketing and Donor Relations'
 img         = 'Image 45.jpg'
 name        = "Zamora Da'Silva"
 designation = 'Counsellor'
+[author.rucha-mehta]
+img = 'Image 320.png'
+name = 'Dr. Rucha Mehta'
+designation = 'Developmental and Behavioural Paediatrician'
