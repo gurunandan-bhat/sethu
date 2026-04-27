@@ -13,7 +13,7 @@ const (
 
 type Secret struct {
 	KeyID     string `json:"keyID,omitempty"`
-	KeySecret string `json:"keySecret,omitEmpty"`
+	KeySecret string `json:"keySecret,omitempty"`
 }
 type Config struct {
 	InProduction bool   `json:"inProduction,omitempty"`
