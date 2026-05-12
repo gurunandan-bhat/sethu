@@ -1,4 +1,4 @@
-languageCode = 'en-us'
+locale = 'en_US.UTF-8'
 title        = 'Sethu'
 theme        = 'sethu'
 

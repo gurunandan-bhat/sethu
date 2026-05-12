@@ -20,11 +20,15 @@ hdrImage = 'sethu-cover.png'
 
 #### Our Mission
 
-To be a centre of excellence in child development, family-centred care and inclusion through interdisciplinary services, training, advocacy and research
+Enabling children with disabilities in Goa to thrive.
 
 #### Neurodiversity Affirming
 
-We recognise, respect, and value neurological differences as natural variations of the human experience, while fostering an environment of acceptance and inclusion for all neurotypes.
+At Sethu, our approach is anchored in three interconnected pillars: **neurodiversity-affirming (bio), strengths-based (psycho), and family-centred (social)**. Together, these guide how we support children and families, by recognising differences, building on strengths, and working in partnership with families, schools, and communities.
+
+Grounded in the World Health Organization’s (WHO) International Classification of Functioning, Disability and Health (ICF) framework, our model shifts the focus from diagnosis to what truly matters in a child’s life: **functioning, participation, and belonging**.
+
+This integrated approach enables us to move beyond labels, towards creating environments where every child is supported to engage meaningfully, grow confidently, and thrive within their everyday contexts.
 
 #### A Culture of Trust
 
