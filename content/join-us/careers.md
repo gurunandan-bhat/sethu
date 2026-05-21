@@ -11,6 +11,12 @@ Drop us a line even if you don't see a current opening and we’ll reach out to 
 
 {{< figure
 src="/images/careers/Careers - Page 3.png"
-alt="A new opportunity at Sethu for Speech Therapists- Page 1"
+alt="A new opportunity at Sethu for Speech Therapists"
+width="100%"
+class="img-fluid w-100" >}}
+
+{{< figure
+src="/images/careers/Jr Accountant Hiring Poster - 160426.png"
+alt="A new opportunity at Sethu for Junior Accountant"
 width="100%"
 class="img-fluid w-100" >}}
