@@ -22,7 +22,7 @@ hdrImage = 'sethu-cover.png'
 
 Enabling children with disabilities in Goa to thrive.
 
-#### Neurodiversity Affirming
+#### The Sethu Trifecta Model
 
 At Sethu, our approach is anchored in three interconnected pillars: **neurodiversity-affirming (bio), strengths-based (psycho), and family-centred (social)**. Together, these guide how we support children and families, by recognising differences, building on strengths, and working in partnership with families, schools, and communities.
 

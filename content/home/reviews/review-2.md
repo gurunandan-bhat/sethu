@@ -6,7 +6,7 @@ weight = 20
 img = 'Image 3.jpg'
 +++
 
-“Pritam loves coming to Sethu. You’re always focused on his strengths, encouraging him in everything he does. That’s the best way for him to learn. He really appreciates it and so do all of us!”
+“Vishal (name changed) loves coming to Sethu. You’re always focused on his strengths, encouraging him in everything he does. That’s the best way for him to learn. He really appreciates it and so do all of us!”
 
---- Juhi Prasad, guardian of Pritam, diagnosed with Down Syndrome in 2014
+--- Guardian of Vishal
 { .colored }

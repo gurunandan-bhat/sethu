@@ -23,10 +23,6 @@ img         = 'Image 180.jpg'
 name        = 'Atiya Mishra'
 designation = 'Counsellor'
 [[members]]
-img         = 'Image 21.jpg'
-name        = 'Jerry Gonsalves'
-designation = 'Head, Operations'
-[[members]]
 img         = 'Image 22.jpg'
 name        = 'Kais Bijapur'
 designation = 'Caretaker'
@@ -95,6 +91,10 @@ designation = 'Senior Psychologist, FCC Program Coordinator'
 img         = 'Image 39.jpg'
 name        = 'Shreya Raikar'
 designation = 'Autism Interventionist (Family Support Coordinator)'
+[[members]]
+img         = 'Image 48.jpg'
+name        = 'Shyam Prasad'
+designation = 'Chief Operating Officer'
 [[members]]
 img         = 'Image 40.jpg'
 name        = 'Sidney Fernandes'
