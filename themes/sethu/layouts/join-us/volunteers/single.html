@@ -1,0 +1,22 @@
+{{ define "main" }}
+    {{ with .Params.hdrImage }}
+        <div class="container-fluid mb-5">
+            <img src="/images/{{ . }}" class="img-responsive w-100" />
+        </div>
+    {{ end }}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 mt-5">
+                <h1>{{ .Title }}</h1>
+                {{ .Content }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 mt-5">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf9vb62fXS3I62wB2Z3GfMIJJB6lQjGtso6wLgCrHU2Q1wyeQ/viewform?usp=header" target="_blank" title="Volunteer Application Form">
+                    <img src="/images/volunteer-application-form.png" class="img-fluid w-100" />
+                </a>
+            </div>
+        </div>
+    </div>
+{{ end }}
