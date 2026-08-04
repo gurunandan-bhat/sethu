@@ -50,7 +50,7 @@ logo = 'saathire.webp'
 name = 'Self Reliant Inc.'
 logo = 'sri.webp'
 [[supporters]]
-name = 'Hoffmann La Roche'
+name = 'Roche Diabetes Care India Pvt. Ltd.'
 logo = 'roche.webp'
 [[supporters]]
 name = 'Unitop Chemicals'
@@ -64,3 +64,12 @@ logo = 'ligentia.png'
 [[supporters]]
 name = 'The India Fitness Connect'
 logo = 'tifc.png'
+[[supporters]]
+name = 'Maso Automotive, Mascor Precision and Devgiri Forgings'
+logo = 'maso.png'
+[[supporters]]
+name = 'NMT Shipping'
+logo = 'nmt.jpg'
+[[supporters]]
+name = 'CommScope'
+logo = 'commscope.png'
