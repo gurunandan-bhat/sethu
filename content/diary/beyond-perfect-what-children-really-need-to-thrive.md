@@ -1,7 +1,7 @@
 +++
 date = '2026-09-09T12:42:36+05:30'
 draft = false
-title = 'Beyond Perfect What Children Really Need to Thrive'
+title = 'Beyond Perfect: What Children Really Need to Thrive'
 authors = ["Aileen de Souza"]
 topics = ["World Suicide Prevention Day", "Mental Health", "Parenting", "Emotional Wellbeing"]
 opening = ""
