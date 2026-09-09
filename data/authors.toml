@@ -18,3 +18,7 @@ designation = 'Counsellor'
 img = 'Image 320.png'
 name = 'Dr. Rucha Mehta'
 designation = 'Developmental and Behavioural Paediatrician'
+[author.aileen-de-souza]
+img = 'Image 14.jpg'
+name = 'Aileen de Souza'
+designation = 'Senior Psychologist and Coordinator, Mental Health Programme'

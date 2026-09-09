@@ -31,6 +31,10 @@ img         = 'Kevin Couto.jpg'
 name        = 'Kevin Couto'
 designation = 'Social Worker'
 [[members]]
+img         = 'Kiara.png'
+name        = 'Kiara Costa'
+designation = 'Speech Therapist'
+[[members]]
 img         = 'Image 23.jpg'
 name        = 'Laxmi Jogdand'
 designation = 'Physiotherapist'
@@ -42,6 +46,10 @@ designation = 'Coordinator, Clinical Appointments'
 img         = 'Image 25.jpg'
 name        = 'Mahera Kantawalla'
 designation = 'Senior Occupational Therapist'
+[[members]]
+img         = 'Mamata.png'
+name        = 'Mamata Salgaonkar'
+designation = 'Psychologist'
 [[members]]
 img         = 'Image 26.jpg'
 name        = 'Maryanne De Souza'
@@ -76,14 +84,6 @@ img         = 'Image 320.png'
 name        = 'Dr. Rucha Mehta'
 designation = 'Developmental and Behavioral Paediatrician '
 [[members]]
-img         = 'Image 34.jpg'
-name        = 'Ruella Pires'
-designation = 'Psychologist'
-[[members]]
-img         = 'Image 35.jpg'
-name        = 'Sennely Costa'
-designation = 'Child Development Trainer'
-[[members]]
 img         = 'Image 38.jpg'
 name        = 'Shenessa Barreto'
 designation = 'Senior Psychologist, FCC Program Coordinator'
@@ -100,17 +100,13 @@ img         = 'Image 40.jpg'
 name        = 'Sidney Fernandes'
 designation = 'Senior Administrator'
 [[members]]
-img         = 'Image 41.jpg'
+img         = 'Trisha.png'
 name        = 'Trisha Saldanha'
 designation = 'Occupational Therapist'
 [[members]]
 img         = 'Image 42.jpg'
 name        = 'Ulka Lotlikar'
 designation = 'Accountant'
-[[members]]
-img         = 'Image 43.jpg'
-name        = 'Velanie D Souza'
-designation = 'Psychologist'
 [[members]]
 img         = 'Image 44.jpg'
 name        = 'Vivien Vaz'
