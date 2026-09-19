@@ -1,31 +1,31 @@
 [[members]]
 img         = 'Image 14.jpg'
 name        = 'Aileen de Souza'
-designation = 'Senior Psychologist and Coordinator, Mental Health Programme'
+designation = 'Head, Mental Health Programme'
 [[members]]
 img         = 'Image 50.jpg'
 name        = 'Dr. Akhila Boppudi'
-designation = 'IAP Fellow in Developmental and Behavioural Paediatrics'
+designation = 'Fellow Paediatrician -  Indian Academy of Paediatrics '
 [[members]]
 img         = 'Image 15.jpg'
 name        = 'Alisha Narvekar'
-designation = 'Child Development Trainer'
+designation = 'Gnyandeep Project Coordinator'
 [[members]]
 img         = 'Image 17.jpg'
 name        = 'Andre Velho'
-designation = 'Senior Autism Interventionist and Coordinator, Head - AATISH'
+designation = 'Head, Aatish Program'
 [[members]]
 img         = 'Image 18.jpg'
 name        = 'Anjali Barreto'
-designation = 'Speech-Language Pathologist, Head - Child Development Centre'
+designation = 'Deputy Director & Head - Child Development Centre'
 [[members]]
 img         = 'Image 180.jpg'
 name        = 'Atiya Mishra'
-designation = 'Counsellor'
+designation = 'Arts Based Therapist'
 [[members]]
 img         = 'Image 22.jpg'
 name        = 'Kais Bijapur'
-designation = 'Caretaker'
+designation = 'Facility Caretaker'
 [[members]]
 img         = 'Kevin Couto.jpg'
 name        = 'Kevin Couto'
@@ -33,19 +33,19 @@ designation = 'Social Worker'
 [[members]]
 img         = 'Kiara.png'
 name        = 'Kiara Costa'
-designation = 'Speech Therapist'
+designation = 'Speech Therapist Fellow'
 [[members]]
 img         = 'Image 23.jpg'
 name        = 'Laxmi Jogdand'
-designation = 'Physiotherapist'
+designation = 'Sr. Physiotherapist'
 [[members]]
 img         = 'Image 24.jpg'
 name        = 'Laxmi Magdum'
-designation = 'Coordinator, Clinical Appointments'
+designation = 'Receptionist & Case Coordinator'
 [[members]]
 img         = 'Image 25.jpg'
 name        = 'Mahera Kantawalla'
-designation = 'Senior Occupational Therapist'
+designation = 'CDC Coordinator & Senior Occupational Therapist'
 [[members]]
 img         = 'Mamata.png'
 name        = 'Mamata Salgaonkar'
@@ -53,19 +53,19 @@ designation = 'Psychologist'
 [[members]]
 img         = 'Image 26.jpg'
 name        = 'Maryanne De Souza'
-designation = 'Communications Assistant'
+designation = 'Social Communications Coordinator'
 [[members]]
 img         = 'Image 27.jpg'
 name        = 'Mubina Bijapur'
-designation = 'Housekeeper'
+designation = 'Facility Caretaker'
 [[members]]
 img         = 'Image 28.jpg'
 name        = 'Dr Nandita de Souza'
-designation = 'Director and Developmental & Behavioural Paediatrician'
+designation = 'Director & Developmental Paediatrician'
 [[members]]
 img         = 'Image 30.jpg'
 name        = 'Pooja Kambli'
-designation = 'Administration Assistant'
+designation = 'Assistant Administrator'
 [[members]]
 img         = 'Image 300.jpg'
 name        = 'Prajakta Chavan'
@@ -74,23 +74,23 @@ inactive    = true
 [[members]]
 img         = 'Image 31.jpg'
 name        = 'Pricilla de Souza'
-designation = 'Case Coordinator'
+designation = 'Clinical Data Coordinator'
 [[members]]
 img         = 'Image 32.jpg'
 name        = 'Purva Kamat'
-designation = 'Autism Intervention Specialist'
+designation = 'Sr. Autism Interventionist'
 [[members]]
 img         = 'Image 320.png'
 name        = 'Dr. Rucha Mehta'
-designation = 'Developmental and Behavioral Paediatrician '
+designation = 'Developmental Paediatrician'
 [[members]]
 img         = 'Image 38.jpg'
 name        = 'Shenessa Barreto'
-designation = 'Senior Psychologist, FCC Program Coordinator'
+designation = 'Head, Training & Outreach'
 [[members]]
 img         = 'Image 39.jpg'
 name        = 'Shreya Raikar'
-designation = 'Autism Interventionist (Family Support Coordinator)'
+designation = 'Autism Interventionist'
 [[members]]
 img         = 'Image 48.jpg'
 name        = 'Shyam Prasad'
@@ -98,7 +98,7 @@ designation = 'Chief Operating Officer'
 [[members]]
 img         = 'Image 40.jpg'
 name        = 'Sidney Fernandes'
-designation = 'Senior Administrator'
+designation = 'Head, Administration & HR'
 [[members]]
 img         = 'Trisha.png'
 name        = 'Trisha Saldanha'
@@ -110,11 +110,11 @@ designation = 'Accountant'
 [[members]]
 img         = 'Image 44.jpg'
 name        = 'Vivien Vaz'
-designation = 'Senior Autism Interventionist'
+designation = 'Sr. Autism Interventionist'
 [[members]]
 img         = 'Image 45.jpg'
 name        = "Zamora Da'Silva"
-designation = 'Counsellor'
+designation = 'Family Counsellor'
 [[members]]
 img         = 'Image 47.jpg'
 name        = "Zurica D'souza"
