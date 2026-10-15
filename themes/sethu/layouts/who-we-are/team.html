@@ -21,13 +21,7 @@
                         strengths and hope.
                     </p>
                     {{ range hugo.Data.team.members }}
-                        {{- $active := true }}
-                        {{- with .inactive }}
-                            {{- if . }}
-                                {{- $active = false }}
-                            {{- end }}
-                        {{- end }}
-                        {{- if $active }}
+                        {{- if eq .status "active" }}
                             <div class="col-lg-4 mb-5">
                                 <div class="p-3 border">
                                     <h4 class="lead text-center pb-2">

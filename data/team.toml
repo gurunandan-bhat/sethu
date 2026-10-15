@@ -1,121 +1,161 @@
 [[members]]
+status = 'active'
 designation = 'Head, Mental Health Programme'
 img = 'Image 14.jpg'
 name = 'Aileen de Souza'
 [[members]]
+status = 'active'
 designation = 'Fellow Paediatrician -  Indian Academy of Paediatrics '
 img = 'Image 50.jpg'
 name = 'Dr. Akhila Boppudi'
 [[members]]
+status = 'active'
 designation = 'Gnyandeep Project Coordinator'
 img = 'Image 15.jpg'
 name = 'Alisha Narvekar'
 [[members]]
+status = 'active'
 designation = 'Head, Autism Program'
 img = 'Image 17.jpg'
 name = 'Andre Velho'
 [[members]]
+status = 'active'
 designation = 'Deputy Director & Head - Child Development Centre'
 img = 'Image 18.jpg'
 name = 'Anjali Barreto'
 [[members]]
+status = 'active'
 designation = 'Arts Based Therapist'
 img = 'Image 180.jpg'
 name = 'Atiya Mishra'
 [[members]]
+status = 'active'
+designation = 'Child Deveelopment Trainer'
+img = 'Deepika Hosur.jpg'
+name = 'Deepika Hosur'
+[[members]]
+status = 'active'
 designation = 'Facility Caretaker'
 img = 'Image 22.jpg'
 name = 'Kais Bijapur'
 [[members]]
+status = 'active'
 designation = 'Social Worker'
 img = 'Kevin Couto.jpg'
 name = 'Kevin Couto'
 [[members]]
+status = 'active'
 designation = 'Speech Therapist Fellow'
 img = 'Kiara.png'
 name = 'Kiara Costa'
 [[members]]
+status = 'active'
 designation = 'Sr. Physiotherapist'
 img = 'Image 23.jpg'
 name = 'Laxmi Jogdand'
 [[members]]
+status = 'active'
 designation = 'Receptionist & Case Coordinator'
 img = 'Image 24.jpg'
 name = 'Laxmi Magdum'
 [[members]]
+status = 'active'
 designation = 'CDC Coordinator & Senior Occupational Therapist'
 img = 'Image 25.jpg'
 name = 'Mahera Kantawalla'
 [[members]]
+status = 'active'
 designation = 'Social Communications Coordinator'
 img = 'Image 26.jpg'
 name = 'Maryanne De Souza'
 [[members]]
+status = 'active'
 designation = 'Facility Caretaker'
 img = 'Image 27.jpg'
 name = 'Mubina Bijapur'
 [[members]]
+status = 'active'
 designation = 'Director & Developmental Paediatrician'
 img = 'Image 28.jpg'
 name = 'Dr Nandita de Souza'
 [[members]]
+status = 'active'
 designation = 'Assistant Administrator'
 img = 'Image 30.jpg'
 name = 'Pooja Kambli'
 [[members]]
+status = 'active'
 designation = 'Family Advisor'
 img = 'Image 300.jpg'
 inactive = true
 name = 'Prajakta Chavan'
 [[members]]
+status = 'active'
 designation = 'Clinical Data Coordinator'
 img = 'Image 31.jpg'
 name = 'Pricilla de Souza'
 [[members]]
+status = 'active'
 designation = 'Sr. Autism Interventionist'
 img = 'Image 32.jpg'
 name = 'Purva Kamat'
 [[members]]
+status = 'active'
 designation = 'Developmental Paediatrician'
 img = 'Image 320.png'
 name = 'Dr. Rucha Mehta'
 [[members]]
+status = 'active'
 designation = 'Head, Training & Outreach'
 img = 'Image 38.jpg'
 name = 'Shenessa Barreto'
 [[members]]
+status = 'active'
 designation = 'Autism Interventionist'
 img = 'Image 39.jpg'
 name = 'Shreya Raikar'
 [[members]]
+status = 'active'
 designation = 'Chief Operating Officer'
 img = 'Image 48.jpg'
 name = 'Shyam Prasad'
 [[members]]
+status = 'active'
 designation = 'Head, Administration & HR'
 img = 'Image 40.jpg'
 name = 'Sidney Fernandes'
 [[members]]
+status = 'active'
 designation = 'Junior Accountant'
 img = 'Suvarna.jpg'
 name = 'Suvarna Kerkar'
 [[members]]
+status = 'active'
+designation = 'Psychologist'
+img = 'Tanisha Mendes.jpg'
+name = 'Tanisha Mendes'
+[[members]]
+status = 'active'
 designation = 'Occupational Therapist'
 img = 'Trisha.png'
 name = 'Trisha Saldanha'
 [[members]]
+status = 'active'
 designation = 'Accountant'
 img = 'Image 42.jpg'
 name = 'Ulka Lotlikar'
 [[members]]
+status = 'active'
 designation = 'Sr. Autism Interventionist'
 img = 'Image 44.jpg'
 name = 'Vivien Vaz'
 [[members]]
+status = 'active'
 designation = 'Family Counsellor'
 img = 'Image 45.jpg'
 name = "Zamora Da'Silva"
 [[members]]
+status = 'inactive'
 designation = 'Head, Marketing and Donor Relations'
 img = 'Image 47.jpg'
 name = "Zurica D'souza"
