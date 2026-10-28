@@ -5,4 +5,26 @@ title = 'Careers'
 +++
 
 We welcome professionals from a wide range of disciplines!
-There are no current openings, but do contact us if you are interested and we’ll reach out to you in the future!
+
+## New Opportunities
+
+### 1. Fundraising and Development
+
+{{< figure
+src="/images/careers/fundraising-and-development-officer.png"
+alt="A new opportunity at Sethu for Fundraising aand Development Officer"
+width="100%"
+class="img-fluid w-100"
+style="mrgin-bottom: 10px;" >}}
+
+----
+
+### 2. Child Development Trainer
+
+{{< figure
+src="/images/careers/child-development-trainer.png"
+alt="A new opportunity at Sethu for Child Development Trainer"
+width="100%"
+class="img-fluid w-100"
+style="mrgin-bottom: 10px;" >}}
+

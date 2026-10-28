@@ -84,7 +84,7 @@ designation = 'Assistant Administrator'
 img = 'Image 30.jpg'
 name = 'Pooja Kambli'
 [[members]]
-status = 'active'
+status = 'inactive'
 designation = 'Family Advisor'
 img = 'Image 300.jpg'
 inactive = true
